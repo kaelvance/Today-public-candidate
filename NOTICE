@@ -1,0 +1,15 @@
+Today source release candidate 1.9.0-rc.10
+Copyright (c) 2026 Kaito Kuon
+
+Today-authored source, documentation, geometric icons and fictional test fixtures
+are licensed under MIT. Upstream notices in third-party/licenses retain their
+original licenses. THIRD_PARTY_NOTICES.md contains runtime and build-helper notices
+that must accompany a distributed production build.
+
+Qwen model weights, Today Model Alpha/Beta/Gamma adapters, training datasets and
+private/device logs are not included. Model license references describe optional
+external components and do not relicense those components under Today's MIT.
+
+This file describes this distribution; it is not a replacement for LICENSE or
+upstream license texts. No additional upstream NOTICE obligations were found
+for code bundled in the production application (React, React DOM, Scheduler, Vite modulepreload helper; Rollup notices retained conservatively).

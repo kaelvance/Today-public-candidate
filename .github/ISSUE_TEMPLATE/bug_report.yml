@@ -1,0 +1,26 @@
+name: Bug report
+description: Report a defect with fictional reproduction data
+title: '[Bug] '
+body:
+  - type: markdown
+    attributes:
+      value: '鍵・token・実メール・個人データを貼らないでください。脆弱性はSECURITY.mdの非公開経路へ。'
+  - type: input
+    id: version
+    attributes:
+      label: Version and environment
+      description: Today / Node / pnpm / OS / browser versions
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction with fictional data
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Expected and actual result
+    validations:
+      required: true

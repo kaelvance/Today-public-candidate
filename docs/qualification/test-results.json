@@ -1,0 +1,62 @@
+{
+  "date": "2026-09-28",
+  "platform": "macOS Apple Silicon",
+  "node": "24.19.0",
+  "pnpm": "11.19.0",
+  "suites": {
+    "vitest": {
+      "files": 17,
+      "tests": 130,
+      "passed": 130
+    },
+    "localRuntime": {
+      "tests": 6,
+      "passed": 6
+    },
+    "remote": {
+      "tests": 9,
+      "passed": 9
+    },
+    "ollama": {
+      "tests": 3,
+      "passed": 3
+    },
+    "security": {
+      "tests": 11,
+      "passed": 11
+    },
+    "ossScanners": {
+      "tests": 4,
+      "passed": 4
+    }
+  },
+  "totalAutomatedTests": 163,
+  "e2e": {
+    "scripts": 6,
+    "flows": 47,
+    "passed": 47,
+    "responseFixtures": "fictional; live Google/remote credentials absent"
+  },
+  "format": "PASS",
+  "lint": "PASS",
+  "typecheck": "PASS",
+  "licenseMetadataComponents": 298,
+  "remoteGitHubActions": "NOT_RUN",
+  "localModelSmoke": {
+    "status": "Experimental, separately installed, not included",
+    "flows": 3,
+    "passed": 3,
+    "tests": "manifest hash, real MLX load, AI-disabled Core; no inference quality claims",
+    "python": "3.12.14",
+    "mlx": "0.32.2",
+    "mlx-lm": "0.31.3"
+  },
+  "coldDevReproducibility": {
+    "initialObservedErrors": 1,
+    "rootCause": "not proven",
+    "mitigation": "explicit React dedupe and optimizer entries",
+    "isolatedColdTrials": 3,
+    "isolatedFailures": 0,
+    "productionJavaScriptHashUnchanged": true
+  }
+}

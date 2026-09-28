@@ -1,0 +1,17 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+.today-private/
+*.enc
+*.log
+*.zip
+*.safetensors
+*.gguf
+*.bin
+work/
+models/**/checkpoints/
+evals/private/
+datasets/private/

@@ -1,0 +1,52 @@
+{
+  "date": "2026-09-28",
+  "conditions": "production, empty state, no model, loopback, Lighthouse13.5.0, Chromium153, mobile412x823, simulated slow4G, CPUx4, three independent runs",
+  "runs": [
+    {
+      "run": 1,
+      "lighthouseVersion": "13.5.0",
+      "performance": 99,
+      "accessibility": 100,
+      "FCP_ms": 1435.54025,
+      "LCP_ms": 1968.0644000000002,
+      "CLS": 0,
+      "TBT_ms": 0,
+      "errors": null,
+      "rawSha256": "4c894318907d1944c3096b6cf7bf9affcf7f49381756e06695146defe43da54b"
+    },
+    {
+      "run": 2,
+      "lighthouseVersion": "13.5.0",
+      "performance": 99,
+      "accessibility": 100,
+      "FCP_ms": 1357.4464,
+      "LCP_ms": 1965.8928,
+      "CLS": 0,
+      "TBT_ms": 0,
+      "errors": null,
+      "rawSha256": "1c73a14a56d4f7f4afdb18cce66368a96be58e47847b2a2c0c79b95c5439d59f"
+    },
+    {
+      "run": 3,
+      "lighthouseVersion": "13.5.0",
+      "performance": 99,
+      "accessibility": 100,
+      "FCP_ms": 1351.6793,
+      "LCP_ms": 1959.3586,
+      "CLS": 0,
+      "TBT_ms": 0,
+      "errors": null,
+      "rawSha256": "d59d74b04916e4f201424c44e358fb5855885031e220ef2d1acc849864a00758"
+    }
+  ],
+  "median": {
+    "performance": 99,
+    "accessibility": 100,
+    "FCP_ms": 1357.4464,
+    "LCP_ms": 1965.8928,
+    "CLS": 0,
+    "TBT_ms": 0
+  },
+  "gatesPassed": true,
+  "rawResults": "retained outside public source because browser tooling can contain machine metadata"
+}

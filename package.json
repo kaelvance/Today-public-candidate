@@ -1,0 +1,57 @@
+{
+  "name": "today-local",
+  "private": true,
+  "version": "1.9.0-rc.10",
+  "packageManager": "pnpm@11.19.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node server/index.mjs",
+    "lint": "eslint .",
+    "typecheck": "tsc -b",
+    "test": "vitest run",
+    "test:local": "node --test server/local-model.node-test.mjs",
+    "test:remote": "node --test server/remote-model.node-test.mjs server/remote-provider.integration-test.mjs",
+    "test:ollama": "node --test server/ollama-model.node-test.mjs",
+    "test:oss": "node --test scripts/oss-audit.node-test.mjs scripts/release-scan.node-test.mjs && node scripts/release-scan.mjs",
+    "test:e2e": "node scripts/e2e.mjs && node scripts/e2e-integration.mjs && node scripts/e2e-scenarios.mjs && node scripts/e2e-gmail.mjs && node scripts/e2e-intelligence.mjs && node scripts/e2e-release.mjs",
+    "test:e2e:model": "node scripts/e2e-real-model.mjs",
+    "build": "tsc -b && vite build && node scripts/precompress.mjs",
+    "preview": "node server/index.mjs --production",
+    "test:security": "node --test server/security.node-test.mjs",
+    "start": "node server/index.mjs --production",
+    "release:scan": "node scripts/release-scan.mjs",
+    "release:audit": "node scripts/code-audit.mjs",
+    "sbom": "node scripts/dependency-inventory.mjs",
+    "licenses:check": "node scripts/dependency-inventory.mjs --check",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test:stranger": "node scripts/e2e-stranger.mjs",
+    "test:cold": "node scripts/e2e-cold.mjs",
+    "release:package": "node scripts/release-package.mjs",
+    "release:qualify": "node scripts/qualify-release.mjs"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.3.3",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^4.7.0",
+    "eslint": "^9.39.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "globals": "^16.5.0",
+    "jsdom": "^26.1.0",
+    "playwright-core": "^1.63.0",
+    "prettier": "3.8.0",
+    "typescript": "~5.9.2",
+    "typescript-eslint": "^8.70.1",
+    "vite": "^6.3.5",
+    "vitest": "^4.1.11"
+  },
+  "engines": {
+    "node": ">=22.13.0 <25"
+  },
+  "license": "MIT"
+}

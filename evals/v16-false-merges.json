@@ -1,0 +1,814 @@
+{
+  "version": "today-false-merges/1.0.0",
+  "sourceBenchmark": "today-benchmark/2.0.0",
+  "sourceReport": "report-qwen3-alpha-v2.json",
+  "count": 17,
+  "primaryTaxonomyCounts": {
+    "TIME_UNDERWEIGHT": 1,
+    "TIME_OVERWEIGHT": 3,
+    "NEGATION_FAILURE": 6,
+    "EVENT_IDENTITY_FAILURE": 3,
+    "TITLE_OVERWEIGHT": 4
+  },
+  "records": [
+    {
+      "id": "v2-legacy-v1-003",
+      "inputA": {
+        "id": "a",
+        "title": "歯科 9月27日"
+      },
+      "inputB": {
+        "id": "b",
+        "title": "歯科 10月27日"
+      },
+      "expectedRelation": "UNRELATED",
+      "modelRelation": "SAME_CONTEXT",
+      "confidence": null,
+      "confidenceStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "deterministicSignals": {
+        "recordedContextEngineScore": null,
+        "derivedTitleBigramJaccard": 0.444,
+        "derivedExplicitDateA": "09-27",
+        "derivedExplicitDateB": "10-27",
+        "derivedExplicitDateConflict": true,
+        "derivedCancellationOrPostponement": false,
+        "derivedAdvertising": false,
+        "derivedExplicitDifferentEvent": false
+      },
+      "temporalDistance": null,
+      "temporalDistanceStatus": "MONTH_DAY_ONLY_YEAR_UNKNOWN",
+      "titleSimilarity": 0.444,
+      "entityOverlap": null,
+      "locationOverlap": null,
+      "sourceTypes": [
+        null,
+        null
+      ],
+      "promptVersion": "today-capabilities/2",
+      "modelOutput": {
+        "relation": "SAME_CONTEXT",
+        "evidence": [
+          "同じ日の別件"
+        ],
+        "conflicts": []
+      },
+      "rawModelOutput": null,
+      "rawModelOutputStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "primaryFailureCause": "TIME_UNDERWEIGHT",
+      "primaryFixLayer": "DETERMINISTIC PRE-FILTER",
+      "causeIsInference": true
+    },
+    {
+      "id": "v2-legacy-v1-004",
+      "inputA": {
+        "id": "a",
+        "title": "映画 18時"
+      },
+      "inputB": {
+        "id": "b",
+        "title": "歯科 18時"
+      },
+      "expectedRelation": "UNRELATED",
+      "modelRelation": "SAME_CONTEXT",
+      "confidence": null,
+      "confidenceStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "deterministicSignals": {
+        "recordedContextEngineScore": null,
+        "derivedTitleBigramJaccard": 0.333,
+        "derivedExplicitDateA": null,
+        "derivedExplicitDateB": null,
+        "derivedExplicitDateConflict": false,
+        "derivedCancellationOrPostponement": false,
+        "derivedAdvertising": false,
+        "derivedExplicitDifferentEvent": false
+      },
+      "temporalDistance": null,
+      "temporalDistanceStatus": "NO_FULL_TIMESTAMP_IN_INPUT",
+      "titleSimilarity": 0.333,
+      "entityOverlap": null,
+      "locationOverlap": null,
+      "sourceTypes": [
+        null,
+        null
+      ],
+      "promptVersion": "today-capabilities/2",
+      "modelOutput": {
+        "relation": "SAME_CONTEXT",
+        "evidence": [
+          "時刻変更"
+        ],
+        "conflicts": []
+      },
+      "rawModelOutput": null,
+      "rawModelOutputStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "primaryFailureCause": "TIME_OVERWEIGHT",
+      "primaryFixLayer": "CONFIDENCE POLICY",
+      "causeIsInference": true
+    },
+    {
+      "id": "v2-legacy-v1-007",
+      "inputA": {
+        "id": "a",
+        "title": "旅行の予約"
+      },
+      "inputB": {
+        "id": "b",
+        "title": "旅行をキャンセルしました"
+      },
+      "expectedRelation": "CONFLICTING",
+      "modelRelation": "SAME_CONTEXT",
+      "confidence": null,
+      "confidenceStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "deterministicSignals": {
+        "recordedContextEngineScore": null,
+        "derivedTitleBigramJaccard": 0.071,
+        "derivedExplicitDateA": null,
+        "derivedExplicitDateB": null,
+        "derivedExplicitDateConflict": false,
+        "derivedCancellationOrPostponement": true,
+        "derivedAdvertising": false,
+        "derivedExplicitDifferentEvent": false
+      },
+      "temporalDistance": null,
+      "temporalDistanceStatus": "NO_FULL_TIMESTAMP_IN_INPUT",
+      "titleSimilarity": 0.071,
+      "entityOverlap": null,
+      "locationOverlap": null,
+      "sourceTypes": [
+        null,
+        null
+      ],
+      "promptVersion": "today-capabilities/2",
+      "modelOutput": {
+        "relation": "SAME_CONTEXT",
+        "evidence": [
+          "同じ受付"
+        ],
+        "conflicts": []
+      },
+      "rawModelOutput": null,
+      "rawModelOutputStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "primaryFailureCause": "NEGATION_FAILURE",
+      "primaryFixLayer": "POST-VALIDATION",
+      "causeIsInference": true
+    },
+    {
+      "id": "v2-legacy-v1-015",
+      "inputA": {
+        "id": "a",
+        "title": "Team sync 10 AM"
+      },
+      "inputB": {
+        "id": "b",
+        "title": "Dental checkup 10 AM"
+      },
+      "expectedRelation": "UNRELATED",
+      "modelRelation": "SAME_CONTEXT",
+      "confidence": null,
+      "confidenceStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "deterministicSignals": {
+        "recordedContextEngineScore": null,
+        "derivedTitleBigramJaccard": 0.13,
+        "derivedExplicitDateA": null,
+        "derivedExplicitDateB": null,
+        "derivedExplicitDateConflict": false,
+        "derivedCancellationOrPostponement": false,
+        "derivedAdvertising": false,
+        "derivedExplicitDifferentEvent": false
+      },
+      "temporalDistance": null,
+      "temporalDistanceStatus": "NO_FULL_TIMESTAMP_IN_INPUT",
+      "titleSimilarity": 0.13,
+      "entityOverlap": null,
+      "locationOverlap": null,
+      "sourceTypes": [
+        null,
+        null
+      ],
+      "promptVersion": "today-capabilities/2",
+      "modelOutput": {
+        "relation": "SAME_CONTEXT",
+        "evidence": [
+          "関連する別作業"
+        ],
+        "conflicts": []
+      },
+      "rawModelOutput": null,
+      "rawModelOutputStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "primaryFailureCause": "TIME_OVERWEIGHT",
+      "primaryFixLayer": "CONFIDENCE POLICY",
+      "causeIsInference": true
+    },
+    {
+      "id": "v2-0066",
+      "inputA": {
+        "id": "a",
+        "title": "水泳教室の会議 9時"
+      },
+      "inputB": {
+        "id": "b",
+        "title": "別件の陶芸教室の会議 9時"
+      },
+      "expectedRelation": "UNRELATED",
+      "modelRelation": "SAME_CONTEXT",
+      "confidence": null,
+      "confidenceStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "deterministicSignals": {
+        "recordedContextEngineScore": null,
+        "derivedTitleBigramJaccard": 0.462,
+        "derivedExplicitDateA": null,
+        "derivedExplicitDateB": null,
+        "derivedExplicitDateConflict": false,
+        "derivedCancellationOrPostponement": false,
+        "derivedAdvertising": false,
+        "derivedExplicitDifferentEvent": true
+      },
+      "temporalDistance": null,
+      "temporalDistanceStatus": "NO_FULL_TIMESTAMP_IN_INPUT",
+      "titleSimilarity": 0.462,
+      "entityOverlap": null,
+      "locationOverlap": null,
+      "sourceTypes": [
+        null,
+        null
+      ],
+      "promptVersion": "today-capabilities/2",
+      "modelOutput": {
+        "relation": "SAME_CONTEXT",
+        "evidence": [
+          "別件"
+        ],
+        "conflicts": []
+      },
+      "rawModelOutput": null,
+      "rawModelOutputStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "primaryFailureCause": "EVENT_IDENTITY_FAILURE",
+      "primaryFixLayer": "POST-VALIDATION",
+      "causeIsInference": true
+    },
+    {
+      "id": "v2-0074",
+      "inputA": {
+        "id": "a",
+        "title": "水泳教室のイベント"
+      },
+      "inputB": {
+        "id": "b",
+        "title": "広告: 水泳教室に似た商品を発売"
+      },
+      "expectedRelation": "UNRELATED",
+      "modelRelation": "RELATED",
+      "confidence": null,
+      "confidenceStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "deterministicSignals": {
+        "recordedContextEngineScore": null,
+        "derivedTitleBigramJaccard": 0.158,
+        "derivedExplicitDateA": null,
+        "derivedExplicitDateB": null,
+        "derivedExplicitDateConflict": false,
+        "derivedCancellationOrPostponement": false,
+        "derivedAdvertising": true,
+        "derivedExplicitDifferentEvent": false
+      },
+      "temporalDistance": null,
+      "temporalDistanceStatus": "NO_FULL_TIMESTAMP_IN_INPUT",
+      "titleSimilarity": 0.158,
+      "entityOverlap": null,
+      "locationOverlap": null,
+      "sourceTypes": [
+        null,
+        null
+      ],
+      "promptVersion": "today-capabilities/2",
+      "modelOutput": {
+        "relation": "RELATED",
+        "evidence": [
+          "関連する別作業"
+        ],
+        "conflicts": []
+      },
+      "rawModelOutput": null,
+      "rawModelOutputStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "primaryFailureCause": "TITLE_OVERWEIGHT",
+      "primaryFixLayer": "DATASET",
+      "causeIsInference": true
+    },
+    {
+      "id": "v2-0078",
+      "inputA": {
+        "id": "a",
+        "title": "水泳教室の授業"
+      },
+      "inputB": {
+        "id": "b",
+        "title": "水泳教室の授業は延期になった"
+      },
+      "expectedRelation": "CONFLICTING",
+      "modelRelation": "SAME_CONTEXT",
+      "confidence": null,
+      "confidenceStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "deterministicSignals": {
+        "recordedContextEngineScore": null,
+        "derivedTitleBigramJaccard": 0.462,
+        "derivedExplicitDateA": null,
+        "derivedExplicitDateB": null,
+        "derivedExplicitDateConflict": false,
+        "derivedCancellationOrPostponement": true,
+        "derivedAdvertising": false,
+        "derivedExplicitDifferentEvent": false
+      },
+      "temporalDistance": null,
+      "temporalDistanceStatus": "NO_FULL_TIMESTAMP_IN_INPUT",
+      "titleSimilarity": 0.462,
+      "entityOverlap": null,
+      "locationOverlap": null,
+      "sourceTypes": [
+        null,
+        null
+      ],
+      "promptVersion": "today-capabilities/2",
+      "modelOutput": {
+        "relation": "SAME_CONTEXT",
+        "evidence": [
+          "同じ受教"
+        ],
+        "conflicts": []
+      },
+      "rawModelOutput": null,
+      "rawModelOutputStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "primaryFailureCause": "NEGATION_FAILURE",
+      "primaryFixLayer": "POST-VALIDATION",
+      "causeIsInference": true
+    },
+    {
+      "id": "v2-0082",
+      "inputA": {
+        "id": "a",
+        "title": "歯科検診の会議 9時"
+      },
+      "inputB": {
+        "id": "b",
+        "title": "別件の眼科検診の会議 9時"
+      },
+      "expectedRelation": "UNRELATED",
+      "modelRelation": "SAME_CONTEXT",
+      "confidence": null,
+      "confidenceStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "deterministicSignals": {
+        "recordedContextEngineScore": null,
+        "derivedTitleBigramJaccard": 0.583,
+        "derivedExplicitDateA": null,
+        "derivedExplicitDateB": null,
+        "derivedExplicitDateConflict": false,
+        "derivedCancellationOrPostponement": false,
+        "derivedAdvertising": false,
+        "derivedExplicitDifferentEvent": true
+      },
+      "temporalDistance": null,
+      "temporalDistanceStatus": "NO_FULL_TIMESTAMP_IN_INPUT",
+      "titleSimilarity": 0.583,
+      "entityOverlap": null,
+      "locationOverlap": null,
+      "sourceTypes": [
+        null,
+        null
+      ],
+      "promptVersion": "today-capabilities/2",
+      "modelOutput": {
+        "relation": "SAME_CONTEXT",
+        "evidence": [
+          "会議時間相同"
+        ],
+        "conflicts": []
+      },
+      "rawModelOutput": null,
+      "rawModelOutputStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "primaryFailureCause": "EVENT_IDENTITY_FAILURE",
+      "primaryFixLayer": "POST-VALIDATION",
+      "causeIsInference": true
+    },
+    {
+      "id": "v2-0083",
+      "inputA": {
+        "id": "a",
+        "title": "歯科検診の説明会"
+      },
+      "inputB": {
+        "id": "b",
+        "title": "歯科検診の説明会は中止"
+      },
+      "expectedRelation": "CONFLICTING",
+      "modelRelation": "SAME_CONTEXT",
+      "confidence": null,
+      "confidenceStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "deterministicSignals": {
+        "recordedContextEngineScore": null,
+        "derivedTitleBigramJaccard": 0.7,
+        "derivedExplicitDateA": null,
+        "derivedExplicitDateB": null,
+        "derivedExplicitDateConflict": false,
+        "derivedCancellationOrPostponement": true,
+        "derivedAdvertising": false,
+        "derivedExplicitDifferentEvent": false
+      },
+      "temporalDistance": null,
+      "temporalDistanceStatus": "NO_FULL_TIMESTAMP_IN_INPUT",
+      "titleSimilarity": 0.7,
+      "entityOverlap": null,
+      "locationOverlap": null,
+      "sourceTypes": [
+        null,
+        null
+      ],
+      "promptVersion": "today-capabilities/2",
+      "modelOutput": {
+        "relation": "SAME_CONTEXT",
+        "evidence": [
+          "説明会"
+        ],
+        "conflicts": []
+      },
+      "rawModelOutput": null,
+      "rawModelOutputStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "primaryFailureCause": "NEGATION_FAILURE",
+      "primaryFixLayer": "POST-VALIDATION",
+      "causeIsInference": true
+    },
+    {
+      "id": "v2-0090",
+      "inputA": {
+        "id": "a",
+        "title": "歯科検診のイベント"
+      },
+      "inputB": {
+        "id": "b",
+        "title": "広告: 歯科検診に似た商品を発売"
+      },
+      "expectedRelation": "UNRELATED",
+      "modelRelation": "RELATED",
+      "confidence": null,
+      "confidenceStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "deterministicSignals": {
+        "recordedContextEngineScore": null,
+        "derivedTitleBigramJaccard": 0.158,
+        "derivedExplicitDateA": null,
+        "derivedExplicitDateB": null,
+        "derivedExplicitDateConflict": false,
+        "derivedCancellationOrPostponement": false,
+        "derivedAdvertising": true,
+        "derivedExplicitDifferentEvent": false
+      },
+      "temporalDistance": null,
+      "temporalDistanceStatus": "NO_FULL_TIMESTAMP_IN_INPUT",
+      "titleSimilarity": 0.158,
+      "entityOverlap": null,
+      "locationOverlap": null,
+      "sourceTypes": [
+        null,
+        null
+      ],
+      "promptVersion": "today-capabilities/2",
+      "modelOutput": {
+        "relation": "RELATED",
+        "evidence": [
+          "関連する別作業"
+        ],
+        "conflicts": []
+      },
+      "rawModelOutput": null,
+      "rawModelOutputStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "primaryFailureCause": "TITLE_OVERWEIGHT",
+      "primaryFixLayer": "DATASET",
+      "causeIsInference": true
+    },
+    {
+      "id": "v2-0094",
+      "inputA": {
+        "id": "a",
+        "title": "歯科検診の授業"
+      },
+      "inputB": {
+        "id": "b",
+        "title": "歯科検診の授業は延期になった"
+      },
+      "expectedRelation": "CONFLICTING",
+      "modelRelation": "SAME_CONTEXT",
+      "confidence": null,
+      "confidenceStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "deterministicSignals": {
+        "recordedContextEngineScore": null,
+        "derivedTitleBigramJaccard": 0.462,
+        "derivedExplicitDateA": null,
+        "derivedExplicitDateB": null,
+        "derivedExplicitDateConflict": false,
+        "derivedCancellationOrPostponement": true,
+        "derivedAdvertising": false,
+        "derivedExplicitDifferentEvent": false
+      },
+      "temporalDistance": null,
+      "temporalDistanceStatus": "NO_FULL_TIMESTAMP_IN_INPUT",
+      "titleSimilarity": 0.462,
+      "entityOverlap": null,
+      "locationOverlap": null,
+      "sourceTypes": [
+        null,
+        null
+      ],
+      "promptVersion": "today-capabilities/2",
+      "modelOutput": {
+        "relation": "SAME_CONTEXT",
+        "evidence": [
+          "同じ受講"
+        ],
+        "conflicts": []
+      },
+      "rawModelOutput": null,
+      "rawModelOutputStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "primaryFailureCause": "NEGATION_FAILURE",
+      "primaryFixLayer": "POST-VALIDATION",
+      "causeIsInference": true
+    },
+    {
+      "id": "v2-0098",
+      "inputA": {
+        "id": "a",
+        "title": "町内会の会議 9時"
+      },
+      "inputB": {
+        "id": "b",
+        "title": "別件の図書館の会議 9時"
+      },
+      "expectedRelation": "UNRELATED",
+      "modelRelation": "SAME_CONTEXT",
+      "confidence": null,
+      "confidenceStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "deterministicSignals": {
+        "recordedContextEngineScore": null,
+        "derivedTitleBigramJaccard": 0.308,
+        "derivedExplicitDateA": null,
+        "derivedExplicitDateB": null,
+        "derivedExplicitDateConflict": false,
+        "derivedCancellationOrPostponement": false,
+        "derivedAdvertising": false,
+        "derivedExplicitDifferentEvent": true
+      },
+      "temporalDistance": null,
+      "temporalDistanceStatus": "NO_FULL_TIMESTAMP_IN_INPUT",
+      "titleSimilarity": 0.308,
+      "entityOverlap": null,
+      "locationOverlap": null,
+      "sourceTypes": [
+        null,
+        null
+      ],
+      "promptVersion": "today-capabilities/2",
+      "modelOutput": {
+        "relation": "SAME_CONTEXT",
+        "evidence": [
+          "別の日の別件"
+        ],
+        "conflicts": []
+      },
+      "rawModelOutput": null,
+      "rawModelOutputStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "primaryFailureCause": "EVENT_IDENTITY_FAILURE",
+      "primaryFixLayer": "POST-VALIDATION",
+      "causeIsInference": true
+    },
+    {
+      "id": "v2-0106",
+      "inputA": {
+        "id": "a",
+        "title": "町内会のイベント"
+      },
+      "inputB": {
+        "id": "b",
+        "title": "広告: 町内会に似た商品を発売"
+      },
+      "expectedRelation": "UNRELATED",
+      "modelRelation": "RELATED",
+      "confidence": null,
+      "confidenceStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "deterministicSignals": {
+        "recordedContextEngineScore": null,
+        "derivedTitleBigramJaccard": 0.111,
+        "derivedExplicitDateA": null,
+        "derivedExplicitDateB": null,
+        "derivedExplicitDateConflict": false,
+        "derivedCancellationOrPostponement": false,
+        "derivedAdvertising": true,
+        "derivedExplicitDifferentEvent": false
+      },
+      "temporalDistance": null,
+      "temporalDistanceStatus": "NO_FULL_TIMESTAMP_IN_INPUT",
+      "titleSimilarity": 0.111,
+      "entityOverlap": null,
+      "locationOverlap": null,
+      "sourceTypes": [
+        null,
+        null
+      ],
+      "promptVersion": "today-capabilities/2",
+      "modelOutput": {
+        "relation": "RELATED",
+        "evidence": [
+          "同じ町内会"
+        ],
+        "conflicts": []
+      },
+      "rawModelOutput": null,
+      "rawModelOutputStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "primaryFailureCause": "TITLE_OVERWEIGHT",
+      "primaryFixLayer": "DATASET",
+      "causeIsInference": true
+    },
+    {
+      "id": "v2-0114",
+      "inputA": {
+        "id": "a",
+        "title": "演奏会の会議 9時"
+      },
+      "inputB": {
+        "id": "b",
+        "title": "別件の展覧会の会議 9時"
+      },
+      "expectedRelation": "UNRELATED",
+      "modelRelation": "RELATED",
+      "confidence": null,
+      "confidenceStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "deterministicSignals": {
+        "recordedContextEngineScore": null,
+        "derivedTitleBigramJaccard": 0.417,
+        "derivedExplicitDateA": null,
+        "derivedExplicitDateB": null,
+        "derivedExplicitDateConflict": false,
+        "derivedCancellationOrPostponement": false,
+        "derivedAdvertising": false,
+        "derivedExplicitDifferentEvent": true
+      },
+      "temporalDistance": null,
+      "temporalDistanceStatus": "NO_FULL_TIMESTAMP_IN_INPUT",
+      "titleSimilarity": 0.417,
+      "entityOverlap": null,
+      "locationOverlap": null,
+      "sourceTypes": [
+        null,
+        null
+      ],
+      "promptVersion": "today-capabilities/2",
+      "modelOutput": {
+        "relation": "RELATED",
+        "evidence": [
+          "会議時間9時"
+        ],
+        "conflicts": []
+      },
+      "rawModelOutput": null,
+      "rawModelOutputStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "primaryFailureCause": "TIME_OVERWEIGHT",
+      "primaryFixLayer": "CONFIDENCE POLICY",
+      "causeIsInference": true
+    },
+    {
+      "id": "v2-0122",
+      "inputA": {
+        "id": "a",
+        "title": "演奏会のイベント"
+      },
+      "inputB": {
+        "id": "b",
+        "title": "広告: 演奏会に似た商品を発売"
+      },
+      "expectedRelation": "UNRELATED",
+      "modelRelation": "RELATED",
+      "confidence": null,
+      "confidenceStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "deterministicSignals": {
+        "recordedContextEngineScore": null,
+        "derivedTitleBigramJaccard": 0.111,
+        "derivedExplicitDateA": null,
+        "derivedExplicitDateB": null,
+        "derivedExplicitDateConflict": false,
+        "derivedCancellationOrPostponement": false,
+        "derivedAdvertising": true,
+        "derivedExplicitDifferentEvent": false
+      },
+      "temporalDistance": null,
+      "temporalDistanceStatus": "NO_FULL_TIMESTAMP_IN_INPUT",
+      "titleSimilarity": 0.111,
+      "entityOverlap": null,
+      "locationOverlap": null,
+      "sourceTypes": [
+        null,
+        null
+      ],
+      "promptVersion": "today-capabilities/2",
+      "modelOutput": {
+        "relation": "RELATED",
+        "evidence": [
+          "関連する別作業"
+        ],
+        "conflicts": []
+      },
+      "rawModelOutput": null,
+      "rawModelOutputStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "primaryFailureCause": "TITLE_OVERWEIGHT",
+      "primaryFixLayer": "DATASET",
+      "causeIsInference": true
+    },
+    {
+      "id": "v2-0126",
+      "inputA": {
+        "id": "a",
+        "title": "演奏会の授業"
+      },
+      "inputB": {
+        "id": "b",
+        "title": "演奏会の授業は延期になった"
+      },
+      "expectedRelation": "CONFLICTING",
+      "modelRelation": "SAME_CONTEXT",
+      "confidence": null,
+      "confidenceStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "deterministicSignals": {
+        "recordedContextEngineScore": null,
+        "derivedTitleBigramJaccard": 0.417,
+        "derivedExplicitDateA": null,
+        "derivedExplicitDateB": null,
+        "derivedExplicitDateConflict": false,
+        "derivedCancellationOrPostponement": true,
+        "derivedAdvertising": false,
+        "derivedExplicitDifferentEvent": false
+      },
+      "temporalDistance": null,
+      "temporalDistanceStatus": "NO_FULL_TIMESTAMP_IN_INPUT",
+      "titleSimilarity": 0.417,
+      "entityOverlap": null,
+      "locationOverlap": null,
+      "sourceTypes": [
+        null,
+        null
+      ],
+      "promptVersion": "today-capabilities/2",
+      "modelOutput": {
+        "relation": "SAME_CONTEXT",
+        "evidence": [
+          "同じ受教"
+        ],
+        "conflicts": []
+      },
+      "rawModelOutput": null,
+      "rawModelOutputStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "primaryFailureCause": "NEGATION_FAILURE",
+      "primaryFixLayer": "POST-VALIDATION",
+      "causeIsInference": true
+    },
+    {
+      "id": "v2-0272",
+      "inputA": {
+        "id": "a",
+        "title": "遠足は実施予定"
+      },
+      "inputB": {
+        "id": "b",
+        "title": "遠足は中止です"
+      },
+      "expectedRelation": "CONFLICTING",
+      "modelRelation": "SAME_CONTEXT",
+      "confidence": null,
+      "confidenceStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "deterministicSignals": {
+        "recordedContextEngineScore": null,
+        "derivedTitleBigramJaccard": 0.2,
+        "derivedExplicitDateA": null,
+        "derivedExplicitDateB": null,
+        "derivedExplicitDateConflict": false,
+        "derivedCancellationOrPostponement": true,
+        "derivedAdvertising": false,
+        "derivedExplicitDifferentEvent": false
+      },
+      "temporalDistance": null,
+      "temporalDistanceStatus": "NO_FULL_TIMESTAMP_IN_INPUT",
+      "titleSimilarity": 0.2,
+      "entityOverlap": null,
+      "locationOverlap": null,
+      "sourceTypes": [
+        null,
+        null
+      ],
+      "promptVersion": "today-capabilities/2",
+      "modelOutput": {
+        "relation": "SAME_CONTEXT",
+        "evidence": [
+          "時刻変更"
+        ],
+        "conflicts": []
+      },
+      "rawModelOutput": null,
+      "rawModelOutputStatus": "NOT_RECORDED_IN_V1_6_REPORT",
+      "primaryFailureCause": "NEGATION_FAILURE",
+      "primaryFixLayer": "POST-VALIDATION",
+      "causeIsInference": true
+    }
+  ]
+}

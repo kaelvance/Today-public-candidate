@@ -1,0 +1,5775 @@
+{
+  "files": 147,
+  "findings": [
+    {
+      "file": ".github/repository-settings.md",
+      "line": 6,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": ".github/repository-settings.md",
+      "line": 13,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": ".github/workflows/release-qualification.yml",
+      "line": 13,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": ".github/workflows/release-qualification.yml",
+      "line": 18,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": ".github/workflows/release-qualification.yml",
+      "line": 21,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "line": 12,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "README.md",
+      "line": 10,
+      "category": "loopback",
+      "status": "DOCUMENTED",
+      "reason": "intentional local-only server trust boundary; exact Host/Origin checks"
+    },
+    {
+      "file": "README.md",
+      "line": 23,
+      "category": "loopback",
+      "status": "DOCUMENTED",
+      "reason": "intentional local-only server trust boundary; exact Host/Origin checks"
+    },
+    {
+      "file": "README.md",
+      "line": 25,
+      "category": "loopback",
+      "status": "DOCUMENTED",
+      "reason": "intentional local-only server trust boundary; exact Host/Origin checks"
+    },
+    {
+      "file": "README.md",
+      "line": 34,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "README.md",
+      "line": 35,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "README.md",
+      "line": 36,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "README.md",
+      "line": 37,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "V1.9_IMPLEMENTATION_AND_RELEASE_QUALIFICATION_REPORT.md",
+      "line": 39,
+      "category": "unfinished",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "V1.9_IMPLEMENTATION_AND_RELEASE_QUALIFICATION_REPORT.md",
+      "line": 39,
+      "category": "debug",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "V1.9_IMPLEMENTATION_AND_RELEASE_QUALIFICATION_REPORT.md",
+      "line": 39,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "V1.9_IMPLEMENTATION_AND_RELEASE_QUALIFICATION_REPORT.md",
+      "line": 39,
+      "category": "placeholder",
+      "status": "SAFE",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "V1.9_IMPLEMENTATION_AND_RELEASE_QUALIFICATION_REPORT.md",
+      "line": 39,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "V1.9_IMPLEMENTATION_AND_RELEASE_QUALIFICATION_REPORT.md",
+      "line": 39,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "V1.9_IMPLEMENTATION_AND_RELEASE_QUALIFICATION_REPORT.md",
+      "line": 41,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "V1.9_IMPLEMENTATION_AND_RELEASE_QUALIFICATION_REPORT.md",
+      "line": 41,
+      "category": "placeholder",
+      "status": "SAFE",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "V1.9_IMPLEMENTATION_AND_RELEASE_QUALIFICATION_REPORT.md",
+      "line": 43,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "V1.9_IMPLEMENTATION_AND_RELEASE_QUALIFICATION_REPORT.md",
+      "line": 43,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "V1.9_IMPLEMENTATION_AND_RELEASE_QUALIFICATION_REPORT.md",
+      "line": 68,
+      "category": "loopback",
+      "status": "DOCUMENTED",
+      "reason": "intentional local-only server trust boundary; exact Host/Origin checks"
+    },
+    {
+      "file": "V1.9_IMPLEMENTATION_AND_RELEASE_QUALIFICATION_REPORT.md",
+      "line": 99,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "V1.9_IMPLEMENTATION_AND_RELEASE_QUALIFICATION_REPORT.md",
+      "line": 130,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "V1.9_IMPLEMENTATION_AND_RELEASE_QUALIFICATION_REPORT.md",
+      "line": 133,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "V1.9_IMPLEMENTATION_AND_RELEASE_QUALIFICATION_REPORT.md",
+      "line": 137,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "V1.9_IMPLEMENTATION_AND_RELEASE_QUALIFICATION_REPORT.md",
+      "line": 157,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "V1.9_IMPLEMENTATION_AND_RELEASE_QUALIFICATION_REPORT.md",
+      "line": 187,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "V1.9_IMPLEMENTATION_AND_RELEASE_QUALIFICATION_REPORT.md",
+      "line": 203,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "V1.9_IMPLEMENTATION_AND_RELEASE_QUALIFICATION_REPORT.md",
+      "line": 212,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "V1.9_IMPLEMENTATION_AND_RELEASE_QUALIFICATION_REPORT.md",
+      "line": 225,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "docs/CONFIGURATION.md",
+      "line": 19,
+      "category": "loopback",
+      "status": "DOCUMENTED",
+      "reason": "intentional local-only server trust boundary; exact Host/Origin checks"
+    },
+    {
+      "file": "docs/CONFIGURATION.md",
+      "line": 23,
+      "category": "loopback",
+      "status": "DOCUMENTED",
+      "reason": "intentional local-only server trust boundary; exact Host/Origin checks"
+    },
+    {
+      "file": "docs/MODELS.md",
+      "line": 3,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "docs/PRIVACY.md",
+      "line": 13,
+      "category": "loopback",
+      "status": "DOCUMENTED",
+      "reason": "intentional local-only server trust boundary; exact Host/Origin checks"
+    },
+    {
+      "file": "docs/PROVIDERS.md",
+      "line": 5,
+      "category": "loopback",
+      "status": "DOCUMENTED",
+      "reason": "intentional local-only server trust boundary; exact Host/Origin checks"
+    },
+    {
+      "file": "docs/PROVIDERS.md",
+      "line": 13,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "docs/PROVIDERS.md",
+      "line": 19,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "docs/PROVIDERS.md",
+      "line": 26,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "docs/PROVIDERS.md",
+      "line": 28,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "docs/RELEASE.md",
+      "line": 12,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "docs/SECURITY_MODEL.md",
+      "line": 31,
+      "category": "loopback",
+      "status": "DOCUMENTED",
+      "reason": "intentional local-only server trust boundary; exact Host/Origin checks"
+    },
+    {
+      "file": "docs/SECURITY_MODEL.md",
+      "line": 48,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "docs/SECURITY_MODEL.md",
+      "line": 50,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "docs/TESTING.md",
+      "line": 23,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "docs/TESTING.md",
+      "line": 23,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "docs/TROUBLESHOOTING.md",
+      "line": 6,
+      "category": "loopback",
+      "status": "DOCUMENTED",
+      "reason": "intentional local-only server trust boundary; exact Host/Origin checks"
+    },
+    {
+      "file": "docs/TROUBLESHOOTING.md",
+      "line": 16,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "docs/licensing/RIGHTS_PROVENANCE.md",
+      "line": 17,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "models/today-model/manifests/today-model-alpha-0.1.0.json",
+      "line": 5,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "models/today-model/manifests/today-model-alpha-0.1.0.json",
+      "line": 28,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "models/today-model/manifests/today-model-alpha-0.1.0.json",
+      "line": 29,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "models/today-model/manifests/today-model-beta-0.2.0.json",
+      "line": 5,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "models/today-model/manifests/today-model-beta-0.2.0.json",
+      "line": 28,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "models/today-model/manifests/today-model-beta-0.2.0.json",
+      "line": 29,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "models/today-model/manifests/today-model-beta-0.2.1.json",
+      "line": 5,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "models/today-model/manifests/today-model-beta-0.2.1.json",
+      "line": 28,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "models/today-model/manifests/today-model-beta-0.2.1.json",
+      "line": 29,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "models/today-model/manifests/today-model-gamma-0.3.0.json",
+      "line": 5,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "models/today-model/manifests/today-model-gamma-0.3.0.json",
+      "line": 28,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "models/today-model/manifests/today-model-gamma-0.3.0.json",
+      "line": 29,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "models/today-model/model-card/MODEL_CARD.md",
+      "line": 1,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "public/sw.js",
+      "line": 39,
+      "category": "network",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "public/sw.js",
+      "line": 47,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "public/sw.js",
+      "line": 55,
+      "category": "network",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "scripts/code-audit.mjs",
+      "line": 5,
+      "category": "unfinished",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "scripts/code-audit.mjs",
+      "line": 6,
+      "category": "debug",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "scripts/code-audit.mjs",
+      "line": 7,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "scripts/code-audit.mjs",
+      "line": 8,
+      "category": "placeholder",
+      "status": "SAFE",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "scripts/code-audit.mjs",
+      "line": 9,
+      "category": "loopback",
+      "status": "DOCUMENTED",
+      "reason": "intentional local-only server trust boundary; exact Host/Origin checks"
+    },
+    {
+      "file": "scripts/code-audit.mjs",
+      "line": 11,
+      "category": "disabledChecks",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "scripts/code-audit.mjs",
+      "line": 12,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "scripts/code-audit.mjs",
+      "line": 16,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "scripts/code-audit.mjs",
+      "line": 17,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "scripts/code-audit.mjs",
+      "line": 18,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "scripts/code-audit.mjs",
+      "line": 47,
+      "category": "placeholder",
+      "status": "SAFE",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "scripts/code-audit.mjs",
+      "line": 58,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "scripts/code-audit.mjs",
+      "line": 59,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "scripts/code-audit.mjs",
+      "line": 61,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "scripts/code-audit.mjs",
+      "line": 81,
+      "category": "debug",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "scripts/dependency-inventory.mjs",
+      "line": 12,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "scripts/dependency-inventory.mjs",
+      "line": 47,
+      "category": "debug",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "scripts/dependency-inventory.mjs",
+      "line": 63,
+      "category": "network",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "scripts/dependency-inventory.mjs",
+      "line": 65,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "scripts/dependency-inventory.mjs",
+      "line": 104,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "scripts/dependency-inventory.mjs",
+      "line": 160,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "scripts/dependency-inventory.mjs",
+      "line": 186,
+      "category": "debug",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "scripts/e2e-gmail.mjs",
+      "line": 3,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-gmail.mjs",
+      "line": 6,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-gmail.mjs",
+      "line": 14,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-gmail.mjs",
+      "line": 15,
+      "category": "broadCatch",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-gmail.mjs",
+      "line": 56,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-gmail.mjs",
+      "line": 114,
+      "category": "debug",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-integration.mjs",
+      "line": 3,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-integration.mjs",
+      "line": 6,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-integration.mjs",
+      "line": 14,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-integration.mjs",
+      "line": 15,
+      "category": "broadCatch",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-integration.mjs",
+      "line": 45,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-integration.mjs",
+      "line": 46,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-integration.mjs",
+      "line": 88,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-integration.mjs",
+      "line": 131,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-integration.mjs",
+      "line": 135,
+      "category": "debug",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-intelligence.mjs",
+      "line": 3,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-intelligence.mjs",
+      "line": 6,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-intelligence.mjs",
+      "line": 14,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-intelligence.mjs",
+      "line": 15,
+      "category": "broadCatch",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-real-model.mjs",
+      "line": 4,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-real-model.mjs",
+      "line": 8,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-real-model.mjs",
+      "line": 13,
+      "category": "assertion",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-real-model.mjs",
+      "line": 17,
+      "category": "experimental",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-real-model.mjs",
+      "line": 45,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-real-model.mjs",
+      "line": 50,
+      "category": "broadCatch",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-real-model.mjs",
+      "line": 67,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-real-model.mjs",
+      "line": 81,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-release.mjs",
+      "line": 3,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-release.mjs",
+      "line": 6,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-release.mjs",
+      "line": 15,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-release.mjs",
+      "line": 19,
+      "category": "broadCatch",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-release.mjs",
+      "line": 134,
+      "category": "debug",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-scenarios.mjs",
+      "line": 3,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-scenarios.mjs",
+      "line": 6,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-scenarios.mjs",
+      "line": 13,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-scenarios.mjs",
+      "line": 15,
+      "category": "broadCatch",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e-scenarios.mjs",
+      "line": 60,
+      "category": "debug",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e.mjs",
+      "line": 4,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e.mjs",
+      "line": 7,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e.mjs",
+      "line": 16,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e.mjs",
+      "line": 17,
+      "category": "broadCatch",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e.mjs",
+      "line": 73,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/e2e.mjs",
+      "line": 148,
+      "category": "debug",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/oss-audit.node-test.mjs",
+      "line": 7,
+      "category": "absolutePath",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "scripts/release-scan.mjs",
+      "line": 87,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "scripts/release-scan.mjs",
+      "line": 113,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "scripts/release-scan.mjs",
+      "line": 133,
+      "category": "debug",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "server/ai.mjs",
+      "line": 19,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "server/ai.mjs",
+      "line": 26,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "server/ai.mjs",
+      "line": 27,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "server/ai.mjs",
+      "line": 79,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/ai.mjs",
+      "line": 81,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/ai.mjs",
+      "line": 85,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/ai.mjs",
+      "line": 89,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/ai.mjs",
+      "line": 99,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/calendar.mjs",
+      "line": 12,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/calendar.mjs",
+      "line": 13,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/calendar.mjs",
+      "line": 40,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/calendar.mjs",
+      "line": 54,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/calendar.mjs",
+      "line": 99,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/calendar.mjs",
+      "line": 124,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/calendar.mjs",
+      "line": 135,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/calendar.mjs",
+      "line": 145,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/calendar.mjs",
+      "line": 154,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/calendar.mjs",
+      "line": 198,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/calendar.test.mjs",
+      "line": 15,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/calendar.test.mjs",
+      "line": 75,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/calendar.test.mjs",
+      "line": 76,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/calendar.test.mjs",
+      "line": 81,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/calendar.test.mjs",
+      "line": 86,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/calendar.test.mjs",
+      "line": 99,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/calendar.test.mjs",
+      "line": 104,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/calendar.test.mjs",
+      "line": 111,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/calendar.test.mjs",
+      "line": 124,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/calendar.test.mjs",
+      "line": 130,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/calendar.test.mjs",
+      "line": 154,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/calendar.test.mjs",
+      "line": 164,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/calendar.test.mjs",
+      "line": 173,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/calendar.test.mjs",
+      "line": 178,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/calendar.test.mjs",
+      "line": 193,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/calendar.test.mjs",
+      "line": 199,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/gmail.mjs",
+      "line": 11,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/gmail.mjs",
+      "line": 15,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/gmail.mjs",
+      "line": 51,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/gmail.mjs",
+      "line": 99,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/gmail.mjs",
+      "line": 124,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/gmail.mjs",
+      "line": 136,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/gmail.mjs",
+      "line": 161,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/gmail.mjs",
+      "line": 170,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/gmail.mjs",
+      "line": 209,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/gmail.mjs",
+      "line": 244,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/gmail.mjs",
+      "line": 262,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/gmail.mjs",
+      "line": 287,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/gmail.mjs",
+      "line": 292,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/gmail.mjs",
+      "line": 322,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/gmail.mjs",
+      "line": 325,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/gmail.mjs",
+      "line": 330,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/gmail.mjs",
+      "line": 355,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/gmail.test.mjs",
+      "line": 11,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/gmail.test.mjs",
+      "line": 46,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/gmail.test.mjs",
+      "line": 71,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/gmail.test.mjs",
+      "line": 72,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/gmail.test.mjs",
+      "line": 77,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/gmail.test.mjs",
+      "line": 82,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/gmail.test.mjs",
+      "line": 97,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/gmail.test.mjs",
+      "line": 103,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/gmail.test.mjs",
+      "line": 110,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/gmail.test.mjs",
+      "line": 113,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/gmail.test.mjs",
+      "line": 122,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/gmail.test.mjs",
+      "line": 138,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/gmail.test.mjs",
+      "line": 174,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/gmail.test.mjs",
+      "line": 253,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/gmail.test.mjs",
+      "line": 258,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/gmail.test.mjs",
+      "line": 291,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 32,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 51,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 56,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 61,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 109,
+      "category": "loopback",
+      "status": "DOCUMENTED",
+      "reason": "intentional local-only server trust boundary; exact Host/Origin checks"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 136,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 159,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 217,
+      "category": "loopback",
+      "status": "DOCUMENTED",
+      "reason": "intentional local-only server trust boundary; exact Host/Origin checks"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 279,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 293,
+      "category": "loopback",
+      "status": "DOCUMENTED",
+      "reason": "intentional local-only server trust boundary; exact Host/Origin checks"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 297,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 304,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 321,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 323,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 371,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 376,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 407,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 431,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 433,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 474,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 477,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 504,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 514,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 515,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 517,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 532,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 536,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 538,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 549,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 553,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 559,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 578,
+      "category": "loopback",
+      "status": "DOCUMENTED",
+      "reason": "intentional local-only server trust boundary; exact Host/Origin checks"
+    },
+    {
+      "file": "server/index.mjs",
+      "line": 596,
+      "category": "loopback",
+      "status": "DOCUMENTED",
+      "reason": "intentional local-only server trust boundary; exact Host/Origin checks"
+    },
+    {
+      "file": "server/local-model.mjs",
+      "line": 10,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/local-model.mjs",
+      "line": 14,
+      "category": "loopback",
+      "status": "DOCUMENTED",
+      "reason": "intentional local-only server trust boundary; exact Host/Origin checks"
+    },
+    {
+      "file": "server/local-model.mjs",
+      "line": 17,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/local-model.mjs",
+      "line": 37,
+      "category": "loopback",
+      "status": "DOCUMENTED",
+      "reason": "intentional local-only server trust boundary; exact Host/Origin checks"
+    },
+    {
+      "file": "server/local-model.mjs",
+      "line": 145,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/local-model.mjs",
+      "line": 154,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/local-model.mjs",
+      "line": 157,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/local-model.mjs",
+      "line": 165,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/local-model.mjs",
+      "line": 172,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/local-model.mjs",
+      "line": 232,
+      "category": "loopback",
+      "status": "DOCUMENTED",
+      "reason": "intentional local-only server trust boundary; exact Host/Origin checks"
+    },
+    {
+      "file": "server/local-model.mjs",
+      "line": 293,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/local-model.mjs",
+      "line": 301,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "server/local-model.mjs",
+      "line": 305,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/local-model.mjs",
+      "line": 306,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/local-model.mjs",
+      "line": 307,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/local-model.mjs",
+      "line": 321,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/local-model.mjs",
+      "line": 330,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/local-model.mjs",
+      "line": 349,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/local-model.node-test.mjs",
+      "line": 21,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/local-model.node-test.mjs",
+      "line": 39,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/local-model.node-test.mjs",
+      "line": 43,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/local-model.node-test.mjs",
+      "line": 48,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/local-model.node-test.mjs",
+      "line": 77,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/local-model.node-test.mjs",
+      "line": 157,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/ollama-model.mjs",
+      "line": 5,
+      "category": "loopback",
+      "status": "DOCUMENTED",
+      "reason": "intentional local-only server trust boundary; exact Host/Origin checks"
+    },
+    {
+      "file": "server/ollama-model.mjs",
+      "line": 7,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/ollama-model.mjs",
+      "line": 13,
+      "category": "loopback",
+      "status": "DOCUMENTED",
+      "reason": "intentional local-only server trust boundary; exact Host/Origin checks"
+    },
+    {
+      "file": "server/ollama-model.mjs",
+      "line": 13,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "server/ollama-model.mjs",
+      "line": 23,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/ollama-model.mjs",
+      "line": 24,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/ollama-model.mjs",
+      "line": 32,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/ollama-model.mjs",
+      "line": 34,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/ollama-model.mjs",
+      "line": 38,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/ollama-model.mjs",
+      "line": 39,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/ollama-model.mjs",
+      "line": 60,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "server/ollama-model.mjs",
+      "line": 62,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/ollama-model.mjs",
+      "line": 68,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "server/ollama-model.mjs",
+      "line": 76,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "server/ollama-model.mjs",
+      "line": 83,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "server/ollama-model.mjs",
+      "line": 87,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/ollama-model.mjs",
+      "line": 88,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/ollama-model.mjs",
+      "line": 89,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/ollama-model.mjs",
+      "line": 111,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/ollama-model.mjs",
+      "line": 119,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/ollama-model.node-test.mjs",
+      "line": 42,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/ollama-model.node-test.mjs",
+      "line": 43,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/ollama-model.node-test.mjs",
+      "line": 69,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/ollama-model.node-test.mjs",
+      "line": 90,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/ollama-model.node-test.mjs",
+      "line": 103,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/ollama-model.node-test.mjs",
+      "line": 111,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/remote-model.mjs",
+      "line": 10,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/remote-model.mjs",
+      "line": 17,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/remote-model.mjs",
+      "line": 21,
+      "category": "loopback",
+      "status": "DOCUMENTED",
+      "reason": "intentional local-only server trust boundary; exact Host/Origin checks"
+    },
+    {
+      "file": "server/remote-model.mjs",
+      "line": 28,
+      "category": "loopback",
+      "status": "DOCUMENTED",
+      "reason": "intentional local-only server trust boundary; exact Host/Origin checks"
+    },
+    {
+      "file": "server/remote-model.mjs",
+      "line": 35,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "server/remote-model.mjs",
+      "line": 37,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/remote-model.mjs",
+      "line": 38,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/remote-model.mjs",
+      "line": 39,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/remote-model.mjs",
+      "line": 41,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/remote-model.mjs",
+      "line": 74,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "server/remote-model.mjs",
+      "line": 78,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/remote-model.mjs",
+      "line": 79,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/remote-model.mjs",
+      "line": 80,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/remote-model.mjs",
+      "line": 94,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/remote-model.mjs",
+      "line": 106,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/remote-model.mjs",
+      "line": 108,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/remote-model.mjs",
+      "line": 112,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/remote-model.mjs",
+      "line": 113,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/remote-model.mjs",
+      "line": 118,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/remote-model.mjs",
+      "line": 134,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "server/remote-model.mjs",
+      "line": 140,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/remote-model.node-test.mjs",
+      "line": 4,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/remote-model.node-test.mjs",
+      "line": 40,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/remote-model.node-test.mjs",
+      "line": 84,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/remote-model.node-test.mjs",
+      "line": 85,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/remote-model.node-test.mjs",
+      "line": 96,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/remote-model.node-test.mjs",
+      "line": 105,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/remote-model.node-test.mjs",
+      "line": 182,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/remote-model.node-test.mjs",
+      "line": 190,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/remote-model.node-test.mjs",
+      "line": 206,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/remote-model.node-test.mjs",
+      "line": 208,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/remote-model.node-test.mjs",
+      "line": 214,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/remote-model.node-test.mjs",
+      "line": 229,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/remote-model.node-test.mjs",
+      "line": 230,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/remote-model.node-test.mjs",
+      "line": 233,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/remote-model.node-test.mjs",
+      "line": 241,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/remote-provider.integration-test.mjs",
+      "line": 9,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/remote-provider.integration-test.mjs",
+      "line": 45,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/remote-provider.integration-test.mjs",
+      "line": 47,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/remote-provider.integration-test.mjs",
+      "line": 53,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/security.mjs",
+      "line": 14,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/security.mjs",
+      "line": 16,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/security.mjs",
+      "line": 26,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "server/security.mjs",
+      "line": 36,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/security.mjs",
+      "line": 39,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/security.node-test.mjs",
+      "line": 17,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/security.node-test.mjs",
+      "line": 68,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/security.node-test.mjs",
+      "line": 70,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/security.node-test.mjs",
+      "line": 73,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/security.node-test.mjs",
+      "line": 74,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/security.node-test.mjs",
+      "line": 81,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/security.node-test.mjs",
+      "line": 94,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/security.node-test.mjs",
+      "line": 105,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/security.node-test.mjs",
+      "line": 113,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/security.node-test.mjs",
+      "line": 123,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/security.node-test.mjs",
+      "line": 140,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/security.node-test.mjs",
+      "line": 149,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/security.node-test.mjs",
+      "line": 152,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/security.node-test.mjs",
+      "line": 198,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/security.node-test.mjs",
+      "line": 217,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/security.node-test.mjs",
+      "line": 221,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/security.node-test.mjs",
+      "line": 226,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/security.node-test.mjs",
+      "line": 229,
+      "category": "loopback",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/security.node-test.mjs",
+      "line": 241,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/security.node-test.mjs",
+      "line": 243,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "server/token-store.mjs",
+      "line": 31,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/token-store.mjs",
+      "line": 43,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "server/token-store.mjs",
+      "line": 52,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "server/token-store.mjs",
+      "line": 58,
+      "category": "unfinished",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "server/token-store.mjs",
+      "line": 59,
+      "category": "unfinished",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "server/token-store.mjs",
+      "line": 60,
+      "category": "unfinished",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 95,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 96,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 117,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 126,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 142,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 162,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 163,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 230,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 263,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 314,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 328,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 381,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 395,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 411,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 435,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 443,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 456,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 466,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 522,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 525,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 619,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 645,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 677,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 705,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 730,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 741,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 772,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 786,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 793,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 804,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 950,
+      "category": "placeholder",
+      "status": "SAFE",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1103,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1162,
+      "category": "placeholder",
+      "status": "SAFE",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1163,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1529,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1566,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/App.tsx",
+      "line": 1786,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/IntelligenceSettings.tsx",
+      "line": 36,
+      "category": "network",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/IntelligenceSettings.tsx",
+      "line": 42,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/IntelligenceSettings.tsx",
+      "line": 46,
+      "category": "network",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/IntelligenceSettings.tsx",
+      "line": 49,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/IntelligenceSettings.tsx",
+      "line": 53,
+      "category": "network",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/IntelligenceSettings.tsx",
+      "line": 66,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/IntelligenceSettings.tsx",
+      "line": 74,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/IntelligenceSettings.tsx",
+      "line": 84,
+      "category": "network",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/IntelligenceSettings.tsx",
+      "line": 92,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/IntelligenceSettings.tsx",
+      "line": 118,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/RelationAssist.tsx",
+      "line": 75,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/RelationAssist.tsx",
+      "line": 100,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/RelationAssist.tsx",
+      "line": 122,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/RelationAssist.tsx",
+      "line": 149,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/RelationAssist.tsx",
+      "line": 165,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/RelationAssist.tsx",
+      "line": 168,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/RelationAssist.tsx",
+      "line": 180,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/RelationAssist.tsx",
+      "line": 181,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/TodayItem.tsx",
+      "line": 22,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/adapters/ai-providers.ts",
+      "line": 47,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/adapters/ai-providers.ts",
+      "line": 48,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/adapters/ai-providers.ts",
+      "line": 52,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/adapters/ai-providers.ts",
+      "line": 65,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/adapters/ai-providers.ts",
+      "line": 66,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/adapters/gmail-gateway.ts",
+      "line": 4,
+      "category": "network",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/adapters/gmail-gateway.ts",
+      "line": 10,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/adapters/gmail-gateway.ts",
+      "line": 10,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/adapters/gmail-gateway.ts",
+      "line": 14,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/adapters/gmail-gateway.ts",
+      "line": 18,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/adapters/gmail-live.test.ts",
+      "line": 3,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/adapters/gmail-live.test.ts",
+      "line": 9,
+      "category": "migration",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/adapters/gmail-live.test.ts",
+      "line": 52,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/adapters/gmail-live.test.ts",
+      "line": 63,
+      "category": "migration",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/adapters/gmail-live.test.ts",
+      "line": 64,
+      "category": "migration",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/adapters/gmail-live.test.ts",
+      "line": 123,
+      "category": "migration",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/adapters/gmail-live.test.ts",
+      "line": 124,
+      "category": "migration",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/adapters/gmail-live.test.ts",
+      "line": 133,
+      "category": "assertion",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/adapters/gmail-live.test.ts",
+      "line": 140,
+      "category": "assertion",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/adapters/gmail-live.test.ts",
+      "line": 167,
+      "category": "migration",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/adapters/gmail-live.test.ts",
+      "line": 168,
+      "category": "migration",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/adapters/gmail-live.test.ts",
+      "line": 193,
+      "category": "migration",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/adapters/gmail-live.test.ts",
+      "line": 194,
+      "category": "migration",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/adapters/gmail-live.test.ts",
+      "line": 207,
+      "category": "migration",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/adapters/gmail-live.test.ts",
+      "line": 208,
+      "category": "migration",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/adapters/gmail-shell.ts",
+      "line": 54,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/adapters/gmail-shell.ts",
+      "line": 71,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/adapters/gmail-shell.ts",
+      "line": 75,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/adapters/gmail-shell.ts",
+      "line": 149,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/adapters/gmail-shell.ts",
+      "line": 157,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/adapters/gmail-shell.ts",
+      "line": 165,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/adapters/gmail-shell.ts",
+      "line": 195,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/adapters/gmail-shell.ts",
+      "line": 215,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/adapters/gmail-shell.ts",
+      "line": 224,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/adapters/google-calendar.ts",
+      "line": 44,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/adapters/google-calendar.ts",
+      "line": 51,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/adapters/google-calendar.ts",
+      "line": 58,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/adapters/google-calendar.ts",
+      "line": 70,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/adapters/mock-providers.ts",
+      "line": 13,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/adapters/mock-providers.ts",
+      "line": 14,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/adapters/mock-providers.ts",
+      "line": 17,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/adapters/mock-providers.ts",
+      "line": 34,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/adapters/mock-providers.ts",
+      "line": 44,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/adapters/mock-providers.ts",
+      "line": 53,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/adapters/mock-providers.ts",
+      "line": 54,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/adapters/mock-providers.ts",
+      "line": 57,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/adapters/mock-providers.ts",
+      "line": 74,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/adapters/mock-providers.ts",
+      "line": 84,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/ai.ts",
+      "line": 10,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/ai.ts",
+      "line": 11,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/ai.ts",
+      "line": 30,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/ai.ts",
+      "line": 43,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/ai.ts",
+      "line": 45,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/ai.ts",
+      "line": 52,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/ai.ts",
+      "line": 53,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/ai.ts",
+      "line": 66,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/ai.ts",
+      "line": 69,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/ai.ts",
+      "line": 70,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/ai.ts",
+      "line": 84,
+      "category": "network",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/ai.ts",
+      "line": 100,
+      "category": "network",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/application/composition.ts",
+      "line": 6,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/application/composition.ts",
+      "line": 40,
+      "category": "network",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/application/composition.ts",
+      "line": 52,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/application/composition.ts",
+      "line": 58,
+      "category": "network",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/application/composition.ts",
+      "line": 70,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/application/composition.ts",
+      "line": 102,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/application/composition.ts",
+      "line": 108,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/application/composition.ts",
+      "line": 109,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/application/composition.ts",
+      "line": 113,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/application/composition.ts",
+      "line": 116,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/application/composition.ts",
+      "line": 117,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/application/composition.ts",
+      "line": 133,
+      "category": "network",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/application/composition.ts",
+      "line": 145,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/application/projection.ts",
+      "line": 51,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/application/today.ts",
+      "line": 79,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/application/today.ts",
+      "line": 83,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/application/today.ts",
+      "line": 152,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/application/today.ts",
+      "line": 195,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/application/today.ts",
+      "line": 271,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/application/today.ts",
+      "line": 286,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/backup.ts",
+      "line": 1,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/backup.ts",
+      "line": 8,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/backup.ts",
+      "line": 11,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/backup.ts",
+      "line": 28,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/backup.ts",
+      "line": 31,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/calendar.test.ts",
+      "line": 37,
+      "category": "assertion",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/calendar.test.ts",
+      "line": 54,
+      "category": "assertion",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/calendar.ts",
+      "line": 88,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/calendar.ts",
+      "line": 90,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/calendar.ts",
+      "line": 121,
+      "category": "network",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/calendar.ts",
+      "line": 129,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/calendar.ts",
+      "line": 134,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/core.test.ts",
+      "line": 9,
+      "category": "migration",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/core.test.ts",
+      "line": 21,
+      "category": "assertion",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/core.test.ts",
+      "line": 37,
+      "category": "assertion",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/core.test.ts",
+      "line": 43,
+      "category": "assertion",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/core.test.ts",
+      "line": 44,
+      "category": "assertion",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/core.test.ts",
+      "line": 45,
+      "category": "assertion",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/core.test.ts",
+      "line": 62,
+      "category": "assertion",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/core.test.ts",
+      "line": 63,
+      "category": "assertion",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/core.test.ts",
+      "line": 89,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/core.test.ts",
+      "line": 90,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/core.test.ts",
+      "line": 118,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/core.test.ts",
+      "line": 170,
+      "category": "migration",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/core.test.ts",
+      "line": 185,
+      "category": "migration",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/core.test.ts",
+      "line": 191,
+      "category": "assertion",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/core.test.ts",
+      "line": 193,
+      "category": "migration",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/core.test.ts",
+      "line": 201,
+      "category": "migration",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/core.test.ts",
+      "line": 213,
+      "category": "migration",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/core.test.ts",
+      "line": 247,
+      "category": "migration",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/core.test.ts",
+      "line": 256,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/core.test.ts",
+      "line": 257,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/core.test.ts",
+      "line": 279,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/core.test.ts",
+      "line": 280,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/data.ts",
+      "line": 45,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/data.ts",
+      "line": 51,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/data.ts",
+      "line": 52,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/data.ts",
+      "line": 62,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/data.ts",
+      "line": 67,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/data.ts",
+      "line": 76,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/data.ts",
+      "line": 81,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/data.ts",
+      "line": 90,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/data.ts",
+      "line": 96,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/data.ts",
+      "line": 97,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/domain/context-engine.test.ts",
+      "line": 6,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/domain/context-engine.test.ts",
+      "line": 7,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/domain/context-engine.test.ts",
+      "line": 9,
+      "category": "migration",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/domain/context-engine.test.ts",
+      "line": 40,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/domain/context-engine.test.ts",
+      "line": 43,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/domain/context-engine.test.ts",
+      "line": 55,
+      "category": "assertion",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/domain/context-engine.test.ts",
+      "line": 59,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/domain/context-engine.test.ts",
+      "line": 62,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/domain/context-engine.test.ts",
+      "line": 112,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/domain/context-engine.test.ts",
+      "line": 113,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/domain/context-engine.test.ts",
+      "line": 121,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/domain/context-engine.test.ts",
+      "line": 122,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/domain/context-engine.test.ts",
+      "line": 141,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/domain/context-engine.test.ts",
+      "line": 144,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/domain/context-engine.test.ts",
+      "line": 145,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/domain/context-engine.test.ts",
+      "line": 159,
+      "category": "migration",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/domain/context-engine.test.ts",
+      "line": 167,
+      "category": "migration",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/domain/context-engine.test.ts",
+      "line": 178,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/domain/context-engine.test.ts",
+      "line": 179,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/domain/context-engine.test.ts",
+      "line": 182,
+      "category": "broadCatch",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/domain/context-engine.test.ts",
+      "line": 190,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/domain/context-engine.test.ts",
+      "line": 194,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/domain/context-engine.ts",
+      "line": 24,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/domain/context-engine.ts",
+      "line": 148,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/domain/context-engine.ts",
+      "line": 235,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/domain/model.ts",
+      "line": 255,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/domain/relationship-policy.test.ts",
+      "line": 41,
+      "category": "assertion",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/evaluation/scenarios.ts",
+      "line": 1,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/evaluation/scenarios.ts",
+      "line": 2,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/evaluation/scenarios.ts",
+      "line": 33,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/evaluation/scenarios.ts",
+      "line": 61,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/evaluation/scenarios.ts",
+      "line": 63,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/evaluation/scenarios.ts",
+      "line": 67,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/evaluation/scenarios.ts",
+      "line": 116,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/evaluation/scenarios.ts",
+      "line": 120,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/evaluation/scenarios.ts",
+      "line": 124,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/extensions/model-contract.test.ts",
+      "line": 2,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/extensions/model-contract.test.ts",
+      "line": 31,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/extensions/model-contract.test.ts",
+      "line": 41,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/extensions/provider-contract.test.ts",
+      "line": 2,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/extensions/provider-contract.test.ts",
+      "line": 7,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/extensions/provider-contract.test.ts",
+      "line": 19,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/extensions/provider-contract.ts",
+      "line": 18,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "src/extensions/provider-contract.ts",
+      "line": 19,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "src/extensions/provider-contract.ts",
+      "line": 28,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/extensions/provider-contract.ts",
+      "line": 40,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "src/extensions/provider-contract.ts",
+      "line": 41,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "src/extensions/reading-club-plugin.ts",
+      "line": 28,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/extensions/reading-club-plugin.ts",
+      "line": 33,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "src/extensions/source-plugin.ts",
+      "line": 10,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/extensions/source-plugin.ts",
+      "line": 15,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "src/extensions/source-plugin.ts",
+      "line": 36,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/extensions/source-plugin.ts",
+      "line": 45,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "src/extensions/source-plugin.ts",
+      "line": 49,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/extensions/source-plugin.ts",
+      "line": 52,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/extensions/source-plugin.ts",
+      "line": 81,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/extensions/source-plugin.ts",
+      "line": 98,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/extensions/source-plugin.ts",
+      "line": 112,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/extensions/source-plugin.ts",
+      "line": 127,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/intelligence/evaluation.ts",
+      "line": 28,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/intelligence/evaluation.ts",
+      "line": 34,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/intelligence/evaluation.ts",
+      "line": 36,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/intelligence/evaluation.ts",
+      "line": 43,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/intelligence/evaluation.ts",
+      "line": 125,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/intelligence/evaluation.ts",
+      "line": 134,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/evaluation.ts",
+      "line": 135,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/evaluation.ts",
+      "line": 136,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/evaluation.ts",
+      "line": 137,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/http-local-runtime.ts",
+      "line": 9,
+      "category": "network",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/intelligence/http-local-runtime.ts",
+      "line": 33,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/intelligence/http-local-runtime.ts",
+      "line": 53,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/http-ollama-transport.ts",
+      "line": 10,
+      "category": "network",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/intelligence/http-ollama-transport.ts",
+      "line": 12,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/intelligence/http-ollama-transport.ts",
+      "line": 20,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/http-ollama-transport.ts",
+      "line": 25,
+      "category": "network",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/intelligence/http-ollama-transport.ts",
+      "line": 33,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/intelligence/http-remote-transport.ts",
+      "line": 10,
+      "category": "network",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/intelligence/http-remote-transport.ts",
+      "line": 12,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/intelligence/http-remote-transport.ts",
+      "line": 20,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/http-remote-transport.ts",
+      "line": 25,
+      "category": "network",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/intelligence/http-remote-transport.ts",
+      "line": 35,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 7,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 12,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 34,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 35,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 36,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 37,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 46,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 57,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 63,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 64,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 72,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 78,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 81,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 89,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 95,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 106,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 117,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 125,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 142,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 165,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 176,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 206,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 207,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 208,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 209,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 218,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 249,
+      "category": "assertion",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 305,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 306,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 310,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 317,
+      "category": "network",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 317,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 324,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 335,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 374,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 395,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 410,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 411,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 416,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 455,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/intelligence.test.ts",
+      "line": 456,
+      "category": "mock",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/intelligence/privacy.ts",
+      "line": 53,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/intelligence/privacy.ts",
+      "line": 72,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/privacy.ts",
+      "line": 73,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/privacy.ts",
+      "line": 77,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/privacy.ts",
+      "line": 91,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/intelligence/providers.ts",
+      "line": 64,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/providers.ts",
+      "line": 99,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/providers.ts",
+      "line": 107,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/intelligence/providers.ts",
+      "line": 112,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/providers.ts",
+      "line": 118,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/intelligence/providers.ts",
+      "line": 119,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/intelligence/providers.ts",
+      "line": 123,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/intelligence/providers.ts",
+      "line": 149,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/providers.ts",
+      "line": 150,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/providers.ts",
+      "line": 152,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/providers.ts",
+      "line": 155,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/intelligence/providers.ts",
+      "line": 159,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/intelligence/providers.ts",
+      "line": 162,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/intelligence/providers.ts",
+      "line": 195,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/intelligence/registry.ts",
+      "line": 7,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/intelligence/registry.ts",
+      "line": 37,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/registry.ts",
+      "line": 66,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/intelligence/registry.ts",
+      "line": 87,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/registry.ts",
+      "line": 119,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "src/intelligence/registry.ts",
+      "line": 120,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/intelligence/registry.ts",
+      "line": 152,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/registry.ts",
+      "line": 164,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "src/intelligence/registry.ts",
+      "line": 165,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/intelligence/registry.ts",
+      "line": 197,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/registry.ts",
+      "line": 208,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "src/intelligence/registry.ts",
+      "line": 209,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/intelligence/registry.ts",
+      "line": 223,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/registry.ts",
+      "line": 234,
+      "category": "experimental",
+      "status": "DOCUMENTED",
+      "reason": "explicit experimental label; never default"
+    },
+    {
+      "file": "src/intelligence/registry.ts",
+      "line": 235,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/intelligence/registry.ts",
+      "line": 251,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/router.ts",
+      "line": 52,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/router.ts",
+      "line": 57,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/intelligence/router.ts",
+      "line": 76,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/router.ts",
+      "line": 95,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/router.ts",
+      "line": 97,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/router.ts",
+      "line": 98,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/router.ts",
+      "line": 113,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/router.ts",
+      "line": 114,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/router.ts",
+      "line": 129,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/intelligence/router.ts",
+      "line": 132,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/intelligence/router.ts",
+      "line": 188,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/intelligence/router.ts",
+      "line": 232,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/intelligence/router.ts",
+      "line": 235,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/router.ts",
+      "line": 236,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/router.ts",
+      "line": 237,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/router.ts",
+      "line": 238,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/router.ts",
+      "line": 239,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/runtime.ts",
+      "line": 50,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/runtime.ts",
+      "line": 52,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/runtime.ts",
+      "line": 53,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/runtime.ts",
+      "line": 54,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/runtime.ts",
+      "line": 55,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/runtime.ts",
+      "line": 66,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/runtime.ts",
+      "line": 70,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/runtime.ts",
+      "line": 73,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/runtime.ts",
+      "line": 79,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/runtime.ts",
+      "line": 85,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/runtime.ts",
+      "line": 88,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/intelligence/runtime.ts",
+      "line": 89,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/intelligence/runtime.ts",
+      "line": 104,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/intelligence/runtime.ts",
+      "line": 105,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/intelligence/runtime.ts",
+      "line": 125,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/schemas.ts",
+      "line": 5,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/schemas.ts",
+      "line": 6,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/schemas.ts",
+      "line": 7,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/schemas.ts",
+      "line": 8,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/schemas.ts",
+      "line": 18,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/schemas.ts",
+      "line": 22,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/intelligence/schemas.ts",
+      "line": 46,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/intelligence/schemas.ts",
+      "line": 52,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/intelligence/schemas.ts",
+      "line": 65,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/intelligence/schemas.ts",
+      "line": 98,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/intelligence/schemas.ts",
+      "line": 106,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/intelligence/schemas.ts",
+      "line": 163,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/intelligence/schemas.ts",
+      "line": 178,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/intelligence/schemas.ts",
+      "line": 191,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/shadow.ts",
+      "line": 34,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/intelligence/shadow.ts",
+      "line": 46,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/intelligence/shadow.ts",
+      "line": 48,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/intelligence/shadow.ts",
+      "line": 130,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/intelligence/shadow.ts",
+      "line": 144,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/intelligence/shadow.ts",
+      "line": 146,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/intelligence/training.ts",
+      "line": 29,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/intelligence/training.ts",
+      "line": 32,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/intelligence/training.ts",
+      "line": 35,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/intelligence/training.ts",
+      "line": 44,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/intelligence/training.ts",
+      "line": 47,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/intelligence/training.ts",
+      "line": 70,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/intelligence/types.ts",
+      "line": 79,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/intelligence/types.ts",
+      "line": 83,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/types.ts",
+      "line": 84,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/types.ts",
+      "line": 85,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/types.ts",
+      "line": 86,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/types.ts",
+      "line": 117,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/types.ts",
+      "line": 147,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/types.ts",
+      "line": 148,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/types.ts",
+      "line": 156,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/intelligence/types.ts",
+      "line": 157,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/main.tsx",
+      "line": 13,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/orchestration.ts",
+      "line": 41,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/plugins.ts",
+      "line": 56,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/plugins.ts",
+      "line": 57,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/plugins.ts",
+      "line": 58,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/plugins.ts",
+      "line": 61,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/plugins.ts",
+      "line": 62,
+      "category": "mock",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/priority.ts",
+      "line": 7,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/priority.ts",
+      "line": 22,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/priority.ts",
+      "line": 46,
+      "category": "resourceBudget",
+      "status": "DOCUMENTED",
+      "reason": "explicit bounded resource policy; reviewed with timeout/input-limit tests"
+    },
+    {
+      "file": "src/release-regression.test.ts",
+      "line": 4,
+      "category": "migration",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/release-regression.test.ts",
+      "line": 19,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/release-regression.test.ts",
+      "line": 20,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/release-regression.test.ts",
+      "line": 21,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/release-regression.test.ts",
+      "line": 22,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/release-regression.test.ts",
+      "line": 37,
+      "category": "resourceBudget",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/release-regression.test.ts",
+      "line": 64,
+      "category": "migration",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/release-regression.test.ts",
+      "line": 65,
+      "category": "assertion",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/release-regression.test.ts",
+      "line": 66,
+      "category": "assertion",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/release-regression.test.ts",
+      "line": 67,
+      "category": "assertion",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/release-regression.test.ts",
+      "line": 70,
+      "category": "migration",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/release-regression.test.ts",
+      "line": 71,
+      "category": "migration",
+      "status": "SAFE",
+      "reason": "fictional test or test harness; not real-provider evidence"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 20,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 32,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 34,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 40,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 60,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 63,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 79,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 84,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 86,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 108,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 111,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 134,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 139,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 142,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 172,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 191,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 243,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 256,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 261,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 278,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 292,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 293,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 303,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 340,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 340,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 341,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 346,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 347,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 350,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 359,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 362,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 367,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/storage.ts",
+      "line": 371,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/styles.css",
+      "line": 352,
+      "category": "placeholder",
+      "status": "SAFE",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/styles.css",
+      "line": 793,
+      "category": "placeholder",
+      "status": "SAFE",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/sync.ts",
+      "line": 54,
+      "category": "broadCatch",
+      "status": "DOCUMENTED",
+      "reason": "reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL"
+    },
+    {
+      "file": "src/types.ts",
+      "line": 76,
+      "category": "migration",
+      "status": "DOCUMENTED",
+      "reason": "reviewed release/development code; see qualification report"
+    },
+    {
+      "file": "src/ui.tsx",
+      "line": 120,
+      "category": "assertion",
+      "status": "DOCUMENTED",
+      "reason": "reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests"
+    },
+    {
+      "file": "start.command",
+      "line": 17,
+      "category": "loopback",
+      "status": "DOCUMENTED",
+      "reason": "intentional local-only server trust boundary; exact Host/Origin checks"
+    }
+  ],
+  "manualReview": [
+    "domain context/relationship/provenance",
+    "application sync/user actions",
+    "server OAuth/token/AI/runtime transports",
+    "browser persistence/backup/modal/service worker",
+    "provider/plugin/model contracts",
+    "release/CI/build/docs"
+  ],
+  "scope": "pattern inventory plus Codex manual review, strict TypeScript, lint and regression tests; not formal verification"
+}

@@ -1,0 +1,15 @@
+# Privacy and reset
+
+手動項目、保存した接続サービスの正規化情報、Contextと訂正、設定、同期状態はブラウザのIndexedDBとlocalStorage mirrorへ保存します。暗号化されません。OSのユーザーアカウント、端末暗号化、ブラウザprofile、extensionを自身で管理してください。session/OAuth cookieはHttpOnly・SameSite=Laxです。HTTPはloopbackのみなのでSecure cookieは使いません。
+
+Google tokenは指定したGit外ファイルへAES-256-GCMで保存します。鍵は環境設定にあり、同じOSユーザーへの秘匿を保証しません。Shadow Modeは既定オフで、明示有効化・export時のみ利用します。その記録・backupを公開fixtureに入れてはいけません。
+
+AIは既定で任意。routerのprivacy/minimizationとserver拒否を通します。Gmail/Calendarはremote modelへ暗黙送信しません。legacy入力補助は別スイッチの手動入力だけです。2つのスイッチをオフにすると推論は行いません。鍵らしい文字列は拒否/削除しますが、自由文に含まれる任意の秘密すべての検出は不可能です。接続サービスへGoogle APIアクセスすることと外部AI利用は別です。analytics/広告SDKはありません。
+
+## バックアップ・削除
+
+UIの書き出しは非sampleのmanual項目だけで、接続サービス、OAuth token、Shadow記録を含めません。書き出しファイルは平文の個人データです。読み込みは既存のmanual項目を保持し、ID重複は追加しません。
+
+完全リセットは、必要ならbackup後にGoogle接続をUIで解除し、Todayを閉じ、同じ`127.0.0.1:port`のサイトデータ（IndexedDB/localStorage/Cache Storage/Service Worker）をブラウザから削除します。サーバー停止後に、自身が指定したtoken storeと不要な`.env.local`を管理します。削除したデータは元に戻せません。OS packageとして常駐インストールする設計ではなく、source directory削除だけではブラウザ保存やGit外tokenは消えません。
+
+保存領域が全面的に壊れた/拒否された場合、完全な復旧や保存保証はありません。定期backupをしてください。localStorage mirrorが壊れIndexedDBが正常な場合はそこから復旧します。初回offlineや全static cache削除後のoffline起動はサポートしません。

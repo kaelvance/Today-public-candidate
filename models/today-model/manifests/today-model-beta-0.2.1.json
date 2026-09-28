@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "today-model-beta-0.2.1",
+  "modelVersion": "0.2.1",
+  "role": "experimental-sft-adapter",
+  "format": "MLX LoRA adapter over Qwen3 Q4",
+  "baseManifest": "qwen3-base-q4.json",
+  "baseLicense": "Apache-2.0",
+  "trainingData": "today-dataset/2.1.0",
+  "promptVersion": "today-capabilities/3",
+  "selection": {
+    "checkpoint": "0000400_adapters.safetensors",
+    "validationLoss": 0.001,
+    "validationPerplexity": 1.001
+  },
+  "files": {
+    "adapters.safetensors": {
+      "sha256": "7be97e269d4109823ab7c37e75fd120e9dcb3328b21fe3d7bac2e6598eb82f9b",
+      "bytes": 9973395
+    },
+    "adapter_config.json": {
+      "sha256": "8fe486d8ac38b706837ce9908874c8027e8ac7a5cdec6966e8a3f12f5bf8329e",
+      "bytes": 937
+    }
+  },
+  "weightsBundled": false,
+  "fullBaseWeightsBundled": false,
+  "limitations": [
+    "Experimental; not default; adapters excluded from V1.9 distribution",
+    "Synthetic templates do not establish real-world quality"
+  ],
+  "distributionStatus": "NOT_INCLUDED"
+}

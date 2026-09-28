@@ -1,0 +1,41 @@
+{
+  "reason": "Historical V1.8 research is preserved outside the source candidate. No base weights, adapters, training datasets or machine telemetry are released. V1.8 is unchanged. New public docs and five explicitly fictional regression JSONs are included.",
+  "excludedFromV18Copy": [
+    "datasets",
+    "training",
+    "evals",
+    "docs",
+    "models/today-model/adapters",
+    "V1.6_IMPLEMENTATION_REPORT.md",
+    "V1.7_IMPLEMENTATION_REPORT.md",
+    "V1.5_IMPLEMENTATION_REPORT.md",
+    "V1.3_AUDIT.md",
+    "V1.4_AUDIT.md",
+    "V1.8_IMPLEMENTATION_REPORT.md",
+    "ARCHITECTURE.md",
+    "ARCHITECTURE_V1.2.md",
+    "scripts/check_v4_gates.py",
+    "scripts/replay-relationship.mjs",
+    "scripts/eval-real.mjs",
+    "scripts/generate-dataset-v2.mjs",
+    "scripts/generate-dataset-v3.mjs",
+    "scripts/generate-training.mjs",
+    "scripts/write_gamma_manifest.py",
+    "scripts/analyze-v3.py",
+    "scripts/write_adapter_manifest.py",
+    "scripts/hardware_eval.py",
+    "scripts/eval.mjs",
+    "scripts/analyze-v16-false-merges.py",
+    "scripts/write_model_manifests.py",
+    "scripts/analyze-eval.py",
+    "scripts/analyze_v4.py",
+    "scripts/write_beta_manifest.py"
+  ],
+  "publicRegressionFixtures": [
+    "evals/benchmark-v3-final.json",
+    "evals/benchmark-v3-sealed.json",
+    "evals/benchmark-v3.json",
+    "evals/golden-v1.json",
+    "evals/v16-false-merges.json"
+  ]
+}
