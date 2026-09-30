@@ -132,7 +132,7 @@ try {
   offlinePhase = true
   await context.setOffline(true)
   await page.reload()
-  await page.getByRole('heading', { name: '今日、必要なことだけ。' }).waitFor()
+  await page.getByRole('heading', { name: 'Today', exact: true }).waitFor()
   await page.getByRole('button', { name: /^追加$/ }).click()
   await page.getByRole('textbox', { name: 'やること・予定' }).fill('Offline note')
   await page.getByRole('button', { name: 'Todayに追加' }).click()

@@ -60,6 +60,7 @@ try {
     ['dependency', ['audit', '--audit-level', 'high', '--json']],
     ['build', ['build']],
     ['e2e', ['test:e2e']],
+    ['v2-ui', ['test:v2', '--', output]],
     ['packaging', ['release:package', '--', output]],
   ]) {
     const started = Date.now()

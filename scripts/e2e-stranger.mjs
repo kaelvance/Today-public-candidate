@@ -81,7 +81,7 @@ try {
   }
   let page = await open()
   await page.getByRole('heading', { name: '今すぐ対応するものはありません' }).waitFor()
-  await page.getByRole('button', { name: /^追加(?:する)?$/ }).click()
+  await page.getByRole('button', { name: '追加', exact: true }).click()
   await page.getByRole('textbox', { name: 'やること・予定' }).fill('Stranger fixture task')
   await page.getByRole('button', { name: 'Todayに追加' }).click()
   await page.getByRole('heading', { name: 'Stranger fixture task' }).waitFor()

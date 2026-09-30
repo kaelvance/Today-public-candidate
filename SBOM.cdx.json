@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:06b02181-dc8b-4ba4-9aff-71c2ff4b1c44",
+  "serialNumber": "urn:uuid:f8a11331-d92d-45cf-a64f-d9e5695402d1",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-28T09:54:36.109Z",
+    "timestamp": "2026-09-30T09:31:06.491Z",
     "lifecycles": [
       {
         "phase": "pre-build"
@@ -23,9 +23,9 @@
     "component": {
       "type": "application",
       "name": "today-local",
-      "version": "1.9.0-rc.10",
-      "purl": "pkg:npm/today-local@1.9.0-rc.10",
-      "bom-ref": "pkg:npm/today-local@1.9.0-rc.10",
+      "version": "2.0.0-rc.1",
+      "purl": "pkg:npm/today-local@2.0.0-rc.1",
+      "bom-ref": "pkg:npm/today-local@2.0.0-rc.1",
       "licenses": [
         {
           "license": {
@@ -37,7 +37,7 @@
     "properties": [
       {
         "name": "today:lockSha256",
-        "value": "3f18c81ad8798131592ce71d08fd5fe3b8929cc1ca6f511880cb2a231d244fb9"
+        "value": "c968c4046244275eafd27575bed5169de6094da2f3c0b93f33a061306b3a644c"
       }
     ]
   },
@@ -2252,6 +2252,39 @@
         {
           "license": {
             "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "axe-core",
+      "version": "4.13.0",
+      "purl": "pkg:npm/axe-core@4.13.0",
+      "bom-ref": "pkg:npm/axe-core@4.13.0",
+      "scope": "excluded",
+      "properties": [
+        {
+          "name": "cdx:npm:package:development",
+          "value": "true"
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/axe-core/-/axe-core-4.13.0.tgz",
+          "hashes": [
+            {
+              "alg": "SHA-512",
+              "content": "5331adf3383b372f1d8db60c871976cee11ebd56bbaf68098d86392f0af5c4cefe5d4da777a0a421615355c0886c03fadef4b3ef535a572cae4a4f651ca732d0"
+            }
+          ]
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MPL-2.0"
           }
         }
       ]
@@ -9988,12 +10021,13 @@
   ],
   "dependencies": [
     {
-      "ref": "pkg:npm/today-local@1.9.0-rc.10",
+      "ref": "pkg:npm/today-local@2.0.0-rc.1",
       "dependsOn": [
         "pkg:npm/%40testing-library/react@16.3.3",
         "pkg:npm/%40types/react@19.3.0",
         "pkg:npm/%40types/react-dom@19.3.0",
         "pkg:npm/%40vitejs/plugin-react@4.7.0",
+        "pkg:npm/axe-core@4.13.0",
         "pkg:npm/eslint@9.39.5",
         "pkg:npm/eslint-plugin-react-hooks@5.2.0",
         "pkg:npm/globals@16.5.0",
@@ -10354,6 +10388,10 @@
     },
     {
       "ref": "pkg:npm/react-refresh@0.17.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/axe-core@4.13.0",
       "dependsOn": []
     },
     {

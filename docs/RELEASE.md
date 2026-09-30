@@ -1,6 +1,14 @@
 # Release process
 
-## V1.9 → V2.0
+## V2.0 Private候補
+
+V1.9 rc.10の独立clean rootを保持し、`kaelvance/Today-public-candidate` の `v2/design-implementation` branch / Draft PRでV2を検証します。ソース本体はMIT Copyright 2026 Kaito Kuon。元のToday private evidence historyやモデル成果物を公開候補へ移しません。専用CoC窓口は未作成（PENDING_OWNER）、Public化は未承認です。
+
+17工程のqualification、12工程のfresh archive、Mac Node22/24、Ubuntu Node22/24のexact head CI、新規Lighthouse測定をreceiptで対応させます。V2 UI gateを省略しません。
+
+現在のPrivateリポジトリではGitHub UIがrulesetを強制しないと表示しています。準備済みルールと強制済みを区別し、公開時に実効状態を確認します。PVRはPrivate側の実受付としてPASSにしません。
+
+## V1.9からの既存工程
 
 1. 権利、依存、NOTICE、model/data除外、秘密/PII、architecture invariantを確認します。
 2. [TESTING](TESTING.md)の全ゲートとclean clone、zero-key、AI disabled、no-model、offline/reconnectを実行します。
@@ -9,7 +17,7 @@
 5. V2公開前にユーザーが公開先を指定し、repository owner/default branch/license detection、Private vulnerability reporting、保護branch、CIの実行と成功を確認します。ローカルCI相当のPASSだけをGitHub成功として表示しません。
 6. tested treeと公開treeの差分を確認し、version/tag/source archive/SHA-256を対応させます。公開はユーザー指示の対象です。
 
-作業先はkaelvance/TodayのPrivate RC branch/Draft PRです。mainは未統合で、公開・最終PR merge・V2 tag/releaseは所有者の明示承認後に実施します。V1.9 RCは候補版で、V2.0は公開版のmajor versionです。互換性を壊す安定契約変更はmajor、互換追加はminor、修正はpatch。Experimental契約/modelは安定APIに含まれず変更を明示します。
+作業先は上記の独立Private候補です。通常のbranch / commit / push / PR / CIはOwner承認済みのV2作業範囲です。Public visibility / 正式tag / release / announcementは最終の公開承認と条件確認後に実施します。V1.9 RCは候補版で、V2.0は公開版のmajor versionです。互換性を壊す安定契約変更はmajor、互換追加はminor、修正はpatch。Experimental契約/modelは安定APIに含まれず変更を明示します。
 
 このsourceに保存する報告はartifact checksumを自己参照しません。checksum・archiveの最終検証結果は隣接したrelease receiptとして発行します。報告と同じsource commitをarchiveに入れ、zip以外のmetadataも確認します。
 

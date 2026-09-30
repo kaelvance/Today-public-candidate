@@ -1,24 +1,24 @@
-# Today — 1.9.0-rc.10
+# Today V2 — Private release candidate preparation
 
-毎日のタスク・予定・確認事項を、端末に保存して整理するローカルファーストのアプリです。AIやAPIキー、Googleアカウント、Qwenを用意しなくても使えます。日本語UI。**V1.9は公開前のRelease Candidate**です。V1.8の機能を凍結し、安全性・再現性・配布を検証しています。初期rc.1の履歴は [initial qualification report](V1.9_IMPLEMENTATION_AND_RELEASE_QUALIFICATION_REPORT.md)、今回の実施状況は [RC final status](docs/qualification/RC_FINAL_STATUS.md) を参照してください。
+毎日のタスク・予定・確認事項を、端末に保存して整理するローカルファーストの日本語アプリです。AIやAPIキー、Googleアカウント、Qwenを用意しなくても使えます。**V2は公開前の候補**です。和紙と墨を基調としたToday / やること / カレンダー / ふりかえりへ刷新し、V1.9の機能基盤を維持しています。[V2仕様](TODAY_V2_SPECIFICATION.md)、[変更](TODAY_V2_CHANGELOG.md)、[検証](TODAY_V2_TEST_REPORT.md)、[公開条件](TODAY_V2_OSS_RELEASE_REPORT.md)を参照してください。CoC専用窓口・Public側のPVR受付等が未完了の間はRelease Readyではありません。旧V1.9の文書・数値は履歴です。
 
 ## 必要環境
 
-- Node.js **22.13以上の22系LTS**を推奨。24系も検証対象。実Ubuntu CIは22/24系、macOSは24系を確認しています。`node --version` で確認します。
+- Node.js **22.13以上の22系LTS**を推奨。24系も検証対象。Macと実Ubuntu CIの22/24系の結果はV2のqualification receiptへ記録します。`node --version` で確認します。
 - pnpm **11.19.0**。通常は `npm install --global pnpm@11.19.0` で導入します。管理端末では管理者の手順を優先してください。
 - Git、現行のChrome/Edge/Firefox/Safari等。最初の依存取得にはインターネットが必要です。
 - Apple Silicon、Python、モデルは通常起動には不要です。Nodeサーバーは同じ端末の `127.0.0.1` で使います。
 
 ## 最初の起動（キーなし）
 
-取得先は [kaelvance/Today](https://github.com/kaelvance/Today) です。現在は非公開RCで、defaultの`main`は初期READMEのみです。アクセス権のあるRC作業者は次のbranchを取得します。branch名は初期取込名で、現在の版はpackage.jsonで確認します。
+公開候補は [kaelvance/Today-public-candidate](https://github.com/kaelvance/Today-public-candidate) のPrivate branchで準備します。元のTodayのprivate evidence historyは公開しません。配送済みbranchにアクセスできるRC作業者は次を利用します。現在の版はpackage.jsonで確認します。
 
 ```sh
-git clone --branch rc/1.9.0-rc.4 https://github.com/kaelvance/Today.git Today
+git clone --branch v2/design-implementation https://github.com/kaelvance/Today-public-candidate.git Today
 cd Today
 ```
 
-一般利用者向けの公開cloneは未検証です。現在の権限で取得できない場合、所有者から提供されたソースアーカイブを展開し、そのルートで以下を実行します。Coreの実行にAPIキーは不要です。V2公開時は、最終承認後のmainと公開cloneを改めて検証します。
+一般利用者向けの公開cloneは未検証です。現在の権限で取得できない場合、所有者から提供されたソースアーカイブを展開し、そのルートで以下を実行します。Coreの実行にAPIキーは不要です。V2公開時は、最終承認後のdefault branchと公開cloneを改めて検証します。
 
 ```sh
 pnpm install --frozen-lockfile
@@ -27,7 +27,7 @@ pnpm test
 pnpm start
 ```
 
-ブラウザで **http://127.0.0.1:4173/** を開きます。`localhost` への置換やLANへの転送はできません。最初は空のTodayです。PC画面の「追加する」、スマートフォン画面の「追加」からタスク・予定を入力できます。設定のサンプルは架空データで、接続サービスではありません。起動するだけでモデルのダウンロードやロード、外部AIへの送信は行いません。
+ブラウザで **http://127.0.0.1:4173/** を開きます。`localhost` への置換やLANへの転送はできません。最初は空のTodayです。自然文の入力欄、PCの「追加する」、スマートフォンの「追加」から、確認ダイアログを経てタスク・予定を追加できます。下部または左のナビゲーションで4画面を切り替えます。設定のサンプルは架空データで、接続サービスではありません。起動するだけでモデルのダウンロードやロード、外部AIへの送信は行いません。
 
 開発中は `pnpm dev` → [http://127.0.0.1:5173/](http://127.0.0.1:5173/)。終了はCtrl+C。ポートを変更する場合は `pnpm start -- --port 4273`。別ポートは別のブラウザ保存領域になるため、元のデータが消えたと誤認しないでください。
 
@@ -71,7 +71,7 @@ pnpm licenses:check
 pnpm audit --audit-level high
 ```
 
-通常E2Eは48フローです。追加の `pnpm test:stranger` はブラウザとサーバーの再起動を含む初回利用6フロー、`pnpm test:cold` はViteキャッシュを消して3回だけcold起動します。これらの検証は架空データと独立したブラウザprofileを使い、4173/5185ポートが空いている必要があります。
+既存の通常E2Eに加え、`pnpm test:v2 -- <source外の証跡directory>` が4画面・長文・IME・下書き・21 axe checks等を検証します。件数は最終ログから集計します。追加の `pnpm test:stranger` はブラウザとサーバーの再起動を含む初回利用6フロー、`pnpm test:cold` はViteキャッシュを消して3回だけcold起動します。これらの検証は架空データと独立したブラウザprofileを使い、4173/5185ポートが空いている必要があります。
 
 E2EにはChromiumが必要です。`pnpm exec playwright-core install chromium` でこの固定Playwright版のブラウザを取得した後、`pnpm test:e2e` を実行します。Linuxでシステムライブラリが不足する場合は `pnpm exec playwright-core install --with-deps chromium`。既存ブラウザを使う場合は `CHROME_PATH` に実行ファイルを指定します。通常のユーザー起動にはChromiumのテスト用導入は不要です。
 
