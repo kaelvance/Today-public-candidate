@@ -53,6 +53,8 @@ for (let trial = 1; trial <= 3; trial++) {
     assert(ready, 'Cold development server starts')
     browser = await chromium.launch({ headless: true })
     page = await browser.newPage()
+    // Keep the fixed 9/30 scenario future-facing, as in the scenario regression suite.
+    await page.clock.setFixedTime(new Date('2026-09-28T07:00:00+09:00'))
     page.on('pageerror', (value) => pageErrors.push({ message: value.message, stack: value.stack }))
     page.on('console', (value) => consoleLogs.push({ type: value.type(), text: value.text() }))
     page.on('request', (value) => {

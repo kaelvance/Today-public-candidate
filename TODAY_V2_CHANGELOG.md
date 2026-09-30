@@ -30,3 +30,7 @@
 ## 開発中に発見した失敗
 
 原ログはソース外の証跡に保持する。CSPで拒否された初回axe注入は同originのテスト用routeへ修正。ナビゲーションのrAFフォーカスはReact commit後へ修正。自然文解析によるテストタイトル変換を訂正。やること一覧の見出し階層とサンプルバッジのコントラストを修正。ダーク測定はthemeのcomputed color / text-fill-colorとfont/render準備を待ち、測定ごとに新しいaxeを注入する。fresh darkとservice worker allow/blockを独立確認。保存失敗はIndexedDBとlocalStorage両方の障害を注入する。strangerは重複する追加ボタンをexact nameで区別する。検証assertionは削除しない。
+
+## rc.2
+
+rc.1のcold startはpageerror0のまま固定予定の見出し待機に失敗。UI時計を既存scenario suiteと同じ9/28へ固定し、実日付による表示移動を防ぐ。3 cold試行とpageerror検査は維持。rc.1の失敗receipt / ZIPは保持する。

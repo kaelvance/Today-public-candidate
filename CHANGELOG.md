@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.0-rc.2 — 2026-09-30
+
+- rc.1のfresh archive cold startが実日付で固定予定を過去として扱い、見出し待機に失敗。既存scenario suiteと同じ9/28のUI時計を固定し、3試行とpageerror assertionを維持。元のfailure / ZIP / receiptは保持。
+
 ## 2.0.0-rc.1 — 2026-09-30
 
 - 和紙・墨・自然光のV2画面、4画面navigation、クイック入力、完了復元、future calendarを追加。保存schemaとProvider境界を維持。
