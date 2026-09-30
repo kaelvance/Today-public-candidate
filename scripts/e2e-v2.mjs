@@ -255,10 +255,39 @@ try {
         n.style.fontSize = `${sizes[i] * 2}px`
       })
     })
+    await page.evaluate(async () => {
+      await document.fonts.ready
+      await new Promise(requestAnimationFrame)
+      await new Promise(requestAnimationFrame)
+    })
     assert.equal(
       await page.evaluate(() => document.documentElement.scrollWidth),
       390,
       `200% text overflow ${label}`,
+    )
+    const navigationGeometry = await page.locator('.bottom-nav').evaluate((nav) => {
+      const bounds = nav.getBoundingClientRect()
+      const labels = [...nav.querySelectorAll('button')].map((button) => {
+        const target = button.getBoundingClientRect()
+        const text = button.querySelector('span').getBoundingClientRect()
+        return { label: button.textContent, target: target.toJSON(), text: text.toJSON() }
+      })
+      return { viewport: innerHeight, bounds: bounds.toJSON(), labels }
+    })
+    await writeFile(
+      join(output, `navigation-geometry-${label}.json`),
+      JSON.stringify(navigationGeometry, null, 2),
+    )
+    assert(
+      navigationGeometry.labels.every(
+        ({ target, text }) =>
+          target.top >= navigationGeometry.bounds.top - 1 &&
+          target.bottom <= navigationGeometry.viewport + 1 &&
+          text.top >= target.top - 1 &&
+          text.bottom <= target.bottom + 1 &&
+          text.bottom <= navigationGeometry.viewport + 1,
+      ),
+      `200% navigation label clipped ${label}`,
     )
     await shot(`text-resize-${label}`)
     await page.evaluate(() => {

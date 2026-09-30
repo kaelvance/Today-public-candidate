@@ -391,6 +391,8 @@ a:focus-visible,
   margin: var(--s6) 0 0;
 }
 .bottom-nav {
+  display: grid;
+  height: auto;
   min-height: var(--nav-height);
   padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
   grid-template-columns: repeat(4, minmax(0, 1fr));

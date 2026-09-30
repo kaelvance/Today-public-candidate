@@ -20,6 +20,8 @@
 
 200%検証はviewport固定で全HTML要素の実computed font-sizeを2倍にする文字拡大シミュレーションです。ブラウザのすべてのzoom実装を検証した意味ではありません。IME guardの自動検証はKeyboardEventのisComposingを用い、すべてのIME・OSの挙動を保証しません。
 
+rc.2後の目視確認を受けた追加診断では、文字拡大時に下部ナビゲーションのラベルがボタン領域を越えるケースを座標で確認しました。rc.3は固定高さを解除し、4画面でラベルがクリック対象とviewport内に収まるassertionを追加します。初回の追加検査成功と次の失敗を両方保存し、rc.2の元のqualificationを消去しません。
+
 ## 完全qualification
 
 ```sh
