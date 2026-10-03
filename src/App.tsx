@@ -1192,7 +1192,7 @@ function App() {
             </div>
             <div className="setting-group">
               <h3>このアプリ</h3>
-              <p>Today V2.0 RC · オフラインでも手動項目と取得済みの情報を利用できます。</p>
+              <p>Today V2.0.1 · オフラインでも手動項目と取得済みの情報を利用できます。</p>
             </div>
           </div>
         </ModalFrame>

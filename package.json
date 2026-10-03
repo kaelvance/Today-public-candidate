@@ -1,7 +1,7 @@
 {
   "name": "today-local",
   "private": true,
-  "version": "2.0.0",
+  "version": "2.0.1",
   "packageManager": "pnpm@11.19.0",
   "type": "module",
   "scripts": {
@@ -29,7 +29,9 @@
     "test:cold": "node scripts/e2e-cold.mjs",
     "release:package": "node scripts/release-package.mjs",
     "release:qualify": "node scripts/qualify-release.mjs",
-    "test:v2": "node scripts/e2e-v2.mjs"
+    "test:v2": "node scripts/e2e-v2.mjs",
+    "build:web": "tsc -b && vite build --mode web && node scripts/web-package.mjs",
+    "test:web": "node scripts/e2e-web.mjs"
   },
   "dependencies": {
     "react": "^19.1.0",

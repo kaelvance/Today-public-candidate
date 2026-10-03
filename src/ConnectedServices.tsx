@@ -1,3 +1,5 @@
+import { browserOnly } from './deployment'
+
 export type CalendarUi = {
   configured: boolean
   connection: 'disconnected' | 'connected' | 'expired'
@@ -30,6 +32,15 @@ export function ConnectedServices({
   onMailDisconnect: () => void
   onMailRefresh: () => void
 }) {
+  if (browserOnly)
+    return (
+      <div className="setting-group">
+        <h3>接続サービス</h3>
+        <p>ブラウザ版ではGoogle Calendar・Gmailに接続しません。</p>
+        <p>手動のタスク・予定はこのブラウザに保存されます。端末間の同期はありません。</p>
+        <p>ブラウザのデータを消去する前に、バックアップを書き出してください。</p>
+      </div>
+    )
   const status =
     calendar.phase === 'loading'
       ? '確認中'

@@ -1,5 +1,11 @@
 # Release process
 
+## V2.0.1の公開ブラウザ修正
+
+Ownerが公開ブラウザ不備の修正とV2.0.1公開を指示しました。2.0.0 tag / assetsを変更せず、保護default branchへPRで統合し、新identityでMac22 / 24、Ubuntu22 / 24、source / archiveの全ゲートを再実行します。追加の`Public browser` workflowはPRの静的build / smokeを実行しますが、PR artifactを公開には使いません。default branchのpushで独立build / smokeし、成功したbundleだけをGitHub Pagesへ配布します。deploy jobのみPages / OIDCの権限を持ちます。
+
+実公開URLへ認証・ローカルサーバーなしでアクセスし、Core操作・保存・バックアップ・オフライン・subpath assets・連携APIへの通信がないことを確認します。独立した第三者役の試験も記録し、siteのdeployment.json / commit / hashesを照合してからv2.0.1 tag / Releaseを確定します。公開配布のNOTICEとMITを保持します。詳細は[公開ブラウザ版](PUBLIC_BROWSER.md)。
+
 ## V2.0の公開工程
 
 V1.9 rc.10の独立clean rootを保持し、`kaelvance/Today-public-candidate` のPrivate branch / PRでV2を検証後、default branch `public-candidate` へ統合してPublicへ移行しました。ソース本体はMIT Copyright 2026 Kaito Kuon。元のToday private evidence historyやモデル成果物を公開候補へ移しません。専用CoC窓口は[Code of conduct](../CODE_OF_CONDUCT.md)へ掲載済みで、Ownerが作成・受信確認・公開掲載承認を報告しました。ソースのPublic化はOwnerの明示的PUBLIC GOに基づきます。最終tag・Release・配布物の照合まで必須ゲートを維持します。
@@ -31,7 +37,7 @@ Private vulnerability reportingはGitHubのpublic repository向けです。priva
 
 ### PR・artifact・cacheの信頼境界
 
-PRで生成したログ・ZIP・receiptは不信頼のデバッグ資料です。署名・publish・deployment・privileged workflowへ入力しません。このworkflowにはrelease/deploy/download-artifact/workflow_run/pull_request_targetがありません。pushのartifactでも、それだけで公開許可やprovenance署名とは扱いません。固定commitと全blob一致・全ゲート・管理者reviewを確認してから公開を判断します。30日artifact保持は長期保管ではありません。
+PRで生成したログ・ZIP・receiptは不信頼のデバッグ資料です。署名・publish・deployment・privileged workflowへ入力しません。Release qualification workflowにはrelease/deploy/download-artifact/workflow_run/pull_request_targetがありません。pushのartifactでも、それだけで公開許可やprovenance署名とは扱いません。固定commitと全blob一致・全ゲート・管理者reviewを確認してから公開を判断します。30日artifact保持は長期保管ではありません。
 
 環境変数をPATH/HOME/CI/TMPDIR/PNPM_HOMEへ制限するのは設定混入防止で、OS sandboxではありません。HOMEはpnpm cacheやテストbrowserの取得場所のために残します。cacheに秘密は保存せず、cacheの有無に依存しないfrozen installを行います。GitHubのpull_request cacheはmerge refの範囲で、base branchへ復元できないという[公式の範囲制限](https://docs.github.com/en/actions/reference/workflows-and-actions/dependency-caching)も確認します。今回のcontents:read/pull_requestにprivileged follow-upはありません。将来のrelease自動化では独立した信頼境界の再審査が必要です。
 

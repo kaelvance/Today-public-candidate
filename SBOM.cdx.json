@@ -23,9 +23,9 @@
     "component": {
       "type": "application",
       "name": "today-local",
-      "version": "2.0.0",
-      "purl": "pkg:npm/today-local@2.0.0",
-      "bom-ref": "pkg:npm/today-local@2.0.0",
+      "version": "2.0.1",
+      "purl": "pkg:npm/today-local@2.0.1",
+      "bom-ref": "pkg:npm/today-local@2.0.1",
       "licenses": [
         {
           "license": {
@@ -10021,7 +10021,7 @@
   ],
   "dependencies": [
     {
-      "ref": "pkg:npm/today-local@2.0.0",
+      "ref": "pkg:npm/today-local@2.0.1",
       "dependsOn": [
         "pkg:npm/%40testing-library/react@16.3.3",
         "pkg:npm/%40types/react@19.3.0",
