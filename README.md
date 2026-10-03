@@ -1,6 +1,6 @@
 # Today V2.0
 
-毎日のタスク・予定・確認事項を、端末に保存して整理するローカルファーストの日本語アプリです。AIやAPIキー、Googleアカウント、Qwenを用意しなくても使えます。**V2は公開前の候補**です。和紙と墨を基調としたToday / やること / カレンダー / ふりかえりへ刷新し、V1.9の機能基盤を維持しています。[V2仕様](TODAY_V2_SPECIFICATION.md)、[変更](TODAY_V2_CHANGELOG.md)、[検証](TODAY_V2_TEST_REPORT.md)、[公開条件](TODAY_V2_OSS_RELEASE_REPORT.md)を参照してください。[CoC専用窓口](CODE_OF_CONDUCT.md)はOwner承認済みです。Public側のPVR受付・保護設定・匿名clone等が未完了の間はRelease Readyではありません。旧V1.9の文書・数値は履歴です。
+毎日のタスク・予定・確認事項を、端末に保存して整理するローカルファーストの日本語アプリです。AIやAPIキー、Googleアカウント、Qwenを用意しなくても使えます。V2のソースはPublic repositoryで公開しています。和紙と墨を基調としたToday / やること / カレンダー / ふりかえりへ刷新し、V1.9の機能基盤を維持しています。[V2仕様](TODAY_V2_SPECIFICATION.md)、[変更](TODAY_V2_CHANGELOG.md)、[検証](TODAY_V2_TEST_REPORT.md)、[公開条件](TODAY_V2_OSS_RELEASE_REPORT.md)を参照してください。[CoC専用窓口](CODE_OF_CONDUCT.md)はOwner承認済みです。PVRの設定・公開受付、保護設定、匿名cloneを確認し、正式tag・Release・配布物照合まで終えた時点の最終判定を[GitHub Releases](https://github.com/kaelvance/Today-public-candidate/releases)のrelease reportへ記録します。ソースのPublic公開と正式Releaseの完了を区別します。旧V1.9の文書・数値は履歴です。
 
 ## 必要環境
 
@@ -11,14 +11,14 @@
 
 ## 最初の起動（キーなし）
 
-公開候補は [kaelvance/Today-public-candidate](https://github.com/kaelvance/Today-public-candidate) のPrivate branchで準備します。元のTodayのprivate evidence historyは公開しません。配送済みbranchにアクセスできるRC作業者は次を利用します。現在の版はpackage.jsonで確認します。
+[kaelvance/Today-public-candidate](https://github.com/kaelvance/Today-public-candidate) のdefault branchは `public-candidate` です。元のTodayのprivate evidence historyは公開していません。ソースは次の手順で取得します。正式版の固定ソースはGitHub Releasesの配布物とreceiptを照合してください。現在の版はpackage.jsonで確認します。
 
 ```sh
-git clone --branch v2/design-implementation https://github.com/kaelvance/Today-public-candidate.git Today
+git clone https://github.com/kaelvance/Today-public-candidate.git Today
 cd Today
 ```
 
-一般利用者向けの公開cloneは未検証です。現在の権限で取得できない場合、所有者から提供されたソースアーカイブを展開し、そのルートで以下を実行します。Coreの実行にAPIキーは不要です。V2公開時は、最終承認後のdefault branchと公開cloneを改めて検証します。
+認証なしのpublic cloneからinstall・build・通常起動・初回利用を検証しています。ソースアーカイブを使う場合も展開先のルートで以下を実行します。Coreの実行にAPIキーは不要です。最終commitごとのqualification結果はrelease receiptを参照してください。
 
 ```sh
 pnpm install --frozen-lockfile

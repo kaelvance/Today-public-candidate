@@ -1,12 +1,12 @@
 # Release process
 
-## V2.0 Private候補
+## V2.0の公開工程
 
-V1.9 rc.10の独立clean rootを保持し、`kaelvance/Today-public-candidate` の `v2/design-implementation` branch / Draft PRでV2を検証します。ソース本体はMIT Copyright 2026 Kaito Kuon。元のToday private evidence historyやモデル成果物を公開候補へ移しません。専用CoC窓口は[Code of conduct](../CODE_OF_CONDUCT.md)へ掲載済みで、Ownerが作成・受信確認・公開掲載承認を報告しました。Public化は明示的なPUBLIC GOまで未承認です。
+V1.9 rc.10の独立clean rootを保持し、`kaelvance/Today-public-candidate` のPrivate branch / PRでV2を検証後、default branch `public-candidate` へ統合してPublicへ移行しました。ソース本体はMIT Copyright 2026 Kaito Kuon。元のToday private evidence historyやモデル成果物を公開候補へ移しません。専用CoC窓口は[Code of conduct](../CODE_OF_CONDUCT.md)へ掲載済みで、Ownerが作成・受信確認・公開掲載承認を報告しました。ソースのPublic化はOwnerの明示的PUBLIC GOに基づきます。最終tag・Release・配布物の照合まで必須ゲートを維持します。
 
 17工程のqualification、12工程のfresh archive、Mac Node22/24、Ubuntu Node22/24のexact head CI、新規Lighthouse測定をreceiptで対応させます。V2 UI gateを省略しません。
 
-現在のPrivateリポジトリではGitHub UIがrulesetを強制しないと表示しています。準備済みルールと強制済みを区別し、公開時に実効状態を確認します。PVRはPrivate側の実受付としてPASSにしません。
+Private stagingではGitHub UIがrulesetを強制しないと表示していました。準備済みルールと強制済みを区別し、公開時に実効状態を確認します。PVRはPrivate側の実受付としてPASSにしません。
 
 ## V1.9からの既存工程
 
@@ -17,7 +17,7 @@ V1.9 rc.10の独立clean rootを保持し、`kaelvance/Today-public-candidate` �
 5. V2公開前にユーザーが公開先を指定し、repository owner/default branch/license detection、Private vulnerability reporting、保護branch、CIの実行と成功を確認します。ローカルCI相当のPASSだけをGitHub成功として表示しません。
 6. tested treeと公開treeの差分を確認し、version/tag/source archive/SHA-256を対応させます。公開はユーザー指示の対象です。
 
-作業先は上記の独立Private候補です。通常のbranch / commit / push / PR / CIはOwner承認済みのV2作業範囲です。Public visibility / 正式tag / release / announcementは最終の公開承認と条件確認後に実施します。V1.9 RCは候補版で、V2.0は公開版のmajor versionです。互換性を壊す安定契約変更はmajor、互換追加はminor、修正はpatch。Experimental契約/modelは安定APIに含まれず変更を明示します。
+作業先は上記の独立repositoryです。通常のbranch / commit / push / PR / CIはOwner承認済みのV2作業範囲です。Public visibility / 正式tag / release / announcementは最終の公開承認と条件確認後に実施します。V1.9 RCは候補版で、V2.0は公開版のmajor versionです。互換性を壊す安定契約変更はmajor、互換追加はminor、修正はpatch。Experimental契約/modelは安定APIに含まれず変更を明示します。
 
 このsourceに保存する報告はartifact checksumを自己参照しません。checksum・archiveの最終検証結果は隣接したrelease receiptとして発行します。報告と同じsource commitをarchiveに入れ、zip以外のmetadataも確認します。
 
