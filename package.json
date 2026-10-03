@@ -1,7 +1,7 @@
 {
   "name": "today-local",
   "private": true,
-  "version": "1.9.0-rc.10",
+  "version": "2.0.0",
   "packageManager": "pnpm@11.19.0",
   "type": "module",
   "scripts": {
@@ -28,7 +28,8 @@
     "test:stranger": "node scripts/e2e-stranger.mjs",
     "test:cold": "node scripts/e2e-cold.mjs",
     "release:package": "node scripts/release-package.mjs",
-    "release:qualify": "node scripts/qualify-release.mjs"
+    "release:qualify": "node scripts/qualify-release.mjs",
+    "test:v2": "node scripts/e2e-v2.mjs"
   },
   "dependencies": {
     "react": "^19.1.0",
@@ -39,6 +40,7 @@
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
     "@vitejs/plugin-react": "^4.7.0",
+    "axe-core": "4.13.0",
     "eslint": "^9.39.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "globals": "^16.5.0",

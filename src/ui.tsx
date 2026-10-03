@@ -1,6 +1,8 @@
 import { useEffect, useRef, type ReactNode } from 'react'
 
 export type IconName =
+  | 'home'
+  | 'history'
   | 'check'
   | 'plus'
   | 'settings'
@@ -32,6 +34,18 @@ export function Icon({ name, size = 20 }: { name: IconName; size?: number }) {
     'aria-hidden': true as const,
   }
   const paths: Record<IconName, ReactNode> = {
+    home: (
+      <>
+        <path d="m3 10 9-7 9 7v10H3Z" />
+        <path d="M9 20v-7h6v7" />
+      </>
+    ),
+    history: (
+      <>
+        <path d="M3 11a9 9 0 1 1 2 7M3 4v7h7" />
+        <path d="M12 7v5l3 2" />
+      </>
+    ),
     check: <path d="m5 12 4 4L19 6" />,
     plus: <path d="M12 5v14M5 12h14" />,
     settings: (

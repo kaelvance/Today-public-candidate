@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lockSha256": "3f18c81ad8798131592ce71d08fd5fe3b8929cc1ca6f511880cb2a231d244fb9",
+  "lockSha256": "c968c4046244275eafd27575bed5169de6094da2f3c0b93f33a061306b3a644c",
   "components": [
     {
       "name": "@asamuzakjp/css-color",
@@ -3114,6 +3114,30 @@
       "evidence": "installed package license metadata and copied notices",
       "notices": [
         "third-party/licenses/assertion-error@2.0.1/LICENSE"
+      ]
+    },
+    {
+      "name": "axe-core",
+      "version": "4.13.0",
+      "integrity": "sha512-UzGt8zg7Ny8djbYMhxl2zuEevVa7r2gJjYY5Lwr1xM7+XU2nd6CkIWFTVcCIbAP63vSz71NaVyyuSk9lHKcy0A==",
+      "key": "axe-core@4.13.0",
+      "license": "MPL-2.0",
+      "direct": true,
+      "runtime": false,
+      "installedOnAuditHost": true,
+      "purpose": "development checks and tooling",
+      "releaseNecessity": "required by reproducible development graph; platform optional packages installed conditionally",
+      "includedInSource": false,
+      "includedInProductionBundle": false,
+      "productionAttributionRequired": false,
+      "productionAttributionReason": "not part of production runtime",
+      "attribution": "dependency package retains its own notices when installed",
+      "modificationNotice": "not modified",
+      "vulnerabilityStatus": "no known advisories in pnpm audit snapshot 2026-09-28; see docs/qualification/dependency-audit.json; not a proof of absence",
+      "evidence": "installed package license metadata and copied notices",
+      "notices": [
+        "third-party/licenses/axe-core@4.13.0/LICENSE",
+        "third-party/licenses/axe-core@4.13.0/LICENSE-3RD-PARTY.txt"
       ]
     },
     {

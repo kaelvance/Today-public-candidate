@@ -9,5 +9,7 @@
 ## External AI proposals and independent verification
 
 - [ ] No secrets, private data, model weights or training artifacts
-- [ ] Feature freeze and user authority preserved
+- [ ] Domain / Context / Provider contracts and user authority preserved
 - [ ] Documentation and truthful provider labels updated
+- [ ] V2 UI: responsive / keyboard / focus / contrast / text resize checks recorded
+- [ ] Exact candidate commit, CI and archive receipts distinguished from development checks

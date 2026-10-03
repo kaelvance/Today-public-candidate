@@ -33,7 +33,8 @@ import { dateLabel, matchesQuery } from './format'
 import { actionPolicy } from './orchestration'
 import { plugins, assertPluginAction } from './plugins'
 import { enqueueRemoteAction, replayQueue } from './sync'
-import { TodayItem } from './TodayItem'
+import { Navigation, type TodayView } from './Navigation'
+import { Daylight, TodaySurface } from './TodaySurface'
 import { Icon, ModalFrame } from './ui'
 import type { Item, ItemAction, PersistedState } from './types'
 
@@ -46,8 +47,10 @@ function App() {
   const [detailId, setDetailId] = useState<string | null>(null)
   const [confirm, setConfirm] = useState<{ item: Item; action: ItemAction } | null>(null)
   const [query, setQuery] = useState('')
+  const [view, setView] = useState<TodayView>('today')
   const [expanded, setExpanded] = useState(false)
   const [captureText, setCaptureText] = useState('')
+  const [quickText, setQuickText] = useState('')
   const [captureKind, setCaptureKind] = useState<'task' | 'event' | null>(null)
   const [captureDate, setCaptureDate] = useState<string | null>(null)
   const [captureImportant, setCaptureImportant] = useState<boolean | null>(null)
@@ -87,7 +90,17 @@ function App() {
   const calendarBusyRef = useRef(false)
   const mailBusyRef = useRef(false)
   const stateRef = useRef(state)
+  const navigationPendingRef = useRef(false)
+  const quickCaptureRef = useRef(false)
   stateRef.current = state
+
+  useLayoutEffect(() => {
+    if (navigationPendingRef.current) {
+      navigationPendingRef.current = false
+      document.getElementById('view-heading')?.focus()
+      window.scrollTo({ top: 0, behavior: 'auto' })
+    }
+  }, [view])
 
   useEffect(() => {
     loadInitialState()
@@ -497,10 +510,6 @@ function App() {
     ? sorted
     : sorted.filter((item) => rankById.get(item.id)?.layer !== 'later')
   const later = query ? [] : sorted.filter((item) => rankById.get(item.id)?.layer === 'later')
-  const lead = attention[0]
-  const rest = attention.slice(1)
-  const visibleRest = expanded || query ? rest : rest.slice(0, 3)
-  const hiddenCount = Math.max(0, rest.length - visibleRest.length)
   const completed = model.items
     .filter((item) => item.status === 'done' || item.status === 'dismissed')
     .sort((a, b) => b.lastUpdated.localeCompare(a.lastUpdated))
@@ -540,6 +549,36 @@ function App() {
   const selectedDate = captureDate ?? suggestedDate
   const selectedImportant = captureImportant ?? effectiveCapture.importance === 3
 
+  function navigate(next: TodayView) {
+    if (next === view) {
+      document.getElementById('view-heading')?.focus()
+      window.scrollTo({ top: 0, behavior: 'auto' })
+    } else navigationPendingRef.current = true
+    setView(next)
+    setExpanded(false)
+  }
+  function openCapture(text?: string) {
+    quickCaptureRef.current = text !== undefined
+    setCaptureText(text ?? '')
+    setCaptureKind(null)
+    setCaptureDate(null)
+    setCaptureImportant(null)
+    setCaptureError('')
+    setAiInterpretation(null)
+    setSheet('add')
+  }
+  function restoreItem(item: Item) {
+    changeItem(
+      item,
+      (value) => ({
+        ...value,
+        status: 'active',
+        snoozedUntil: undefined,
+        lastUpdated: new Date().toISOString(),
+      }),
+      '項目を戻しました',
+    )
+  }
   function openDetail(item: Item) {
     setDetailId(item.id)
     setEditing(false)
@@ -634,6 +673,7 @@ function App() {
     try {
       const item = makeManualItem(capture, selectedDate || undefined, selectedImportant)
       setState((current) => current && { ...current, items: [item, ...current.items] })
+      if (quickCaptureRef.current) setQuickText('')
       setCaptureText('')
       setCaptureKind(null)
       setCaptureDate(null)
@@ -818,327 +858,97 @@ function App() {
 
   return (
     <div className="app-shell">
-      <aside className="rail" aria-label="メインナビゲーション" inert={modalOpen}>
-        <div className="brand">
-          <span className="brand-mark">
-            <Icon name="check" size={20} />
-          </span>
-          <span>
-            today<span className="brand-dot">.</span>
-          </span>
-        </div>
-        <div className="rail-label">YOUR SPACE</div>
-        <nav>
-          <button
-            className="rail-link active"
-            aria-current="page"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          >
-            <span className="rail-link-icon">
-              <Icon name="calendar" size={19} />
-            </span>
-            Today
-          </button>
-          <button className="rail-link" onClick={() => setSheet('add')}>
-            <span className="rail-link-icon">
-              <Icon name="plus" size={19} />
-            </span>
-            追加する
-          </button>
-        </nav>
-        <div className="rail-bottom">
-          <button className="rail-link" onClick={() => setSheet('settings')}>
-            <span className="rail-link-icon">
-              <Icon name="settings" size={19} />
-            </span>
-            設定
-          </button>
-        </div>
-      </aside>
-
+      <Daylight />
+      <a className="skip-link" href="#view-heading">
+        本文へ移動
+      </a>
+      <Navigation
+        view={view}
+        inert={modalOpen}
+        onNavigate={navigate}
+        onAdd={() => openCapture()}
+        onSettings={() => setSheet('settings')}
+      />
       <main className="main" inert={modalOpen}>
-        <header className="topbar">
-          <div className="mobile-brand">
-            <span className="brand-mark">
-              <Icon name="check" size={17} />
-            </span>
-            today<span className="brand-dot">.</span>
-          </div>
-          {!online && (
-            <span className="connection offline">
-              <span className="connection-dot" />
-              オフラインで利用中
-            </span>
-          )}
-        </header>
-        <div className="content-grid">
-          <div className="today-column">
-            <div className="hero">
-              <div className="eyebrow">
-                <span className="eyebrow-line" /> {today}
-              </div>
-              <h1>
-                今日、必要なこと<span className="muted-heading">だけ。</span>
-              </h1>
-              <p>次の一歩が、ここで分かります。</p>
-            </div>
-            {saveError && (
-              <div className="error-banner" role="alert">
-                保存できませんでした。入力はこの画面に残っています。ブラウザの保存設定を確認してください。
-              </div>
-            )}
-            <div className="summary-line">
-              <span className="summary-number">{attention.length}</span>
-              <span>件の確認事項</span>
-              {completed.length > 0 && (
-                <>
-                  <span className="summary-divider" />
-                  <span>{completed.length} 件完了</span>
-                </>
+        <TodaySurface
+          view={view}
+          today={today}
+          clock={clock}
+          online={online}
+          query={query}
+          onQuery={(value) => {
+            setQuery(value)
+            setExpanded(false)
+          }}
+          searchRef={searchRef}
+          items={model.items.filter((item) => matchesQuery(item, query, clock))}
+          attention={attention}
+          later={later}
+          completed={completed.filter((item) => matchesQuery(item, query, clock))}
+          upcoming={upcoming}
+          rankById={rankById}
+          expanded={expanded}
+          onExpand={setExpanded}
+          onAction={handleAction}
+          onDetail={openDetail}
+          onRestore={restoreItem}
+          onAdd={openCapture}
+          quickText={quickText}
+          onQuickText={setQuickText}
+          onSettings={() => setSheet('settings')}
+          onShowSamples={showSamples}
+          showSamples={state.showSamples}
+          canShowSamples={!state.showSamples && !state.items.some((item) => item.demo)}
+          scenario={scenarioModeLabel}
+          notices={
+            <>
+              {saveError && (
+                <div className="error-banner" role="alert">
+                  保存できませんでした。入力はこの画面に残っています。ブラウザの保存設定を確認してください。
+                </div>
               )}
-              {state.showSamples && <span className="demo-label">サンプルを表示中</span>}
-              {scenarioModeLabel && <span className="demo-label">{scenarioModeLabel}</span>}
-            </div>
-            {state.items.some((item) => item.sourceId === 'google-calendar') &&
-              ['stale', 'offline', 'failed'].includes(calendarUi.phase) && (
-                <p className="calendar-notice" role="status">
-                  Google Calendar の予定は前回取得した内容です。
-                  {state.calendarSyncedAt && (
-                    <>
-                      最終更新{' '}
-                      {new Intl.DateTimeFormat('ja-JP', {
-                        month: 'numeric',
-                        day: 'numeric',
-                        hour: 'numeric',
-                        minute: '2-digit',
-                      }).format(new Date(state.calendarSyncedAt))}
-                      。
-                    </>
-                  )}
-                  {calendarUi.connection === 'expired' && '設定から再接続してください。'}
-                </p>
-              )}
-            {state.items.some((item) => item.sourceId === 'mail.gmail') &&
-              ['stale', 'offline', 'failed'].includes(mailUi.phase) && (
-                <p className="calendar-notice" role="status">
-                  Gmail 由来の情報は前回取得した内容です。
-                  {state.mailSyncedAt && (
-                    <>
-                      最終更新{' '}
-                      {new Intl.DateTimeFormat('ja-JP', {
-                        month: 'numeric',
-                        day: 'numeric',
-                        hour: 'numeric',
-                        minute: '2-digit',
-                      }).format(new Date(state.mailSyncedAt))}
-                      。
-                    </>
-                  )}
-                  {mailUi.connection === 'expired' && '設定から再接続してください。'}
-                </p>
-              )}
-            <label className="search-box">
-              <Icon name="search" size={19} />
-              <span className="sr-only">Todayを検索</span>
-              <input
-                ref={searchRef}
-                value={query}
-                onChange={(event) => {
-                  setQuery(event.target.value)
-                  setExpanded(false)
-                }}
-                placeholder="必要なことを探す"
-                aria-label="Todayを検索"
-              />
-              <kbd>⌘ K</kbd>
-            </label>
-            {query && (
-              <div className="search-hint" role="status">
-                「{query}」に一致する {attention.length} 件{' '}
-                <button onClick={() => setQuery('')}>クリア</button>
-              </div>
-            )}
-
-            {lead ? (
-              <>
-                <section className="priority-section" aria-labelledby="now-heading">
-                  <div className="section-heading">
-                    <div>
-                      <span className="section-overline">NOW</span>
-                      <h2 id="now-heading">まず、これから</h2>
-                    </div>
-                  </div>
-                  <TodayItem
-                    item={lead}
-                    rank={rankById.get(lead.id)!}
-                    prominent
-                    onAction={handleAction}
-                    onDetail={openDetail}
-                  />
-                </section>
-                {rest.length > 0 && (
-                  <section className="other-section" aria-labelledby="next-heading">
-                    <div className="section-heading">
-                      <div>
-                        <span className="section-overline">NEXT</span>
-                        <h2 id="next-heading">そのあとに</h2>
-                      </div>
-                      <span className="section-count">{rest.length} 件</span>
-                    </div>
-                    <div className="item-list">
-                      {visibleRest.map((item) => (
-                        <TodayItem
-                          key={item.id}
-                          item={item}
-                          rank={rankById.get(item.id)!}
-                          onAction={handleAction}
-                          onDetail={openDetail}
-                        />
-                      ))}
-                    </div>
-                    {hiddenCount > 0 && (
-                      <button className="disclosure-button" onClick={() => setExpanded(true)}>
-                        ほか {hiddenCount} 件を見る
-                        <Icon name="chevron" size={18} />
-                      </button>
+              {state.items.some((item) => item.sourceId === 'google-calendar') &&
+                ['stale', 'offline', 'failed'].includes(calendarUi.phase) && (
+                  <p className="calendar-notice" role="status">
+                    Google Calendar の予定は前回取得した内容です。
+                    {state.calendarSyncedAt && (
+                      <>
+                        最終更新{' '}
+                        {new Intl.DateTimeFormat('ja-JP', {
+                          month: 'numeric',
+                          day: 'numeric',
+                          hour: 'numeric',
+                          minute: '2-digit',
+                        }).format(new Date(state.calendarSyncedAt))}
+                        。
+                      </>
                     )}
-                    {expanded && rest.length > 3 && (
-                      <button className="disclosure-button" onClick={() => setExpanded(false)}>
-                        少なく表示
-                      </button>
+                    {calendarUi.connection === 'expired' && '設定から再接続してください。'}
+                  </p>
+                )}
+              {state.items.some((item) => item.sourceId === 'mail.gmail') &&
+                ['stale', 'offline', 'failed'].includes(mailUi.phase) && (
+                  <p className="calendar-notice" role="status">
+                    Gmail 由来の情報は前回取得した内容です。
+                    {state.mailSyncedAt && (
+                      <>
+                        最終更新{' '}
+                        {new Intl.DateTimeFormat('ja-JP', {
+                          month: 'numeric',
+                          day: 'numeric',
+                          hour: 'numeric',
+                          minute: '2-digit',
+                        }).format(new Date(state.mailSyncedAt))}
+                        。
+                      </>
                     )}
-                  </section>
+                    {mailUi.connection === 'expired' && '設定から再接続してください。'}
+                  </p>
                 )}
-              </>
-            ) : (
-              <div className="empty-state">
-                <div className="empty-icon">
-                  <Icon name={query ? 'search' : 'check'} size={27} />
-                </div>
-                <h2>{query ? '一致する項目はありません' : '今すぐ対応するものはありません'}</h2>
-                <p>
-                  {query
-                    ? '別の言葉で探してください。'
-                    : '思いついたことを追加すると、ここで整理できます。'}
-                </p>
-                <button
-                  className="button button-secondary"
-                  onClick={() => (query ? setQuery('') : setSheet('add'))}
-                >
-                  {query ? '検索をクリア' : 'タスクや予定を追加'}
-                  <Icon name="arrow" size={17} />
-                </button>
-                {!query && !state.showSamples && !state.items.some((item) => item.demo) && (
-                  <button className="sample-button" onClick={showSamples}>
-                    サンプルの一日を見る
-                  </button>
-                )}
-              </div>
-            )}
-            {later.length > 0 && (
-              <details className="archive-section">
-                <summary>
-                  あとで見る <span>{later.length} 件</span>
-                </summary>
-                <div className="archive-list">
-                  {later.map((item) => (
-                    <button key={item.id} onClick={() => openDetail(item)}>
-                      <span>{item.title}</span>
-                      <small>{rankById.get(item.id)?.reason}</small>
-                      <Icon name="chevron" size={16} />
-                    </button>
-                  ))}
-                </div>
-              </details>
-            )}
-            {completed.length > 0 && (
-              <details className="archive-section">
-                <summary>
-                  完了・整理済み <span>{completed.length} 件</span>
-                </summary>
-                <div className="archive-list">
-                  {completed.slice(0, 30).map((item) => (
-                    <div key={item.id} className="archive-row">
-                      <span>{item.title}</span>
-                      <button
-                        onClick={() =>
-                          changeItem(
-                            item,
-                            (value) => ({
-                              ...value,
-                              status: 'active',
-                              snoozedUntil: undefined,
-                              lastUpdated: new Date().toISOString(),
-                            }),
-                            '項目を戻しました',
-                          )
-                        }
-                      >
-                        戻す
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </details>
-            )}
-          </div>
-          <aside className="context-column" aria-label="今日の予定">
-            <div className="context-sticky">
-              <div className="context-title">
-                <span>YOUR DAY</span>
-                <Icon name="calendar" size={18} />
-              </div>
-              <h2>今日の流れ</h2>
-              <p className="context-subtitle">予定の時間をひと目で。</p>
-              <div className="timeline">
-                {upcoming.length ? (
-                  upcoming.map((item) => (
-                    <button key={item.id} className="timeline-row" onClick={() => openDetail(item)}>
-                      <span className="timeline-time">
-                        {item.allDay
-                          ? '終日'
-                          : new Intl.DateTimeFormat('ja-JP', {
-                              hour: 'numeric',
-                              minute: '2-digit',
-                            }).format(new Date(item.startAt!))}
-                      </span>
-                      <span className="timeline-track">
-                        <span />
-                      </span>
-                      <span className="timeline-copy">
-                        <strong>{item.title}</strong>
-                        <small>{item.source}</small>
-                      </span>
-                      <Icon name="chevron" size={16} />
-                    </button>
-                  ))
-                ) : (
-                  <p className="timeline-empty">この後の予定はありません</p>
-                )}
-              </div>
-            </div>
-          </aside>
-        </div>
+            </>
+          }
+        />
       </main>
-
-      <nav className="bottom-nav" aria-label="モバイルナビゲーション" inert={modalOpen}>
-        <button
-          className="active"
-          aria-current="page"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        >
-          <Icon name="calendar" size={21} />
-          <span>Today</span>
-        </button>
-        <button onClick={() => setSheet('add')}>
-          <Icon name="plus" size={23} />
-          <span>追加</span>
-        </button>
-        <button onClick={() => setSheet('settings')}>
-          <Icon name="settings" size={21} />
-          <span>設定</span>
-        </button>
-      </nav>
 
       {sheet === 'add' && (
         <ModalFrame title="すばやく追加" onClose={() => setSheet(null)}>
@@ -1382,7 +1192,7 @@ function App() {
             </div>
             <div className="setting-group">
               <h3>このアプリ</h3>
-              <p>Today V1.9 RC · オフラインでも手動項目と取得済みの情報を利用できます。</p>
+              <p>Today V2.0 RC · オフラインでも手動項目と取得済みの情報を利用できます。</p>
             </div>
           </div>
         </ModalFrame>

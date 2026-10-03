@@ -108,7 +108,7 @@ export function IntelligenceSettings({
     UNAVAILABLE: 'ローカルモデルの状態を取得できません。通常のTodayで動作中。',
   }
   return (
-    <div className="setting-group" aria-label="インテリジェンス設定">
+    <div className="setting-group" role="group" aria-label="インテリジェンス設定">
       <h3>インテリジェンス</h3>
       <p>Context判定は決定的な処理を優先します。モデルは必要な場合だけ提案を返します。</p>
       <label htmlFor="intelligence-mode">処理方法</label>

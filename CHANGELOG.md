@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.0.0-rc.2 — 2026-09-30
+
+- rc.1のfresh archive cold startが実日付で固定予定を過去として扱い、見出し待機に失敗。既存scenario suiteと同じ9/28のUI時計を固定し、3試行とpageerror assertionを維持。元のfailure / ZIP / receiptは保持。
+
+## 2.0.0-rc.1 — 2026-09-30
+
+- 和紙・墨・自然光のV2画面、4画面navigation、クイック入力、完了復元、future calendarを追加。保存schemaとProvider境界を維持。
+- 4件のcalendar unit、20フローのV2 UI / axe / responsive / text resize検証を追加し、qualificationとarchiveにも組み込む。
+- Gmail fixture clockとstranger selectorを明示し、元のassertionを維持。V2文書8件、SBOM、MPL-2.0のaxe noticeを追加。
+- Private候補。CoC窓口未作成、Public操作未承認。詳しくは[TODAY_V2_CHANGELOG](TODAY_V2_CHANGELOG.md)。
+
 ## 1.9.0-rc.10 — 2026-09-29
 
 - scenario UI時計を9/28に固定し、既存の9/25過去課題と9/30未来予定の両fixtureを満たす。rc.9のあとで見る待機失敗を保存。Context時計・製品・assertion・件数は変更しない。

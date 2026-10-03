@@ -1,6 +1,6 @@
 # Contributing
 
-[README](README.md) の必要環境と最初の起動が入口です。作業ブランチを作り、変更の目的・再現手順・検証結果をPRへ記録します。V1.9ではV1.8の機能とDomain/Context/Provider architectureを凍結しています。新しい設計が必要な場合はIssueで根拠を示し、修正と混ぜないでください。
+[README](README.md) の必要環境と最初の起動が入口です。作業ブランチを作り、変更の目的・再現手順・検証結果をPRへ記録します。V2では表示とnavigationを刷新しています。Domain / Context / Provider境界、保存schema、ユーザーの確認権限は維持します。契約変更は根拠と移行方法をPRに明示してください。UI変更には `pnpm test:v2` のresponsive / keyboard / accessibility検証も必要です。
 
 ## 必須確認
 

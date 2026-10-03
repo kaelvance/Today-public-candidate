@@ -32,6 +32,10 @@ secret scannerは自作のpattern scanで、完全なPII検出製品ではあり
 
 検証用4173/5185ポートは空いている必要があります。実データのブラウザprofileや既存のサーバーを使い回しません。通常利用にはこの検証手順は不要です。
 
-`pnpm release:qualify -- <source外のevidence directory>` は全ゲートを順番に実行し、exit codeと各ログを保存します。`pnpm release:package -- <source外のevidence directory>` はcleanな固定Git commitをZIP化し、全tracked blobと一致を確認、新しいdirectoryへ展開してinstall/build/163tests/48E2E/stranger/coldを実行します。packaging検証にはGitとunzipが必要です。Node22/24・Ubuntu24.04の実Actions実行は、GitHubのrun IDと結果が得られて初めてPASSです。ローカルでの同じscript実行では代替しません。
+`pnpm release:qualify -- <source外のevidence directory>` は全ゲートを順番に実行し、exit codeと各ログを保存します。`pnpm release:package -- <source外のevidence directory>` はcleanな固定Git commitをZIP化し、全tracked blobと一致を確認、新しいdirectoryへ展開してinstall/build/各tests/既存E2E/V2 UI/stranger/coldを実行します。packaging検証にはGitとunzipが必要です。Node22/24・Ubuntu24.04の実Actions実行は、GitHubのrun IDと結果が得られて初めてPASSです。ローカルでの同じscript実行では代替しません。
 
 最終qualification/archiveではNode test environmentをUTCに固定します。ブラウザの既存scenario fixtureはAsia/Tokyoを明示し、別UTC contextでcalendar 10:00 JST→01:00 UTC、mailのlocal 09:30とユーザー訂正を検証します。追加UTC1 flowのため通常E2Eは48、初期47はすべて維持します。unitのlocal calendar fixtureはlocal constructorで作り、JST/UTCで同じ日付の意味を持たせます。
+
+## V2 UI
+
+`pnpm test:v2 -- <source外のevidence directory>` を追加しました。320/390/820/1440、4画面、IME、下書き、focus、長文、200%文字拡大、light/dark、保存失敗、axe A/AA・best-practiceを検証します。ルールを無効化せず、theme・font・描画の確定を待って測定します。詳細・既知の未検証範囲は [V2 test report](../TODAY_V2_TEST_REPORT.md) を参照してください。

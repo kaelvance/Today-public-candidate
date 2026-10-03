@@ -145,6 +145,7 @@ try {
     ['security', ['test:security']],
     ['oss', ['test:oss']],
     ['e2e', ['test:e2e']],
+    ['v2-ui', ['test:v2', '--', output, 'archive']],
     ['stranger', ['test:stranger', '--', output]],
     ['cold', ['test:cold', '--', output]],
   ])

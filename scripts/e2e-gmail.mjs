@@ -20,6 +20,8 @@ try {
   browser = await launchBrowser()
   const context = await browser.newContext({ viewport: { width: 390, height: 844 } })
   const page = await context.newPage()
+  // The 9/30 calendar fixture must remain future-dated regardless of execution date.
+  await page.clock.setFixedTime(new Date('2026-09-28T07:00:00+09:00'))
   const errors = []
   page.on('pageerror', (error) => errors.push(error.message))
   let connected = true
