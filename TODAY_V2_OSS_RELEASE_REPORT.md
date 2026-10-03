@@ -2,13 +2,13 @@
 
 ## 状態
 
-`TODAY_V2_RELEASE_READY = NO`
+本書は公開手順と判定条件を定義します。`TODAY_V2_RELEASE_READY` の最終値は、固定identityの全ゲートを実証したGitHub Releaseのソース外report/receiptで確認します。
 
-これはPrivateでの公開準備であり、正式Public releaseではありません。実行後の固定commit / tree / CI / archive / SHA-256 / 全ゲート判定はソース外receiptへ記録します。本書の予定を実施済みとして解釈しないでください。
+Ownerの明示的PUBLIC GOに基づき、独立repositoryをPublicへ移行しました。ソース公開だけでは正式Release完了と判定しません。実行後の固定commit / tree / CI / archive / SHA-256 / 全ゲート判定はソース外receiptへ記録します。本書の予定を実施済みとして解釈しないでください。
 
 ## 公開候補
 
-元の`kaelvance/Today`のprivate evidence historyは公開しない。独立root `9229313647722c2ccadeacb9025a6d824113e39b`から`kaelvance/Today-public-candidate`のPrivate候補へV2を配送する。GitHub Desktopの既存ログインを利用し、別の既存GitHub connectorでcommit / tree / noreplyを照合する。Device Flowは停止し、新しいPAT貼付やcredential抽出を行わない。
+元の`kaelvance/Today`のprivate evidence historyは公開しない。独立root `9229313647722c2ccadeacb9025a6d824113e39b`から`kaelvance/Today-public-candidate`のPrivate候補へV2を配送し、Privateでの統合・再qualification後にPublicへ移行しました。GitHub Desktopの既存ログインを利用し、別の既存GitHub connectorでcommit / tree / noreplyを照合する。Device Flowは停止し、新しいPAT貼付やcredential抽出を行わない。
 
 V1.9 rc.10のclean配送とCIはV2の合格証拠ではない。V2 source → V2 commit / tree → Private branch → 実Ubuntu CI → exact source archiveの対応を新しく作る。最終archiveは固定commitから生成し、self-referenceを避けてhashをソース外へ保持する。
 

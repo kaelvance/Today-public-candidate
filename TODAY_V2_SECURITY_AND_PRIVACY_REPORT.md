@@ -31,4 +31,4 @@ CoCや脆弱性の詳細を公開Issueへ送る提案、既存保存キーを新
 
 ## 未完了条件
 
-CoC専用非公開窓口は[Code of conduct](CODE_OF_CONDUCT.md)へ掲載済み。Ownerの作成・受信確認・掲載承認に基づきます。PVRはPrivateではPublic時の受付確認を代替できない。実Google認証、実Remote account、全モデル実推論、全支援技術を今回のmock検証から保証しない。Public化と重み配布の許可はない。
+CoC専用非公開窓口は[Code of conduct](CODE_OF_CONDUCT.md)へ掲載済み。Ownerの作成・受信確認・掲載承認に基づきます。PVRはPrivateではPublic時の受付確認を代替できない。実Google認証、実Remote account、全モデル実推論、全支援技術を今回のmock検証から保証しない。ソースのPublic化はOwnerの明示的PUBLIC GOで承認されました。重みの配布は今回のソース公開に含めません。PVRの有効化・公開受付・管理者通知設定と、未検証の外部reporter実送信/通知配達を区別します。
