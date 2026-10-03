@@ -2,7 +2,7 @@
 
 ## V2.0 Private候補
 
-V1.9 rc.10の独立clean rootを保持し、`kaelvance/Today-public-candidate` の `v2/design-implementation` branch / Draft PRでV2を検証します。ソース本体はMIT Copyright 2026 Kaito Kuon。元のToday private evidence historyやモデル成果物を公開候補へ移しません。専用CoC窓口は未作成（PENDING_OWNER）、Public化は未承認です。
+V1.9 rc.10の独立clean rootを保持し、`kaelvance/Today-public-candidate` の `v2/design-implementation` branch / Draft PRでV2を検証します。ソース本体はMIT Copyright 2026 Kaito Kuon。元のToday private evidence historyやモデル成果物を公開候補へ移しません。専用CoC窓口は[Code of conduct](../CODE_OF_CONDUCT.md)へ掲載済みで、Ownerが作成・受信確認・公開掲載承認を報告しました。Public化は明示的なPUBLIC GOまで未承認です。
 
 17工程のqualification、12工程のfresh archive、Mac Node22/24、Ubuntu Node22/24のexact head CI、新規Lighthouse測定をreceiptで対応させます。V2 UI gateを省略しません。
 
@@ -45,10 +45,10 @@ rc.6ではstranger/coldのpnpm起動にも非秘密PNPM_HOMEを保持します�
 
 ## Public移行時の必須確認
 
-1. exact RCのreport/receiptと残るNO項目を所有者が確認する。NOのまま公開しない。
-2. mainへの統合とPublicへの変更は、それぞれの対象commitと操作を明示して承認を得る。
+1. 固定した正式版候補のreport/receiptと残る項目を所有者が確認する。公開前の技術qualificationを満たしてからPUBLIC GOを判断する。公開後にしか実証できないgateが残る間はTODAY_V2_RELEASE_READY=NOを維持し、正式tag/Releaseを発行しない。
+2. default branch（現在はpublic-candidate）への統合とPublicへの変更は、対象commitと操作を明示し、OwnerのPUBLIC GOと委任範囲を確認して実施する。
 3. Publicへの変更が許可された時点で、Private vulnerability reportingを有効化し、Security/Advisoriesの受付画面と通知経路を実確認する。Privateの通常Issueは将来利用者の非公開報告窓口ではない。
-4. mainのPR必須・実check `Zero-key / Node 22` / `Zero-key / Node 24`・force push/削除制限を実設定し、enforced状態を確認する。sole maintainerの自己承認が不可能なreview要件は設定せず、owner判断とchecksを記録する。
+4. default branchのPR必須・実check `Zero-key / Node 22` / `Zero-key / Node 24`・force push/削除制限を実設定し、enforced状態を確認する。sole maintainerの自己承認が不可能なreview要件は設定せず、owner判断とchecksを記録する。
 5. default branchのREADME/MIT検出/文書/template、未認証のpublic clone→install/build/runを確認する。統合/version変更後のcommitに対応するCI/archiveを再確認する。
 6. 脆弱性受付・保護設定・public cloneが未確認ならV2 Release/tagを発行しない。今回のPrivate RC検証でこれらをPASSとしない。
 
