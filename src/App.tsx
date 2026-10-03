@@ -20,6 +20,7 @@ import {
 } from './application/composition'
 import { addCorrection } from './domain/context-engine'
 import { AIAssistance } from './AIAssistance'
+import { browserOnly } from './deployment'
 import { IntelligenceSettings } from './IntelligenceSettings'
 import { ShadowSettings } from './ShadowSettings'
 import { PluginSettings } from './PluginSettings'
@@ -1113,13 +1114,15 @@ function App() {
               }
             />
             <PluginSettings sampleVisible={state.showSamples === true} />
-            <AIAssistance
-              configured={aiAvailable}
-              enabled={state.aiEnabled === true}
-              onChange={(enabled) =>
-                setState((current) => current && { ...current, aiEnabled: enabled })
-              }
-            />
+            {!browserOnly && (
+              <AIAssistance
+                configured={aiAvailable}
+                enabled={state.aiEnabled === true}
+                onChange={(enabled) =>
+                  setState((current) => current && { ...current, aiEnabled: enabled })
+                }
+              />
+            )}
             <div className="setting-group">
               <h3>サンプル</h3>
               <p>実サービスには接続しない操作例です。手動で追加した項目には影響しません。</p>
@@ -1141,7 +1144,10 @@ function App() {
               <p>
                 手動項目{' '}
                 {state.items.filter((item) => item.sourceId === 'manual' && !item.demo).length}{' '}
-                件。手動項目はこのブラウザに保存されます。AIは任意です。リモート処理は既定で無効で、送信にはプライバシー設定とサーバー側の許可が必要です。
+                件。手動項目はこのブラウザに保存されます。
+                {browserOnly
+                  ? '公開ブラウザ版は外部AIや連携サービスへ項目を送りません。'
+                  : 'AIは任意です。リモート処理は既定で無効で、送信にはプライバシー設定とサーバー側の許可が必要です。'}
               </p>
               {state.queuedActions.length > 0 && (
                 <>

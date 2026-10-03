@@ -164,6 +164,8 @@ try {
     })
     .waitFor()
   assert.equal(await page.getByRole('button', { name: 'Gmail に接続する', exact: true }).count(), 0)
+  assert.equal(await page.getByRole('heading', { name: 'AI アシスト', exact: true }).count(), 0)
+  await page.getByText(/公開ブラウザ版は外部AIや連携サービスへ項目を送りません/).waitFor()
   const downloadPromise = page.waitForEvent('download')
   await page.getByRole('button', { name: '書き出す', exact: true }).click()
   const backup = await readFile(await (await downloadPromise).path())
