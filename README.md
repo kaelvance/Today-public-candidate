@@ -1,6 +1,16 @@
-# Today V2.0
+# Today V2.0.1
 
 毎日のタスク・予定・確認事項を、端末に保存して整理するローカルファーストの日本語アプリです。AIやAPIキー、Googleアカウント、Qwenを用意しなくても使えます。V2のソースはPublic repositoryで公開しています。和紙と墨を基調としたToday / やること / カレンダー / ふりかえりへ刷新し、V1.9の機能基盤を維持しています。[V2仕様](TODAY_V2_SPECIFICATION.md)、[変更](TODAY_V2_CHANGELOG.md)、[検証](TODAY_V2_TEST_REPORT.md)、[公開条件](TODAY_V2_OSS_RELEASE_REPORT.md)を参照してください。[CoC専用窓口](CODE_OF_CONDUCT.md)はOwner承認済みです。PVRの設定・公開受付、保護設定、匿名cloneを確認し、正式tag・Release・配布物照合まで終えた時点の最終判定を[GitHub Releases](https://github.com/kaelvance/Today-public-candidate/releases)のrelease reportへ記録します。ソースのPublic公開と正式Releaseの完了を区別します。旧V1.9の文書・数値は履歴です。
+
+## ブラウザで今すぐ使う（インストール不要）
+
+**[Todayを開く](https://kaelvance.github.io/Today-public-candidate/)**
+
+ログイン・Node.js・APIキーなしで、タスク・予定の登録／編集／完了、4画面の切替、バックアップを利用できます。項目はこのブラウザのIndexedDB／localStorageに保存し、サーバーへ送信しません。端末間の同期はありません。ブラウザのデータを消す前に設定からバックアップを書き出してください。シークレットモードでは終了時にデータが消える場合があります。
+
+公開先はGitHub Pagesです。初回オンライン読込後はキャッシュ済みのCoreをオフラインで使えます。Google Calendar／Gmail・外部AI・MLX／Ollamaはローカル版が必要で、公開ブラウザ版では接続しません。提供機能と制限は[ブラウザ版の説明](docs/PUBLIC_BROWSER.md)を参照してください。
+
+以下の `127.0.0.1` は**ソースから自分の端末で起動する場合だけ**のURLです。他の利用者や開発者のMacに接続するURLではありません。
 
 ## 必要環境
 
@@ -91,4 +101,4 @@ macOS用の`start.command`は任意のdevelopment起動補助です。通常は�
 
 [セキュリティ上の境界](docs/SECURITY_MODEL.md): 項目は平文のブラウザ保存です。trusted Pluginは同一プロセスで実行され、sandboxではありません。Remote endpointは管理者指定HTTPS・TLS検証・redirect拒否ですが、DNS解決先のIP固定はありません。任意サービスの実接続保証はありません。
 
-これは個人端末用のローカルアプリです。共有端末や公開サーバーでの多ユーザー運用は対象外です。オフラインの初回起動は、以前に同じoriginで正常なオンライン起動・キャッシュを完了している必要があります。
+項目を個人端末のブラウザへ保存するアプリです。ブラウザ版も各端末内で処理し、利用者データを共有する多ユーザーサーバーではありません。共有端末での利用は対象外です。オフラインの初回起動は、以前に同じoriginで正常なオンライン起動・キャッシュを完了している必要があります。

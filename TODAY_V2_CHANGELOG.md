@@ -1,6 +1,14 @@
 # Today V2 changelog
 
-## 2.0.0への昇格 — 公開待ち
+## 2.0.1 — 公開ブラウザURLの修正
+
+- GitHub Pagesで、インストール・GitHubログインなしのCore利用URLを配信。
+- Vite base / manifest / service workerをrepositoryのsubpathへ対応し、web buildのJS / CSSをprecache。
+- 公開静的版では存在しないGoogle / Gmail / AI APIへの接続を抑止し、利用範囲とブラウザ保存を設定・公開文書へ明記。
+- 公開buildのversion / commit / file hash、静的subpath smoke、実URLでの匿名試験を追加。ローカル版の既存機能・保存schema・依存固定は維持。
+- 2.0.0のtag / Release assetsを保持し、2.0.1に独立したsource / archive / CI qualificationを対応させる。
+
+## 2.0.0への昇格 — 公開済みの履歴
 
 - rc.3の製品機能・UIを維持し、版番号・SBOM・公開文書を正式版候補として整合。
 - Ownerが作成・受信確認・掲載承認したCoC専用窓口を反映。

@@ -1,11 +1,16 @@
-const CACHE = 'today-v1-9-static-1'
-const SHELL = ['/', '/index.html', '/manifest.webmanifest', '/icon.svg']
+const ROOT = new URL(self.registration.scope)
+const CACHE_PREFIX = `today-v2-static-${ROOT.pathname}-`
+const CACHE = `${CACHE_PREFIX}2.0.1`
+const atRoot = (path) => new URL(path, ROOT).href
+const SHELL = ['./', 'index.html', 'manifest.webmanifest', 'icon.svg'].map(atRoot)
+// The web build adds all hashed JS/CSS assets for the first offline reload.
+const PRECACHE = [...SHELL, ...(self.TODAY_STATIC_ASSETS || []).map(atRoot)]
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches
       .open(CACHE)
-      .then((cache) => cache.addAll(SHELL))
+      .then((cache) => cache.addAll(PRECACHE))
       .then(() => self.skipWaiting()),
   )
 })
@@ -17,7 +22,12 @@ self.addEventListener('activate', (event) => {
       .then((keys) =>
         Promise.all(
           keys
-            .filter((key) => key.startsWith('today-v1-') && key !== CACHE)
+            .filter(
+              (key) =>
+                (key.startsWith(CACHE_PREFIX) ||
+                  (ROOT.pathname === '/' && key.startsWith('today-v1-'))) &&
+                key !== CACHE,
+            )
             .map((key) => caches.delete(key)),
         ),
       )
@@ -31,6 +41,7 @@ self.addEventListener('fetch', (event) => {
   if (
     request.method !== 'GET' ||
     url.origin !== self.location.origin ||
+    !url.pathname.startsWith(ROOT.pathname) ||
     url.pathname.startsWith('/api/')
   )
     return
@@ -40,11 +51,11 @@ self.addEventListener('fetch', (event) => {
         .then((response) => {
           if (response.ok) {
             const copy = response.clone()
-            caches.open(CACHE).then((cache) => cache.put('/index.html', copy))
+            caches.open(CACHE).then((cache) => cache.put(atRoot('index.html'), copy))
           }
           return response
         })
-        .catch(() => caches.match('/index.html')),
+        .catch(() => caches.match(atRoot('index.html'))),
     )
     return
   }

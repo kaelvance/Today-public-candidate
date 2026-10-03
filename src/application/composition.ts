@@ -14,27 +14,31 @@ import { capabilities, defaultPolicy, type IntelligenceProvider } from '../intel
 import { HttpRemoteTransport } from '../intelligence/http-remote-transport'
 import { HttpOllamaTransport } from '../intelligence/http-ollama-transport'
 import { todayModelAlpha } from '../intelligence/registry'
+import { browserOnly } from '../deployment'
+import { browserCalendar, browserMail } from '../adapters/browser-only'
 
 /** Only this module chooses concrete providers for the browser application. */
 export const providerRegistry = createProviderRegistry({
-  calendar: new GoogleCalendarAdapter(),
-  mail: new LazyGmailProvider(),
+  calendar: browserOnly ? browserCalendar : new GoogleCalendarAdapter(),
+  mail: browserOnly ? browserMail : new LazyGmailProvider(),
   ai: new NullAIProvider(),
 })
 export const localRuntime = new HttpLocalRuntime()
-const intelligenceProviders: IntelligenceProvider[] = [
-  new TodayLocalProvider(
-    'intelligence.today-local',
-    todayModelAlpha.id,
-    localRuntime,
-    new LocalResourceGovernor(),
-  ),
-]
+const intelligenceProviders: IntelligenceProvider[] = browserOnly
+  ? []
+  : [
+      new TodayLocalProvider(
+        'intelligence.today-local',
+        todayModelAlpha.id,
+        localRuntime,
+        new LocalResourceGovernor(),
+      ),
+    ]
 export const intelligenceRouter = new IntelligenceRouter(intelligenceProviders, {
   ...defaultPolicy,
 })
 export async function configureOptionalRemoteIntelligence(): Promise<void> {
-  if (scenarioActive) return
+  if (browserOnly || scenarioActive) return
   if (!intelligenceProviders.some((provider) => provider.id === 'intelligence.local-ollama'))
     try {
       const response = await fetch('/api/ollama-model/status', { credentials: 'same-origin' })
@@ -127,7 +131,7 @@ export const saveApplicationState = (state: PersistedState) =>
   scenarioActive ? Promise.resolve() : saveState(state)
 
 export async function configureOptionalAI(): Promise<void> {
-  if (scenarioActive) return
+  if (browserOnly || scenarioActive) return
   // The server capability check selects the adapter without ever exposing credentials.
   try {
     const result = await fetch('/api/ai/status', { credentials: 'same-origin' })

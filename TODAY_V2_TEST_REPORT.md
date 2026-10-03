@@ -2,6 +2,10 @@
 
 本書は検証のスコープと再現手順を定義します。コミット後の実行結果、Node版、exit code、CI run ID、archive hashはソース外のqualification / release receiptを最終の証拠とします。旧V1.9の台帳やLighthouseをV2の結果として扱いません。
 
+## V2.0.1公開ブラウザgate
+
+2.0.1の新identityで完全qualificationを再実行します。追加gateは`pnpm build:web`と`pnpm test:web -- <source外directory>`です。APIを提供しない静的subpathで初回表示・作成・再読込・完了/復元・4画面・backup・mobile保存分離・offlineを検証します。配布後は`TODAY_WEB_URL=https://kaelvance.github.io/Today-public-candidate/ pnpm test:web -- <source外directory>`でローカルサーバーを起動せず実URLを検証し、別の第三者役も未認証browserで試験します。端末を共有する独立browser contextは別の物理回線・端末の検証ではありません。実結果とaxeのincompleteもreceiptへ保存します。
+
 ## Phase 1
 
 2026-09-30のPhase 1検証は成功。Vitest134件とNode33件（local6 / remote9 / Ollama3 / security11 / OSS4）、通常production E2E48フロー、V2追加20フロー、axe21回の違反0、別ディレクトリでのfrozen install / build / stranger6フローを確認しました。これは開発段階の結果です。固定RCのMac22 / 24、実Ubuntu CI、archive検証はソース外receiptを確認してください。

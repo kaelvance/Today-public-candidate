@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
+  base: mode === 'web' ? '/Today-public-candidate/' : '/',
   plugins: [react()],
   // Keep cold development startup on one React identity and prebundle all entry points.
   resolve: { dedupe: ['react', 'react-dom'] },
@@ -14,4 +15,4 @@ export default defineConfig({
       'react/jsx-dev-runtime',
     ],
   },
-})
+}))

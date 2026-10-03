@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import type { IntelligenceMode } from './intelligence/types'
+import { browserOnly } from './deployment'
 
 const modes: Array<{ value: IntelligenceMode; label: string }> = [
   { value: 'LOCAL_ONLY', label: 'この端末のみ' },
@@ -30,6 +31,7 @@ export function IntelligenceSettings({
   const [remoteProtocol, setRemoteProtocol] = useState('')
   const [ollamaModelId, setOllamaModelId] = useState('')
   useEffect(() => {
+    if (browserOnly) return
     let active = true
     const refresh = async () => {
       try {
@@ -107,6 +109,14 @@ export function IntelligenceSettings({
     ERROR: 'ローカルモデルを利用できません。通常のTodayで動作中。',
     UNAVAILABLE: 'ローカルモデルの状態を取得できません。通常のTodayで動作中。',
   }
+  if (browserOnly)
+    return (
+      <div className="setting-group">
+        <h3>インテリジェンス</h3>
+        <p>ブラウザ版はAIを使わずに動作します。タスク・予定の整理はこの端末で処理します。</p>
+        <p>Google連携・外部AI・ローカルモデルは、READMEのローカル版で利用できます。</p>
+      </div>
+    )
   return (
     <div className="setting-group" role="group" aria-label="インテリジェンス設定">
       <h3>インテリジェンス</h3>
