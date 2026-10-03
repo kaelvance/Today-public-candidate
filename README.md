@@ -1,6 +1,6 @@
-# Today V2 — Private release candidate preparation
+# Today V2.0
 
-毎日のタスク・予定・確認事項を、端末に保存して整理するローカルファーストの日本語アプリです。AIやAPIキー、Googleアカウント、Qwenを用意しなくても使えます。**V2は公開前の候補**です。和紙と墨を基調としたToday / やること / カレンダー / ふりかえりへ刷新し、V1.9の機能基盤を維持しています。[V2仕様](TODAY_V2_SPECIFICATION.md)、[変更](TODAY_V2_CHANGELOG.md)、[検証](TODAY_V2_TEST_REPORT.md)、[公開条件](TODAY_V2_OSS_RELEASE_REPORT.md)を参照してください。CoC専用窓口・Public側のPVR受付等が未完了の間はRelease Readyではありません。旧V1.9の文書・数値は履歴です。
+毎日のタスク・予定・確認事項を、端末に保存して整理するローカルファーストの日本語アプリです。AIやAPIキー、Googleアカウント、Qwenを用意しなくても使えます。**V2は公開前の候補**です。和紙と墨を基調としたToday / やること / カレンダー / ふりかえりへ刷新し、V1.9の機能基盤を維持しています。[V2仕様](TODAY_V2_SPECIFICATION.md)、[変更](TODAY_V2_CHANGELOG.md)、[検証](TODAY_V2_TEST_REPORT.md)、[公開条件](TODAY_V2_OSS_RELEASE_REPORT.md)を参照してください。[CoC専用窓口](CODE_OF_CONDUCT.md)はOwner承認済みです。Public側のPVR受付・保護設定・匿名clone等が未完了の間はRelease Readyではありません。旧V1.9の文書・数値は履歴です。
 
 ## 必要環境
 

@@ -24,11 +24,11 @@ Private branch / PR / exact head CI、README / LICENSE / SECURITY / CONTRIBUTING
 
 PVRはpublic repository用のため、Private検証ではPublic側の実受付をPASSにしない。未開設のprivate窓口を捏造しない。公開後の匿名cloneも公開前に合格とは言わない。
 
-## Ownerが完了する必要のある条件
+## 正式公開に必要な条件
 
-1. 自身が管理する専用CoC窓口を作成し、受信確認と公開文書への掲載を承認する。現在は未作成。
-2. その窓口を反映した最終候補の全qualificationを再実行する。
+1. CoC窓口は[Code of conduct](CODE_OF_CONDUCT.md)へ掲載済み。Ownerが作成・受信確認・掲載承認を報告しました。
+2. その窓口と2.0.0のversion / SBOM / 公開文書を反映した新identityへ、Mac Node22/24・実Ubuntu Node22/24でsource/archiveの全qualificationを実行する。
 3. GitHub PVRの公開時有効化・実受付確認と、公開後の匿名clone検証を完了する。必要な適用順序は運用手順で管理する。
-4. 最終Public化を明示承認し、最後の公開操作を行う。
+4. Ownerの明示的PUBLIC GO後、Release EngineerがPublic化・保護設定/PVR実証・匿名clone/fresh smoke・CI/linksを確認する。merge後の実commit/treeを再検証し、artifact再生成・照合後にv2.0.0 tagとGitHub Releaseを作成する。全必須ゲート完了まではRelease ReadyをNOとする。
 
-CoCの未作成をAIやChatGPTの回答で解消したことにしない。Public化、アカウント・plan変更、モデルの公開を本V2 source作業から推論しない。
+CoC窓口はOwnerの報告に基づき、AIやChatGPTの助言を受信確認・掲載承認の代替にしない。Public化、アカウント・plan変更、モデルの公開を本V2 source作業から推論しない。

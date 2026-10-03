@@ -1,4 +1,4 @@
-# Today V2 release notes — draft
+# Today 2.0.0 release notes — publication pending
 
 V2は毎日のタスク・予定・確認事項を、和紙と墨を基調とした静かな表示で整理するローカルファーストアプリです。Today / やること / カレンダー / ふりかえりから、今必要なことと残しておくことへ移動できます。
 
@@ -23,6 +23,6 @@ pnpm start
 
 ## 公開条件と制約
 
-現時点はPrivateの公開候補で、Public化の承認はありません。CoC専用窓口は未作成。実PVR受付と公開後の匿名cloneは別ゲートです。モデル・Adapter・学習データは非同梱。実Google認証や実Remote providerの成功は架空応答による検証で保証しません。GammaはExperimentalで品質未達です。
+現時点はPrivateの公開候補で、Public化の承認はありません。CoC専用窓口は[Code of conduct](CODE_OF_CONDUCT.md)へ掲載済み（Ownerの作成・受信確認・公開掲載承認に基づく）。実PVR受付と公開後の匿名cloneは別ゲートです。モデル・Adapter・学習データは非同梱。実Google認証や実Remote providerの成功は架空応答による検証で保証しません。GammaはExperimentalで品質未達です。
 
 TodayソースはMIT、Copyright 2026 Kaito Kuon。依存のライセンスとnoticeは別扱い。[Test report](TODAY_V2_TEST_REPORT.md)、[Security / privacy](TODAY_V2_SECURITY_AND_PRIVACY_REPORT.md)、[OSS report](TODAY_V2_OSS_RELEASE_REPORT.md) を参照してください。最終commit / tree / archive SHA-256 / CI runはソース外のrelease receiptへ記録し、自己参照のcommit値をソースへ埋め込みません。

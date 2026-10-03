@@ -1,5 +1,11 @@
 # Today V2 changelog
 
+## 2.0.0への昇格 — 公開待ち
+
+- rc.3の製品機能・UIを維持し、版番号・SBOM・公開文書を正式版候補として整合。
+- Ownerが作成・受信確認・掲載承認したCoC専用窓口を反映。
+- 新しいcommit / tree / archiveに対してqualificationを実施し、旧rc.3の結果を正式版PASSとして流用しない。Public化・tag・Releaseは別ゲート。
+
 ## V1.9 rc.10 → V2
 
 ### 表示

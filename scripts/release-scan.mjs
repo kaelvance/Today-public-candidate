@@ -15,6 +15,15 @@ const rules = {
 const fixtureExceptions = new Map([
   ['scripts/oss-audit.node-test.mjs:privateHome', 'deliberate scanner regression fixture'],
 ])
+// Owner approved this exact public CoC contact on 2026-10-03. Other files and
+// addresses still require manual review; credentials and home paths are unaffected.
+export function emailRequiresReview(address, file) {
+  const domain = address.split('@')[1]
+  if (/^(?:example\.(?:com|org|net|edu|invalid)|.*\.invalid)$/i.test(domain)) return false
+  return !(
+    file === 'CODE_OF_CONDUCT.md' && address === ['today.coc.taccitypark', 'gmail.com'].join('@')
+  )
+}
 export function scan(text, file) {
   return text.split(/\r?\n/).flatMap((line, index) =>
     Object.entries(rules)
@@ -66,9 +75,8 @@ export async function audit() {
       findings.push(...scan(text, file))
     if (!file.startsWith('third-party/'))
       for (const match of text.matchAll(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi)) {
-        const domain = match[0].split('@')[1]
         if (
-          !/^(?:example\.(?:com|org|net|edu|invalid)|.*\.invalid)$/i.test(domain) &&
+          emailRequiresReview(match[0], file) &&
           !file.startsWith('SBOM') &&
           !file.startsWith('THIRD_PARTY')
         )

@@ -39,4 +39,4 @@ Node 22.13以上の22系・24系、pnpm 11.19.0。実行サーバーは個人端
 
 ## 未完了の公開条件
 
-CoC専用の非公開窓口はOwnerが未作成と回答したためPENDING_OWNER。GitHub PVRの実受付確認と公開後の匿名cloneも、Privateの検証で代替しない。これらが未完了の間、`TODAY_V2_RELEASE_READY = NO`。
+CoC専用の非公開窓口は[Code of conduct](CODE_OF_CONDUCT.md)へ掲載済み。Ownerが作成・受信確認・公開掲載承認を報告しました。GitHub PVRの実受付確認と公開後の匿名cloneも、Privateの検証で代替しない。これらが未完了の間、`TODAY_V2_RELEASE_READY = NO`。
