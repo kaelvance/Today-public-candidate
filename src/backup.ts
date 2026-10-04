@@ -30,8 +30,10 @@ export function mergeBackup(
     throw new Error('invalid_backup')
   const imported = normalizePersistedState(record.state)
   const currentIds = new Set(current.items.map((item) => item.id))
-  const additions = imported.items.filter(
-    (item) => !item.demo && item.sourceId === 'manual' && !currentIds.has(item.id),
-  )
+  const additions = imported.items.filter((item) => {
+    if (item.demo || item.sourceId !== 'manual' || currentIds.has(item.id)) return false
+    currentIds.add(item.id)
+    return true
+  })
   return { state: { ...current, items: [...current.items, ...additions] }, added: additions.length }
 }

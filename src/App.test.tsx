@@ -5,6 +5,14 @@ import App from './App'
 
 beforeEach(() => {
   localStorage.clear()
+  // jsdom has no Web Locks. Real cross-tab ownership is tested in browser E2E.
+  Object.defineProperty(navigator, 'locks', {
+    configurable: true,
+    value: {
+      request: (_name: string, _options: LockOptions, callback: LockGrantedCallback<void>) =>
+        callback({} as Lock),
+    },
+  })
   Object.defineProperty(navigator, 'onLine', { configurable: true, value: true })
   vi.stubGlobal('matchMedia', () => ({
     matches: false,

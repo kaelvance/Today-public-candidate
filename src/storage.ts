@@ -6,8 +6,13 @@ import type { IntelligenceMode } from './intelligence/types'
 
 const DB = 'today-prototype-v1'
 const STORE = 'state'
-const KEY = 'current'
-const FALLBACK = 'today-prototype-state-v1'
+// Separate the new writer protocol from older, already-open tabs that do not use locks.
+const KEY = 'current-v2'
+const FALLBACK = 'today-prototype-state-v2'
+const LEGACY_KEY = 'current'
+const LEGACY_FALLBACK = 'today-prototype-state-v1'
+const WRITER_LOCK = 'today-prototype-v1/state/writer'
+let writerPermit: symbol | null = null
 const now = () => new Date().toISOString()
 const object = (value: unknown): value is Record<string, unknown> =>
   !!value && typeof value === 'object' && !Array.isArray(value)
@@ -306,11 +311,11 @@ function openDatabase(): Promise<IDBDatabase> {
   })
 }
 
-async function readDB(): Promise<unknown> {
+async function readDB(key = KEY): Promise<unknown> {
   const db = await openDatabase()
   return new Promise((resolve, reject) => {
     const transaction = db.transaction(STORE, 'readonly')
-    const request = transaction.objectStore(STORE).get(KEY)
+    const request = transaction.objectStore(STORE).get(key)
     request.onsuccess = () => resolve(request.result)
     request.onerror = () => reject(request.error)
     transaction.oncomplete = () => db.close()
@@ -347,11 +352,53 @@ export async function loadState(): Promise<PersistedState> {
   } catch {
     /* IndexedDB unavailable */
   }
+  // One-time migration. Never overwrite or remove the old copy, and never write back to it.
+  try {
+    const raw = localStorage.getItem(LEGACY_FALLBACK)
+    if (raw) return normalizePersistedState(JSON.parse(raw) as unknown)
+  } catch {
+    /* Try the legacy IndexedDB copy. */
+  }
+  try {
+    const state = await readDB(LEGACY_KEY)
+    if (state) return normalizePersistedState(state)
+  } catch {
+    /* An empty installation can still use the localStorage mirror. */
+  }
   return normalizePersistedState(null)
 }
 
 let writeChain = Promise.resolve()
+
+/** Cooperating tabs use one editor. Holding the lock precedes loading any application state. */
+export async function holdStateWriter(signal: AbortSignal, acquired: () => void): Promise<void> {
+  if (!navigator.locks?.request) throw new Error('storage_lock_unavailable')
+  await navigator.locks.request(WRITER_LOCK, { mode: 'exclusive', signal }, async (lock) => {
+    if (!lock || signal.aborted) return
+    const permit = Symbol('state-writer')
+    writerPermit = permit
+    try {
+      await new Promise<void>((release) => {
+        signal.addEventListener(
+          'abort',
+          () => {
+            if (writerPermit === permit) writerPermit = null
+            release()
+          },
+          { once: true },
+        )
+        acquired()
+      })
+    } finally {
+      if (writerPermit === permit) writerPermit = null
+      // Drain accepted writes before a surviving document hands ownership to another tab.
+      await writeChain.catch(() => {})
+    }
+  })
+}
+
 export function saveState(state: PersistedState): Promise<void> {
+  if (!writerPermit) return Promise.reject(new Error('storage_writer_required'))
   let mirrored = false
   try {
     localStorage.setItem(FALLBACK, JSON.stringify(state))

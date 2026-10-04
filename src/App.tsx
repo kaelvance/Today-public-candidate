@@ -9,6 +9,7 @@ import {
   type FormEvent,
 } from 'react'
 import { makeBackup, mergeBackup } from './backup'
+import { PersistenceGate } from './PersistenceGate'
 import {
   activeApplication,
   configureOptionalAI,
@@ -1622,4 +1623,10 @@ function App() {
   )
 }
 
-export default App
+export default function OwnedApp() {
+  return (
+    <PersistenceGate>
+      <App />
+    </PersistenceGate>
+  )
+}

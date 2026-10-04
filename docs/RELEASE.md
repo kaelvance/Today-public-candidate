@@ -1,5 +1,13 @@
 # Release process
 
+## V2.0.2候補の保存競合修正
+
+この更新は保存競合と確認済みのバックアップ内ID重複を修正する候補です。旧versionのtag・配布物を変更しません。単一編集タブ、待機タブの引き継ぎ、旧slot移行、旧writer分離、非対応環境での停止、破損mirrorからの復旧をローカル／web buildで検証します。
+
+新しいcommit/tree/source archiveに既存qualificationを流用しません。通常のMac Node22/24、Ubuntu CI Node22/24、source/archiveのゲートに加え、Public browser CIで所有権回帰を実行します。候補branch／draft PRの成功を公開サイトの反映や正式Releaseの成功とは扱いません。
+
+修正候補の作成・調査はOwner指示の範囲です。merge、公開site更新、正式tag／Releaseはcandidateの証跡を確認して別工程で実行します。高度な監査項目は[V2.0.2監査](V2_0_2_AUDIT.md)、実装しない将来対策は[悪用リスク低減計画](ABUSE_RESISTANCE_PLAN.md)へ記載します。
+
 ## V2.0.1の公開ブラウザ修正
 
 Ownerが公開ブラウザ不備の修正とV2.0.1公開を指示しました。2.0.0 tag / assetsを変更せず、保護default branchへPRで統合し、新identityでMac22 / 24、Ubuntu22 / 24、source / archiveの全ゲートを再実行します。追加の`Public browser` workflowはPRの静的build / smokeを実行しますが、PR artifactを公開には使いません。default branchのpushで独立build / smokeし、成功したbundleだけをGitHub Pagesへ配布します。deploy jobのみPages / OIDCの権限を持ちます。

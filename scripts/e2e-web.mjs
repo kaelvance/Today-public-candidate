@@ -7,6 +7,7 @@ import { once } from 'node:events'
 import { tmpdir } from 'node:os'
 import { createRequire } from 'node:module'
 import { launchBrowser } from './test-browser.mjs'
+import { verifyStorageOwnership } from './storage-ownership.mjs'
 
 const root = fileURLToPath(new URL('../', import.meta.url))
 const output = resolve(
@@ -20,6 +21,7 @@ const scope = new URL(base)
 assert(base.endsWith('/'))
 const record = {
   url: base,
+  browserEngine: process.env.TODAY_TEST_BROWSER || 'chromium',
   hosted: !!process.env.TODAY_WEB_URL,
   passed: false,
   flows: [],
@@ -207,6 +209,7 @@ try {
   record.flows.push('scoped-service-worker-offline-reload')
   await context.setOffline(false)
   offline = false
+  record.storageOwnership = await verifyStorageOwnership(browser, base, output)
   assert.deepEqual(record.pageErrors, [])
   assert.deepEqual(record.consoleErrors, [])
   assert.deepEqual(record.networkErrors, [])
