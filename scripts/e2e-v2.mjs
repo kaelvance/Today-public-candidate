@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { spawn } from 'node:child_process'
-import { mkdir, writeFile, readFile } from 'node:fs/promises'
+import { mkdir, writeFile, readFile, rm } from 'node:fs/promises'
 import { createRequire } from 'node:module'
 import { join, resolve, relative, sep } from 'node:path'
 import { tmpdir } from 'node:os'
@@ -17,6 +17,10 @@ assert(distance === '..' || distance.startsWith(`..${sep}`), 'Evidence outside s
 await mkdir(output, { recursive: true })
 const require = createRequire(import.meta.url)
 const axePath = require.resolve('axe-core/axe.min.js')
+// Temporary build-only fixture: real same-origin delivery also works when SW
+// handles requests that cannot be intercepted by Playwright context.route.
+const axeFixture = join(root, 'dist', '__test_axe.js')
+await writeFile(axeFixture, await readFile(axePath))
 const url = 'http://127.0.0.1:4187/'
 const server = spawn(process.execPath, ['server/index.mjs', '--production', '--port', '4187'], {
   stdio: 'pipe',
@@ -31,8 +35,7 @@ const record = {
   axeVersion: require('axe-core/package.json').version,
   fixtureClock: '2026-10-01T09:00:00+09:00',
   widths: [320, 390, 820, 1440],
-  scope:
-    'Chromium automation, WCAG A/AA including 2.1/2.2 tags; manual assistive-technology validation is separate',
+  scope: `${process.env.TODAY_TEST_BROWSER || 'chromium'} automation, WCAG A/AA including 2.1/2.2 tags; manual assistive-technology validation is separate`,
 }
 async function accessible(label) {
   await page.waitForFunction(() => {
@@ -115,10 +118,6 @@ try {
     colorScheme: 'light',
     reducedMotion: 'reduce',
   })
-  // Browser-only same-origin instrumentation respects the application's production CSP.
-  await context.route('**/__test_axe.js', async (route) =>
-    route.fulfill({ contentType: 'application/javascript', body: await readFile(axePath) }),
-  )
   page = await context.newPage()
   page.on('pageerror', (error) => record.errors.push(error.message))
   await page.clock.setFixedTime(new Date(record.fixtureClock))
@@ -362,6 +361,7 @@ try {
       .catch(() => {})
   throw error
 } finally {
+  await rm(axeFixture, { force: true })
   await writeFile(
     join(output, `v2-${prefix}-ui-report.json`),
     JSON.stringify(record, null, 2) + '\n',

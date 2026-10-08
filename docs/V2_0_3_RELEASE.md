@@ -26,7 +26,7 @@ V2.0.2候補の単一編集タブ方式を引き継ぎ、確認済みの保存�
 - GitHub Pagesの別projectとoriginを共有。subpath/SW scopeはlocalStorageの分離ではない。
 - バックアップはmanual items中心。同ID置換、Context等の完全復元、端末間同期は未実装。
 - ブラウザ容量・OS終了・サイトデータ削除による消失を防ぐ永続保証はない。IDB transactionがterminal eventを発行しない環境の無期限停止対策は未検証。
-- 実Safari、実iPhone/Android、実BFCache、OS強制終了・休止は自動試験のPASSに含めない。Playwright engineの結果と区別する。
+- 実Safariは専用の架空データ環境でCore追加・保存・再読込・配信サーバー停止後の再読込と操作を確認した。旧candidateと共通の実装blobに対する限定的な検証であり、実iPhone/Android、実BFCache、OS強制終了・休止のPASSではない。Playwright engineの結果と区別する。
 - Google実アカウント・外部AI本番接続、Gammaの対話品質、独立第三者の侵入試験は未検証。
 - 試験で対応環境の重大な保存・更新障害が確認された場合は正式Releaseを停止し、制約の記載だけでPASSにしない。
 
