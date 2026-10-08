@@ -94,6 +94,7 @@ try {
     mimeType: 'application/json',
     buffer: Buffer.from(JSON.stringify(backup)),
   })
+  await page.getByRole('button', { name: '確認して追加する', exact: true }).click()
   await page.getByText('0件の項目を読み込みました。既存の項目は保持されています。').waitFor()
   await page.keyboard.press('Escape')
   await page.getByRole('dialog', { name: '設定' }).waitFor({ state: 'hidden' })

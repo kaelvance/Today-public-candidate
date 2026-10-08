@@ -13,6 +13,17 @@ const LEGACY_KEY = 'current'
 const LEGACY_FALLBACK = 'today-prototype-state-v1'
 const WRITER_LOCK = 'today-prototype-v1/state/writer'
 let writerPermit: symbol | null = null
+let revision = 0
+let loaded = false
+export type StorageLoadStatus = 'FIRST_USE' | 'READY' | 'RECOVERED' | 'UNAVAILABLE' | 'CORRUPT'
+let loadStatus: StorageLoadStatus = 'UNAVAILABLE'
+export const storageLoadStatus = () => loadStatus
+
+export class StorageLoadError extends Error {
+  constructor(readonly status: 'UNAVAILABLE' | 'CORRUPT') {
+    super(`storage_${status.toLowerCase()}`)
+  }
+}
 const now = () => new Date().toISOString()
 const object = (value: unknown): value is Record<string, unknown> =>
   !!value && typeof value === 'object' && !Array.isArray(value)
@@ -305,66 +316,148 @@ export function normalizePersistedState(value: unknown): PersistedState {
 function openDatabase(): Promise<IDBDatabase> {
   return new Promise((resolve, reject) => {
     const request = indexedDB.open(DB, 1)
+    let settled = false
+    const fail = () => {
+      if (settled) return
+      settled = true
+      clearTimeout(timer)
+      reject(new Error('storage_database_unavailable'))
+    }
+    const timer = setTimeout(fail, 3000)
     request.onupgradeneeded = () => request.result.createObjectStore(STORE)
-    request.onsuccess = () => resolve(request.result)
-    request.onerror = () => reject(request.error)
+    request.onsuccess = () => {
+      clearTimeout(timer)
+      if (settled) return request.result.close()
+      settled = true
+      resolve(request.result)
+    }
+    request.onerror = fail
+    request.onblocked = fail
   })
 }
 
 async function readDB(key = KEY): Promise<unknown> {
   const db = await openDatabase()
   return new Promise((resolve, reject) => {
-    const transaction = db.transaction(STORE, 'readonly')
-    const request = transaction.objectStore(STORE).get(key)
-    request.onsuccess = () => resolve(request.result)
-    request.onerror = () => reject(request.error)
-    transaction.oncomplete = () => db.close()
+    try {
+      const transaction = db.transaction(STORE, 'readonly')
+      const request = transaction.objectStore(STORE).get(key)
+      transaction.oncomplete = () => {
+        db.close()
+        resolve(request.result)
+      }
+      transaction.onabort = transaction.onerror = () => {
+        db.close()
+        reject(new Error('storage_read_failed'))
+      }
+    } catch {
+      db.close()
+      reject(new Error('storage_read_failed'))
+    }
   })
 }
 
-async function writeDB(state: PersistedState): Promise<void> {
+async function writeDB(state: PersistedState & { persistenceRevision: number }): Promise<void> {
   const db = await openDatabase()
   return new Promise((resolve, reject) => {
-    const transaction = db.transaction(STORE, 'readwrite')
-    transaction.objectStore(STORE).put(state, KEY)
-    transaction.oncomplete = () => {
+    const finish = (error?: Error) => {
       db.close()
-      resolve()
+      if (error) reject(error)
+      else resolve()
     }
-    transaction.onerror = () => {
-      db.close()
-      reject(transaction.error)
+    try {
+      const transaction = db.transaction(STORE, 'readwrite')
+      // Register before put: an explicit abort has no error event in some browsers.
+      transaction.oncomplete = () => finish()
+      transaction.onabort = () => finish(new Error('storage_write_aborted'))
+      transaction.onerror = () => {
+        // An unhandled IDB error aborts the transaction. Drain through onabort.
+      }
+      transaction.objectStore(STORE).put(state, KEY)
+    } catch {
+      finish(new Error('storage_write_failed'))
     }
   })
+}
+
+type Copy =
+  | { kind: 'valid'; state: PersistedState; revision: number }
+  | { kind: 'absent' | 'corrupt' | 'unavailable' }
+
+function inspectCopy(value: unknown): Copy {
+  if (value === undefined) return { kind: 'absent' }
+  if (
+    !object(value) ||
+    ![1, 2, 3].includes(Number(value.version)) ||
+    typeof value.version !== 'number' ||
+    !Array.isArray(value.items) ||
+    value.items.some((item) => !normalizeItem(item)) ||
+    ['queuedActions', 'contexts', 'contextCorrections', 'conflictResolutions'].some(
+      (key) => value[key] !== undefined && !Array.isArray(value[key]),
+    ) ||
+    (value.persistenceRevision !== undefined &&
+      (!Number.isSafeInteger(value.persistenceRevision) || Number(value.persistenceRevision) < 0))
+  )
+    return { kind: 'corrupt' }
+  return {
+    kind: 'valid',
+    state: normalizePersistedState(value),
+    revision: Number(value.persistenceRevision || 0),
+  }
+}
+
+async function readCopies(mirror: string, key: string): Promise<Copy[]> {
+  let local: Copy
+  try {
+    const raw = localStorage.getItem(mirror)
+    try {
+      local = raw === null ? { kind: 'absent' } : inspectCopy(JSON.parse(raw))
+    } catch {
+      local = { kind: 'corrupt' }
+    }
+  } catch {
+    local = { kind: 'unavailable' }
+  }
+  let database: Copy
+  try {
+    database = inspectCopy(await readDB(key))
+  } catch {
+    database = { kind: 'unavailable' }
+  }
+  return [local, database]
 }
 
 export async function loadState(): Promise<PersistedState> {
-  // The synchronous mirror protects edits when the tab closes before an IndexedDB transaction finishes.
-  try {
-    const raw = localStorage.getItem(FALLBACK)
-    if (raw) return normalizePersistedState(JSON.parse(raw) as unknown)
-  } catch {
-    /* private mode may block storage */
+  loaded = false
+  const current = await readCopies(FALLBACK, KEY)
+  const choose = (copies: Copy[], migration = false): PersistedState | null => {
+    const valid = copies
+      .filter((copy): copy is Extract<Copy, { kind: 'valid' }> => copy.kind === 'valid')
+      .sort((a, b) => b.revision - a.revision)
+    if (!valid.length) return null
+    revision = valid[0].revision
+    loadStatus =
+      migration || copies.some((copy) => copy.kind === 'corrupt' || copy.kind === 'unavailable')
+        ? 'RECOVERED'
+        : 'READY'
+    loaded = true
+    return valid[0].state
   }
-  try {
-    const state = await readDB()
-    if (state) return normalizePersistedState(state)
-  } catch {
-    /* IndexedDB unavailable */
+  const fail = (copies: Copy[]): never => {
+    loadStatus = copies.some((copy) => copy.kind === 'unavailable') ? 'UNAVAILABLE' : 'CORRUPT'
+    throw new StorageLoadError(loadStatus)
   }
-  // One-time migration. Never overwrite or remove the old copy, and never write back to it.
-  try {
-    const raw = localStorage.getItem(LEGACY_FALLBACK)
-    if (raw) return normalizePersistedState(JSON.parse(raw) as unknown)
-  } catch {
-    /* Try the legacy IndexedDB copy. */
-  }
-  try {
-    const state = await readDB(LEGACY_KEY)
-    if (state) return normalizePersistedState(state)
-  } catch {
-    /* An empty installation can still use the localStorage mirror. */
-  }
+  const selected = choose(current)
+  if (selected) return selected
+  // Do not resurrect an old snapshot when a newer slot exists but cannot be read.
+  if (current.some((copy) => copy.kind !== 'absent')) return fail(current)
+  const legacy = await readCopies(LEGACY_FALLBACK, LEGACY_KEY)
+  const migrated = choose(legacy, true)
+  if (migrated) return migrated
+  if (legacy.some((copy) => copy.kind !== 'absent')) return fail(legacy)
+  revision = 0
+  loaded = true
+  loadStatus = 'FIRST_USE'
   return normalizePersistedState(null)
 }
 
@@ -377,6 +470,7 @@ export async function holdStateWriter(signal: AbortSignal, acquired: () => void)
     if (!lock || signal.aborted) return
     const permit = Symbol('state-writer')
     writerPermit = permit
+    loaded = false
     try {
       await new Promise<void>((release) => {
         signal.addEventListener(
@@ -399,22 +493,22 @@ export async function holdStateWriter(signal: AbortSignal, acquired: () => void)
 
 export function saveState(state: PersistedState): Promise<void> {
   if (!writerPermit) return Promise.reject(new Error('storage_writer_required'))
+  if (!loaded) return Promise.reject(new Error('storage_load_required'))
+  if (revision >= Number.MAX_SAFE_INTEGER)
+    return Promise.reject(new Error('storage_revision_limit'))
+  const snapshot = { ...state, persistenceRevision: ++revision }
   let mirrored = false
   try {
-    localStorage.setItem(FALLBACK, JSON.stringify(state))
+    localStorage.setItem(FALLBACK, JSON.stringify(snapshot))
     mirrored = true
   } catch {
-    try {
-      localStorage.removeItem(FALLBACK)
-    } catch {
-      /* IndexedDB may still work */
-    }
+    // Preserve the last good copy. Revision selects a newer successful IDB write.
   }
   writeChain = writeChain
     .catch(() => {})
     .then(async () => {
       try {
-        await writeDB(state)
+        await writeDB(snapshot)
       } catch {
         if (!mirrored) throw new Error('No persistent storage available')
       }

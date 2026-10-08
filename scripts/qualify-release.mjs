@@ -61,6 +61,10 @@ try {
     ['build', ['build']],
     ['e2e', ['test:e2e']],
     ['v2-ui', ['test:v2', '--', output]],
+    ['build-web', ['build:web']],
+    ['web', ['test:web', '--', join(output, 'web')]],
+    ['storage-recovery', ['test:recovery', '--', join(output, 'storage-recovery')]],
+    ['update', ['test:update', '--', join(output, 'update')]],
     ['packaging', ['release:package', '--', output]],
   ]) {
     const started = Date.now()

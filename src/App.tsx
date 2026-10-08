@@ -8,7 +8,9 @@ import {
   type ChangeEvent,
   type FormEvent,
 } from 'react'
-import { makeBackup, mergeBackup } from './backup'
+import { makeBackup, mergeBackup, previewBackup } from './backup'
+import { storageLoadStatus } from './storage'
+import { makeSafeDiagnostics } from './application/diagnostics'
 import { PersistenceGate } from './PersistenceGate'
 import {
   activeApplication,
@@ -72,6 +74,10 @@ function App() {
   const [draft, setDraft] = useState('')
   const [toast, setToast] = useState<Toast | null>(null)
   const [saveError, setSaveError] = useState(false)
+  const [saving, setSaving] = useState(false)
+  const [loadError, setLoadError] = useState(false)
+  const [loadAttempt, setLoadAttempt] = useState(0)
+  const [backupPreview, setBackupPreview] = useState<ReturnType<typeof previewBackup> | null>(null)
   const [busy, setBusy] = useState(false)
   const [online, setOnline] = useState(navigator.onLine)
   const [calendarUi, setCalendarUi] = useState<CalendarUi>({
@@ -94,6 +100,7 @@ function App() {
   const stateRef = useRef(state)
   const navigationPendingRef = useRef(false)
   const quickCaptureRef = useRef(false)
+  const saveGeneration = useRef(0)
   stateRef.current = state
 
   useLayoutEffect(() => {
@@ -105,12 +112,21 @@ function App() {
   }, [view])
 
   useEffect(() => {
+    let cancelled = false
     loadInitialState()
-      .then(setState)
-      .catch(() =>
-        setState({ version: 3, items: [], queuedActions: [], theme: 'system', showSamples: false }),
-      )
-  }, [])
+      .then((value) => {
+        if (!cancelled) {
+          setLoadError(false)
+          setState(value)
+        }
+      })
+      .catch(() => {
+        if (!cancelled) setLoadError(true)
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [loadAttempt])
   useEffect(() => {
     const result = new URLSearchParams(location.search).get('gmail')
     if (result === 'cancelled') setToast({ message: 'Gmail の接続はキャンセルされました。' })
@@ -135,10 +151,19 @@ function App() {
     if (online) void configureOptionalRemoteIntelligence()
   }, [online])
   useLayoutEffect(() => {
-    if (state)
-      saveApplicationState(state)
-        .then(() => setSaveError(false))
-        .catch(() => setSaveError(true))
+    if (!state) return
+    const generation = ++saveGeneration.current
+    setSaving(true)
+    saveApplicationState(state)
+      .then(() => {
+        if (generation === saveGeneration.current) setSaveError(false)
+      })
+      .catch(() => {
+        if (generation === saveGeneration.current) setSaveError(true)
+      })
+      .finally(() => {
+        if (generation === saveGeneration.current) setSaving(false)
+      })
   }, [state])
   useEffect(() => {
     intelligenceRouter.policy.mode = state?.intelligenceMode || 'LOCAL_ONLY'
@@ -838,11 +863,7 @@ function App() {
     }
     try {
       const parsed: unknown = JSON.parse(await file.text())
-      const result = mergeBackup(state, parsed)
-      setState(result.state)
-      setToast({
-        message: `${result.added}件の項目を読み込みました。既存の項目は保持されています。`,
-      })
+      setBackupPreview(previewBackup(state, parsed))
     } catch {
       setToast({ message: 'バックアップを読み込めませんでした。データは変更していません。' })
     }
@@ -850,12 +871,30 @@ function App() {
 
   if (!state)
     return (
-      <div className="loading-shell" role="status" aria-live="polite">
+      <main className="loading-shell" role="status" aria-live="polite">
         <div className="loading-mark">
           <Icon name="check" size={28} />
         </div>
-        <span>Todayを準備しています</span>
-      </div>
+        {loadError ? (
+          <>
+            <h1>保存内容を読み込めませんでした</h1>
+            <p>
+              保存内容を保護するため、編集と自動保存を停止しています。ブラウザの保存設定を確認して再試行してください。
+            </p>
+            <button
+              className="reset-button"
+              onClick={() => {
+                setLoadError(false)
+                setLoadAttempt((value) => value + 1)
+              }}
+            >
+              読み込みを再試行
+            </button>
+          </>
+        ) : (
+          <span>Todayを準備しています</span>
+        )}
+      </main>
     )
 
   return (
@@ -908,6 +947,11 @@ function App() {
                 <div className="error-banner" role="alert">
                   保存できませんでした。入力はこの画面に残っています。ブラウザの保存設定を確認してください。
                 </div>
+              )}
+              {storageLoadStatus() === 'RECOVERED' && (
+                <p className="calendar-notice" role="status">
+                  利用可能な保存コピーから読み込みました。念のためバックアップを書き出してください。
+                </p>
               )}
               {state.items.some((item) => item.sourceId === 'google-calendar') &&
                 ['stale', 'offline', 'failed'].includes(calendarUi.phase) && (
@@ -1179,7 +1223,16 @@ function App() {
             </div>
             <div className="setting-group">
               <h3>バックアップ</h3>
-              <p>手動項目をJSONで保存・復元します。ファイルは外部へ送信されません。</p>
+              <p>
+                手動項目をJSONで書き出し、既存項目を残して追加読込します。完全復元ではありません。ファイルは外部へ送信されません。
+              </p>
+              <p role="status">
+                {saving
+                  ? '保存中'
+                  : saveError
+                    ? '保存に失敗しています'
+                    : '保存済み（利用可能な保存先）'}
+              </p>
               <div className="backup-actions">
                 <button className="reset-button" onClick={exportBackup}>
                   書き出す
@@ -1196,10 +1249,59 @@ function App() {
                   aria-label="バックアップファイル"
                 />
               </div>
+              {backupPreview && (
+                <div className="setting-group" role="region" aria-label="バックアップの読込確認">
+                  <p>
+                    追加 {backupPreview.added}件・重複 {backupPreview.duplicates}件・不正{' '}
+                    {backupPreview.invalid}件・対象外 {backupPreview.excluded}
+                    件。既存項目は変更しません。
+                  </p>
+                  <button
+                    className="reset-button"
+                    onClick={() => {
+                      const result = mergeBackup(state, backupPreview.value)
+                      setState(result.state)
+                      setBackupPreview(null)
+                      setToast({
+                        message: `${result.added}件の項目を読み込みました。既存の項目は保持されています。`,
+                      })
+                    }}
+                  >
+                    確認して追加する
+                  </button>
+                  <button className="reset-button" onClick={() => setBackupPreview(null)}>
+                    読み込みを取り消す
+                  </button>
+                </div>
+              )}
             </div>
             <div className="setting-group">
               <h3>このアプリ</h3>
-              <p>Today V2.0.1 · オフラインでも手動項目と取得済みの情報を利用できます。</p>
+              <p>Today V2.0.3 · オフラインでも手動項目と取得済みの情報を利用できます。</p>
+              <button
+                className="reset-button"
+                onClick={async () => {
+                  try {
+                    await navigator.clipboard.writeText(
+                      makeSafeDiagnostics({
+                        version: '2.0.3',
+                        storage: saveError ? 'FAILED' : saving ? 'SAVING' : 'AVAILABLE',
+                        load: storageLoadStatus(),
+                        online,
+                        mode: browserOnly ? 'web' : 'local',
+                        serviceWorker: !!navigator.serviceWorker?.controller,
+                      }),
+                    )
+                    setToast({
+                      message: '本文・接続先・認証情報を含まない診断情報をコピーしました',
+                    })
+                  } catch {
+                    setToast({ message: '診断情報をコピーできませんでした' })
+                  }
+                }}
+              >
+                診断情報をコピー
+              </button>
             </div>
           </div>
         </ModalFrame>

@@ -1,0 +1,45 @@
+name: Browser compatibility
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: browser-compatibility-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  browser:
+    name: Browser / ${{ matrix.browser }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [firefox, webkit]
+    env:
+      TODAY_TEST_BROWSER: ${{ matrix.browser }}
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@f40ffcd9367d9f12939873eb1018b921a783ffaa
+        with:
+          version: 11.19.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright-core install --with-deps ${{ matrix.browser }}
+      - run: pnpm build
+      - run: pnpm test:v2 -- "${RUNNER_TEMP}/today-browser-compatibility"
+      - run: pnpm build:web
+      - run: pnpm test:recovery -- "${RUNNER_TEMP}/today-browser-compatibility/storage"
+      - run: pnpm test:update -- "${RUNNER_TEMP}/today-browser-compatibility/update"
+      - name: Preserve evidence including failures
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: today-browser-${{ matrix.browser }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/today-browser-compatibility/
+          retention-days: 30

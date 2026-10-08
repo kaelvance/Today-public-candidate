@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:88d9b793-2bc2-4d45-a070-1ba1e924c45d",
+  "serialNumber": "urn:uuid:590498eb-ecdc-4ebd-aef8-c2500f54f83c",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-03T09:16:08.716Z",
+    "timestamp": "2026-10-08T14:38:44.067Z",
     "lifecycles": [
       {
         "phase": "pre-build"
@@ -23,9 +23,9 @@
     "component": {
       "type": "application",
       "name": "today-local",
-      "version": "2.0.2",
-      "purl": "pkg:npm/today-local@2.0.2",
-      "bom-ref": "pkg:npm/today-local@2.0.2",
+      "version": "2.0.3",
+      "purl": "pkg:npm/today-local@2.0.3",
+      "bom-ref": "pkg:npm/today-local@2.0.3",
       "licenses": [
         {
           "license": {
@@ -37,7 +37,7 @@
     "properties": [
       {
         "name": "today:lockSha256",
-        "value": "c968c4046244275eafd27575bed5169de6094da2f3c0b93f33a061306b3a644c"
+        "value": "b92458cd73f1585248e3a8de9d0a1830a02201eaecfeb0b2ea82f94672582453"
       }
     ]
   },
@@ -8092,9 +8092,9 @@
     {
       "type": "library",
       "name": "source-map-js",
-      "version": "1.2.1",
-      "purl": "pkg:npm/source-map-js@1.2.1",
-      "bom-ref": "pkg:npm/source-map-js@1.2.1",
+      "version": "1.2.2",
+      "purl": "pkg:npm/source-map-js@1.2.2",
+      "bom-ref": "pkg:npm/source-map-js@1.2.2",
       "scope": "excluded",
       "properties": [
         {
@@ -8105,11 +8105,11 @@
       "externalReferences": [
         {
           "type": "distribution",
-          "url": "https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.1.tgz",
+          "url": "https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.2.tgz",
           "hashes": [
             {
               "alg": "SHA-512",
-              "content": "51758c2a12cec1529bef6f0852d40f5f17d853ebac7726ed52b2bff2e184f0240cbeb84ea70bf30c1c23d108522fb31073bbc8b084811bc550f3e203431a5f40"
+              "content": "2868fff18e37c77e5a6550edb7e27898ad61a0b18750b3187d290e0c93508cd0c2de85b53ea3e8c4cc28d292d4b1633f5041b338dfcdc5e1f2c047cd5cd3f757"
             }
           ]
         }
@@ -10021,7 +10021,7 @@
   ],
   "dependencies": [
     {
-      "ref": "pkg:npm/today-local@2.0.2",
+      "ref": "pkg:npm/today-local@2.0.3",
       "dependsOn": [
         "pkg:npm/%40testing-library/react@16.3.3",
         "pkg:npm/%40types/react@19.3.0",
@@ -11306,7 +11306,7 @@
       "ref": "pkg:npm/postcss@8.5.28",
       "dependsOn": [
         "pkg:npm/nanoid@3.3.19",
-        "pkg:npm/source-map-js@1.2.1"
+        "pkg:npm/source-map-js@1.2.2"
       ]
     },
     {
@@ -11314,7 +11314,7 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/source-map-js@1.2.1",
+      "ref": "pkg:npm/source-map-js@1.2.2",
       "dependsOn": []
     },
     {

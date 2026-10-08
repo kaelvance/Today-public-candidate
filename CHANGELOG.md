@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.0.3 — 2026-10-08
+
+- dependency gateで発見したHigh advisoryを修正するため、間接依存source-map-jsを1.2.1→1.2.2へ更新。SBOM/NOTICEを再生成して全qualificationを再実行。
+
+- V2.0.2候補の単一編集タブとバックアップID重複修正を含む。
+- 保存データの不正shape・読込不能を初回起動と区別し、正常コピーから復旧。読込失敗時は編集・自動保存を停止して再試行を案内。
+- revisionで新しい正常コピーを選択。書込不能時に以前のmirrorを削除しない。IDB abortを終了させて所有権解放を待ち続ける問題を修正。
+- バックアップは追加件数・重複・不正・対象外を確認してから追加し、取消可能。診断コピーは状態のallowlistのみ。
+- Service Workerは旧タブが閉じるまで更新待機し、以前のasset cacheを1世代保持。ビルド内容からcache識別子を生成。
+- 保存障害・更新試験をsource/archive qualificationへ追加。AI Chatは調査のみで実装しない。
+
 ## 2.0.0-rc.2 — 2026-09-30
 
 - rc.1のfresh archive cold startが実日付で固定予定を過去として扱い、見出し待機に失敗。既存scenario suiteと同じ9/28のUI時計を固定し、3試行とpageerror assertionを維持。元のfailure / ZIP / receiptは保持。

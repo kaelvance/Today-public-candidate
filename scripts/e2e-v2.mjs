@@ -322,13 +322,21 @@ try {
     colorScheme: 'light',
   })
   const failurePage = await failureContext.newPage()
-  await failurePage.addInitScript(() => {
-    Object.defineProperty(window, 'indexedDB', { configurable: true, value: undefined })
+  await failurePage.goto(url)
+  await failurePage.getByRole('textbox', { name: 'Todayに追加すること' }).waitFor()
+  // Reading must first succeed. A write-only failure cannot be modeled by
+  // denying initial reads: those now correctly block the application instead.
+  await failurePage.evaluate(() => {
+    IDBFactory.prototype.open = () => {
+      throw new Error('fictional write unavailable')
+    }
     Storage.prototype.setItem = () => {
-      throw new Error('storage unavailable')
+      throw new Error('fictional write unavailable')
     }
   })
-  await failurePage.goto(url)
+  await failurePage.getByRole('textbox', { name: 'Todayに追加すること' }).fill('架空 保存失敗検証')
+  await failurePage.getByRole('textbox', { name: 'Todayに追加すること' }).press('Enter')
+  await failurePage.getByRole('button', { name: 'Todayに追加', exact: true }).click()
   await failurePage.getByRole('alert').filter({ hasText: '保存できませんでした' }).waitFor()
   await failurePage.screenshot({
     path: join(output, `v2-${prefix}-storage-error.png`),

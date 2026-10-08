@@ -16,11 +16,28 @@ const files = (await readdir(new URL('assets/', dist))).filter((name) => /\.(js|
 const sw = await readFile(new URL('sw.js', dist), 'utf8')
 await writeFile(
   new URL('sw.js', dist),
-  `self.TODAY_STATIC_ASSETS = ${JSON.stringify(files.map((name) => `assets/${name}`))};\n${sw}`,
+  `self.TODAY_BUILD_ID = ${JSON.stringify(
+    createHash('sha256')
+      .update(index + files.join('|') + sw)
+      .digest('hex')
+      .slice(0, 16),
+  )};\nself.TODAY_STATIC_ASSETS = ${JSON.stringify(files.map((name) => `assets/${name}`))};\n${sw}`,
 )
 await copyFile(new URL('THIRD_PARTY_NOTICES.md', root), new URL('THIRD_PARTY_NOTICES.md', dist))
 await copyFile(new URL('LICENSE', root), new URL('LICENSE', dist))
-const commit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim()
+let commit = null
+try {
+  commit = execFileSync('git', ['rev-parse', 'HEAD'], {
+    cwd: root,
+    encoding: 'utf8',
+    stdio: ['ignore', 'pipe', 'ignore'],
+  }).trim()
+} catch {
+  // Fresh source archives intentionally have no Git metadata. Qualification supplies
+  // the already verified archive commit; ordinary archive builds remain unclaimed.
+  if (/^[a-f0-9]{40}$/.test(process.env.TODAY_SOURCE_COMMIT || ''))
+    commit = process.env.TODAY_SOURCE_COMMIT
+}
 const version = JSON.parse(await readFile(new URL('package.json', root), 'utf8')).version
 const hashes = {}
 for (const path of ['index.html', 'sw.js', ...files.map((name) => `assets/${name}`)])

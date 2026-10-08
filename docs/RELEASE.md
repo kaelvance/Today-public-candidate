@@ -1,5 +1,11 @@
 # Release process
 
+## V2.0.3
+
+Ownerが構築・調査完了後のGitHub正式公開を承認しています。AI Chatは調査のみです。[V2.0.3](V2_0_3_RELEASE.md)を参照し、新しいcommit/tree/ZIPを固定してMac22/24とUbuntu22/24のqualification、source/archive、web・保存復旧・更新gateを通します。全ての既存gateを維持し、失敗は保存して原因を修正します。
+
+required CI、公開clone、Pages deployment identity、公開smokeを確認するまで正式tag/Releaseを発行しません。保護branchとPVRを維持します。未検証の実端末・実Google・実モデル品質をPASS扱いしません。重大な保存・security/privacy・identity問題はRelease HOLDです。
+
 ## V2.0.2候補の保存競合修正
 
 この更新は保存競合と確認済みのバックアップ内ID重複を修正する候補です。旧versionのtag・配布物を変更しません。単一編集タブ、待機タブの引き継ぎ、旧slot移行、旧writer分離、非対応環境での停止、破損mirrorからの復旧をローカル／web buildで検証します。

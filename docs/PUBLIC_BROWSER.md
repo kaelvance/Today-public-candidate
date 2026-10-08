@@ -34,3 +34,9 @@ Google Calendar／Gmail・外部AI・ローカルモデルは公開版では利�
 公開ファイルの`deployment.json`にversion・source commit・主要ファイルのSHA-256を記録します。GitHubの`Public browser` workflowは静的サーバーのsubpathでCore smokeを実行し、成功したdefault branchだけをPagesへ配布します。PRや他branchを自動公開しません。Release qualificationのNode22／24 required checksは維持します。
 
 実公開URLの第三者試験とRelease receiptが公開完了の根拠です。local preview成功をインターネット公開成功とは扱いません。V2.0.0 tag／配布物は履歴として保持し、修正を付け替えません。
+
+## V2.0.3の保存・更新
+
+保存コピーが読めない場合は、初回起動の空データとして扱わず編集・自動保存を停止します。正常コピーがあれば復旧し、保存revisionが新しいコピーを採用します。両書込先が失敗した内容は保存できていません。バックアップを確保してから原因を確認してください。バックアップ読込は手動項目の追加であり、同IDを置換する完全復元ではありません。確認画面で取消できます。
+
+更新は旧タブが閉じるまで待機します。入力を保存し、Todayの全タブを閉じて再度開いてください。ブラウザのサイトデータ消去を更新手順にしないでください。以前のasset cacheは1世代保持しますが、キャッシュはデータのバックアップではありません。

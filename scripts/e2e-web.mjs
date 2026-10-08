@@ -187,6 +187,17 @@ try {
   await second
     .getByLabel('バックアップファイル')
     .setInputFiles({ name: 'fixture-backup.json', mimeType: 'application/json', buffer: backup })
+  await second.getByRole('region', { name: 'バックアップの読込確認' }).waitFor()
+  assert.equal(await second.getByRole('heading', { name: title, exact: true }).count(), 0)
+  await second.getByRole('button', { name: '読み込みを取り消す', exact: true }).focus()
+  await second.keyboard.press('Enter')
+  assert.equal(await second.getByRole('region', { name: 'バックアップの読込確認' }).count(), 0)
+  await second
+    .getByLabel('バックアップファイル')
+    .setInputFiles({ name: 'fixture-backup.json', mimeType: 'application/json', buffer: backup })
+  await second.getByRole('button', { name: '確認して追加する', exact: true }).focus()
+  await second.keyboard.press('Enter')
+  record.flows.push('backup-preview-no-mutation-keyboard-cancel-and-confirm')
   await second.keyboard.press('Escape')
   await second
     .getByRole('navigation', { name: 'モバイルナビゲーション' })
