@@ -5,6 +5,31 @@ import App from './App'
 
 beforeEach(() => {
   localStorage.clear()
+  // Successful empty IDB reads distinguish first use from an unavailable store.
+  vi.stubGlobal('indexedDB', {
+    open: () => {
+      const request: Record<string, unknown> = {}
+      request.result = {
+        close() {},
+        transaction() {
+          const transaction: Record<string, unknown> = {}
+          transaction.objectStore = () => ({ get: () => ({ result: undefined }), put() {} })
+          queueMicrotask(() => (transaction.oncomplete as () => void)?.())
+          return transaction
+        },
+      }
+      queueMicrotask(() => (request.onsuccess as () => void)?.())
+      return request
+    },
+  })
+  // jsdom has no Web Locks. Real cross-tab ownership is tested in browser E2E.
+  Object.defineProperty(navigator, 'locks', {
+    configurable: true,
+    value: {
+      request: (_name: string, _options: LockOptions, callback: LockGrantedCallback<void>) =>
+        callback({} as Lock),
+    },
+  })
   Object.defineProperty(navigator, 'onLine', { configurable: true, value: true })
   vi.stubGlobal('matchMedia', () => ({
     matches: false,

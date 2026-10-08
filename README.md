@@ -1,4 +1,8 @@
-# Today V2.0.1
+# Today V2.0.3
+
+保存・復旧・更新の信頼性を改善する版です。変更と検証範囲は[V2.0.3リリースノート](docs/V2_0_3_RELEASE.md)、AI Chatの調査結果は[導入検討](docs/AI_CHAT_FEASIBILITY.md)を参照してください。正式公開と検証結果はGitHub Releasesのreceiptで確認してください。
+
+同じ保存領域を編集できるタブは1つです。他のタブは待機し、編集タブを閉じると最新データで再開します。Web Locks対応ブラウザとHTTPS／localhostが必要です。旧V2.0.1のタブは閉じて更新してください。保存先の移行・制約は[公開ブラウザ版](docs/PUBLIC_BROWSER.md)を参照してください。
 
 毎日のタスク・予定・確認事項を、端末に保存して整理するローカルファーストの日本語アプリです。AIやAPIキー、Googleアカウント、Qwenを用意しなくても使えます。V2のソースはPublic repositoryで公開しています。和紙と墨を基調としたToday / やること / カレンダー / ふりかえりへ刷新し、V1.9の機能基盤を維持しています。[V2仕様](TODAY_V2_SPECIFICATION.md)、[変更](TODAY_V2_CHANGELOG.md)、[検証](TODAY_V2_TEST_REPORT.md)、[公開条件](TODAY_V2_OSS_RELEASE_REPORT.md)を参照してください。[CoC専用窓口](CODE_OF_CONDUCT.md)はOwner承認済みです。PVRの設定・公開受付、保護設定、匿名cloneを確認し、正式tag・Release・配布物照合まで終えた時点の最終判定を[GitHub Releases](https://github.com/kaelvance/Today-public-candidate/releases)のrelease reportへ記録します。ソースのPublic公開と正式Releaseの完了を区別します。旧V1.9の文書・数値は履歴です。
 

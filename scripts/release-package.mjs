@@ -108,6 +108,7 @@ const cleanEnv = {
   CI: 'true',
   TMPDIR: tmpdir(),
   TZ: 'UTC',
+  TODAY_SOURCE_COMMIT: commit,
 }
 async function run(label, args) {
   const started = Date.now(),
@@ -148,6 +149,10 @@ try {
     ['v2-ui', ['test:v2', '--', output, 'archive']],
     ['stranger', ['test:stranger', '--', output]],
     ['cold', ['test:cold', '--', output]],
+    ['build-web', ['build:web']],
+    ['web', ['test:web', '--', join(output, 'web')]],
+    ['storage-recovery', ['test:recovery', '--', join(output, 'storage-recovery')]],
+    ['update', ['test:update', '--', join(output, 'update')]],
   ])
     await run(label, args)
   record.passed = true

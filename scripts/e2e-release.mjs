@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import { spawn } from 'node:child_process'
 import { setTimeout as delay } from 'node:timers/promises'
 import { launchBrowser } from './test-browser.mjs'
+import { verifyStorageOwnership } from './storage-ownership.mjs'
 
 const url = 'http://127.0.0.1:4185/'
 const server = spawn(process.execPath, ['server/index.mjs', '--production', '--port', '4185'], {
@@ -66,7 +67,7 @@ try {
         const request = indexedDB.open('today-prototype-v1', 1)
         request.onsuccess = () => {
           const db = request.result
-          const get = db.transaction('state').objectStore('state').get('current')
+          const get = db.transaction('state').objectStore('state').get('current-v2')
           get.onsuccess = () => {
             resolve(get.result?.items?.some((item) => item.title === 'Release fixture task'))
             db.close()
@@ -75,12 +76,12 @@ try {
         request.onerror = () => resolve(false)
       }),
   )
-  await page.evaluate(() => localStorage.setItem('today-prototype-state-v1', '{broken'))
+  await page.evaluate(() => localStorage.setItem('today-prototype-state-v2', '{broken'))
   await page.reload()
   await page.getByRole('heading', { name: 'Release fixture task' }).waitFor()
   assert.equal(
     await page.evaluate(
-      () => JSON.parse(localStorage.getItem('today-prototype-state-v1')).intelligenceMode,
+      () => JSON.parse(localStorage.getItem('today-prototype-state-v2')).intelligenceMode,
     ),
     'DISABLED',
   )
@@ -128,6 +129,7 @@ try {
   await page.reload()
   await page.getByRole('heading', { name: '今すぐ対応するものはありません' }).waitFor()
   assert.equal(await page.getByRole('heading', { name: 'Release fixture task' }).count(), 0)
+  await verifyStorageOwnership(browser, url)
   assert.deepEqual(errors, [])
   assert.deepEqual(external, [])
   assert.deepEqual(inference, [])

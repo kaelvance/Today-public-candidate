@@ -7,6 +7,7 @@ import { once } from 'node:events'
 import { tmpdir } from 'node:os'
 import { createRequire } from 'node:module'
 import { launchBrowser } from './test-browser.mjs'
+import { verifyStorageOwnership } from './storage-ownership.mjs'
 
 const root = fileURLToPath(new URL('../', import.meta.url))
 const output = resolve(
@@ -20,6 +21,7 @@ const scope = new URL(base)
 assert(base.endsWith('/'))
 const record = {
   url: base,
+  browserEngine: process.env.TODAY_TEST_BROWSER || 'chromium',
   hosted: !!process.env.TODAY_WEB_URL,
   passed: false,
   flows: [],
@@ -185,6 +187,17 @@ try {
   await second
     .getByLabel('バックアップファイル')
     .setInputFiles({ name: 'fixture-backup.json', mimeType: 'application/json', buffer: backup })
+  await second.getByRole('region', { name: 'バックアップの読込確認' }).waitFor()
+  assert.equal(await second.getByRole('heading', { name: title, exact: true }).count(), 0)
+  await second.getByRole('button', { name: '読み込みを取り消す', exact: true }).focus()
+  await second.keyboard.press('Enter')
+  assert.equal(await second.getByRole('region', { name: 'バックアップの読込確認' }).count(), 0)
+  await second
+    .getByLabel('バックアップファイル')
+    .setInputFiles({ name: 'fixture-backup.json', mimeType: 'application/json', buffer: backup })
+  await second.getByRole('button', { name: '確認して追加する', exact: true }).focus()
+  await second.keyboard.press('Enter')
+  record.flows.push('backup-preview-no-mutation-keyboard-cancel-and-confirm')
   await second.keyboard.press('Escape')
   await second
     .getByRole('navigation', { name: 'モバイルナビゲーション' })
@@ -207,6 +220,7 @@ try {
   record.flows.push('scoped-service-worker-offline-reload')
   await context.setOffline(false)
   offline = false
+  record.storageOwnership = await verifyStorageOwnership(browser, base, output)
   assert.deepEqual(record.pageErrors, [])
   assert.deepEqual(record.consoleErrors, [])
   assert.deepEqual(record.networkErrors, [])

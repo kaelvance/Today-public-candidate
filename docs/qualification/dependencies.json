@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lockSha256": "c968c4046244275eafd27575bed5169de6094da2f3c0b93f33a061306b3a644c",
+  "lockSha256": "b92458cd73f1585248e3a8de9d0a1830a02201eaecfeb0b2ea82f94672582453",
   "components": [
     {
       "name": "@asamuzakjp/css-color",
@@ -5962,9 +5962,9 @@
     },
     {
       "name": "source-map-js",
-      "version": "1.2.1",
-      "integrity": "sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==",
-      "key": "source-map-js@1.2.1",
+      "version": "1.2.2",
+      "integrity": "sha512-KGj/8Y43x35aZVDtt+J4mK1hoLGHULMYfSkODJNQjNDC3oW1PqPoxMwo0pLUsWM/UEGzON/NxeHywEfNXNP3Vw==",
+      "key": "source-map-js@1.2.2",
       "license": "BSD-3-Clause",
       "direct": false,
       "runtime": false,
@@ -5980,7 +5980,7 @@
       "vulnerabilityStatus": "no known advisories in pnpm audit snapshot 2026-09-28; see docs/qualification/dependency-audit.json; not a proof of absence",
       "evidence": "installed package license metadata and copied notices",
       "notices": [
-        "third-party/licenses/source-map-js@1.2.1/LICENSE"
+        "third-party/licenses/source-map-js@1.2.2/LICENSE"
       ]
     },
     {
