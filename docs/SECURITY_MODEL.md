@@ -1,5 +1,9 @@
 # Security model — V1.9
 
+## V2.1 Chatの追加境界
+
+ChatModelPort / Workerは推論のみ。決定的出力検査、選択Context・TTL・予算・中断、Coreの対象revision再確認・単回承認・durable saveを経て変更します。任意コード・削除・メール送信の実行権限は付与しません。API POSTは署名済みsession・正確なOrigin・request headerを必要とし、server-only endpoint/key、redirect禁止、同時1・30秒・100試行/process・明示送信同意で制限します。固定モデルrevisionは全tensorのSRI証明ではありません。小型モデルの誤回答や全言い換えの誤実行主張の検出を保証しません。[契約](V2_1_BROWSER_CHAT.md) / [追加監査](V2_1_SECURITY_REVIEW.md)。
+
 ## Assets, actors, boundary
 
 守る対象はToday items/Context/訂正、Google token、AI credentials、session、model出力の権限、公開ソースの個人情報です。外部web origin、不正なservice応答、悪意あるメール/予定/モデル文、壊れた保存/設定を想定します。OS利用者とoperator設定、同一プロセスのPlugin/Providerコードは信頼境界の内側です。公開インターネット向けサーバーや多ユーザー分離ではありません。

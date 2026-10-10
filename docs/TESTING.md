@@ -1,5 +1,9 @@
 # Testing
 
+## V2.1 Chat
+
+`pnpm test:chat`、`pnpm test:chat-server`、`pnpm test:chat-e2e -- <source外の証跡directory>` を通常qualificationに追加しています。実モデルは別の明示opt-in `TODAY_TEST_REAL_BROWSER_MODEL=true pnpm test:browser-model -- <source外directory>` で架空専用profileを使用します。約1GBの取得には個別承認が必要で、通常CIは実モデルを取得しません。契約・MockのPASSと実モデル品質を区別し、[実機評価](V2_1_MODEL_EVALUATION.md) を参照してください。
+
 [README](../README.md)の環境を用意し、rootで以下を実行します。
 
 ```sh

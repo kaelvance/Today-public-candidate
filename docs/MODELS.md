@@ -1,5 +1,9 @@
 # Model setup
 
+## V2.1 ブラウザChat
+
+`Qwen3-1.7B-q4f16_1-MLC` は専用Worker / WebLLM経路で、既存抽出用Gamma・MLX・Qwen3.5 GGUFとは分離します。取得は利用者同意後のみ。ソースへ重みを含めず、学習・蒸留を行いません。APIは別のChatModelPortで交換できますが、providerごとの適合検証が必要です。[仕様](V2_1_BROWSER_CHAT.md) / [実機評価と品質制約](V2_1_MODEL_EVALUATION.md)。
+
 モデルは任意です。Today sourceに重み・Adapterはありません。モデルなしのCoreが標準の検証対象です。Mac Apple Silicon向けのMLX bridgeはExperimentalです。Windows/Linux上のMLX動作は保証しません。
 
 ## 明示的な取得と検証

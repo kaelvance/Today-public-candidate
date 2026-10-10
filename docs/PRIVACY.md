@@ -4,7 +4,11 @@
 
 Google tokenは指定したGit外ファイルへAES-256-GCMで保存します。鍵は環境設定にあり、同じOSユーザーへの秘匿を保証しません。Shadow Modeは既定オフで、明示有効化・export時のみ利用します。その記録・backupを公開fixtureに入れてはいけません。
 
-AIは既定で任意。routerのprivacy/minimizationとserver拒否を通します。Gmail/Calendarはremote modelへ暗黙送信しません。legacy入力補助は別スイッチの手動入力だけです。2つのスイッチをオフにすると推論は行いません。鍵らしい文字列は拒否/削除しますが、自由文に含まれる任意の秘密すべての検出は不可能です。接続サービスへGoogle APIアクセスすることと外部AI利用は別です。analytics/広告SDKはありません。
+AIは既定で任意。routerのprivacy/minimizationとserver拒否を通します。Gmail/Calendarはremote modelへ暗黙送信しません。legacy入力補助は別スイッチの手動入力だけです。この2つのスイッチは既存入力補助・Routerの制御です。V2.1 Chatは独立した同意とモデル準備を必要とし、Chatを閉じると会話許可・履歴を消してWorkerを終了します。鍵らしい文字列は拒否/削除しますが、自由文に含まれる任意の秘密すべての検出は不可能です。接続サービスへGoogle APIアクセスすることと外部AI利用は別です。analytics/広告SDKはありません。
+
+## V2.1 Chatの情報経路
+
+ブラウザQwenは明示取得後の端末内推論、APIはローカル版サーバーのoperator固定endpointへの任意送信です。APIのhost/modelをUIに表示し、利用者同意なしに本文を送りません。会話はメモリのみ、共有は選択した手動項目最大6件の最小情報。閉じる／許可撤回／範囲変更で履歴を消去します。モデルキャッシュはブラウザ設定で消去できます。Google token・情報、バックアップ全文をChatへ渡しません。自動クラウドfallbackなし。取得先はIP/URLを観測できます。[詳細](V2_1_BROWSER_CHAT.md)。
 
 ## バックアップ・削除
 

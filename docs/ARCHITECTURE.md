@@ -1,5 +1,9 @@
 # Architecture
 
+## V2.1 Chatの追加構成
+
+既存Intelligence Routerと独立して `src/chat/` のConversation Orchestrator / ChatModelPort、ブラウザWebGPU Worker、任意の `server/chat-api.mjs` を追加します。Chatは選択された手動項目の最小Contextのみを参照し、操作案は `src/application/chat-commands.ts` の承認・再検査を経て既存Coreと単一writerに渡します。DB/OAuthへの直接権限なし。履歴はメモリのみ。MessagingはMockとinert契約preview、実iMessage・閉鎖時Gatewayは未対応。[詳細設計](V2_1_BROWSER_CHAT.md)。
+
 ```mermaid
 flowchart LR
   S[手動入力 / Source Plugin] --> N[正規化 Item + provenance]
