@@ -1,4 +1,22 @@
-# Today V2.0.3
+# Today V2.1.0
+
+端末にタスク・予定を保存する日本語のローカルファーストOSSです。AIなしで4画面・保存・バックアップを使えます。
+
+**正式公開の状態・source identity・検証証跡は[GitHub Releases](https://github.com/kaelvance/Today-public-candidate/releases)で確認してください。**
+
+## AI Chat
+
+[ブラウザ版を開く](https://kaelvance.github.io/Today-public-candidate/) → 「Today AI Chat」。WebGPU対応Chrome等では、初回に取得許可を選び「モデルを準備する」を押すとQwen3-1.7B・4bitを端末内で動かせます。モデルは約1GB、GPUメモリは約2GB以上が必要です。会話本文をモデル配布先へ送信せず、推論課金はありません。回線契約の通信費・電力・端末資源は利用者負担です。非対応ブラウザは案内を表示し、Coreを継続します。
+
+ローカル版ではOllamaと管理者が設定した互換APIも選択できます。APIは初期無効・別途送信同意が必要で、キーをPagesへ含めません。無料の自前APIを優先し、有料APIを自動契約・利用しません。
+
+共有する手動データを選び、会話への共有を許可してください。例: `タスク「読書」を追加してください`、`予定「面談」を明日15時に追加`、選択した対象への `「読書」を完了`。明示入力をToday側で解析し、対象と日時を表示してから承認を求めます。モデルが直接保存することはありません。曖昧な日時・未対応の操作はエディタへ案内します。AIの回答には誤りがあり得ます。
+
+履歴は画面を閉じると消去されます。実iMessage・実メッセージ送信・ブラウザ閉鎖時の返信は未対応です。MessagingはMock検証とinert API契約previewです。Mockは実AIではありません。モデル重み・Gamma Adapterはリポジトリに含めません。
+
+[ブラウザ / API仕様と費用](docs/V2_1_BROWSER_CHAT.md)、[実装](docs/V2_1_IMPLEMENTATION.md)、[モデル評価](docs/V2_1_MODEL_EVALUATION.md)、[Security](docs/V2_1_SECURITY_REVIEW.md)、[Qualification](docs/V2_1_QUALIFICATION.md)。V3の将来構想は7点の設計資料に保持しています。
+
+## V2.0.3から継承したCore
 
 保存・復旧・更新の信頼性を改善する版です。変更と検証範囲は[V2.0.3リリースノート](docs/V2_0_3_RELEASE.md)、AI Chatの調査結果は[導入検討](docs/AI_CHAT_FEASIBILITY.md)を参照してください。正式公開と検証結果はGitHub Releasesのreceiptで確認してください。
 

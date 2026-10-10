@@ -107,12 +107,20 @@ if (process.argv.includes('--check')) {
             : metadata.license?.type || 'UNKNOWN'
         const direct =
           entry.name in (manifest.dependencies || {}) || entry.name in manifest.devDependencies
-        const runtime = ['react', 'react-dom', 'scheduler'].includes(entry.name)
+        const runtime = [
+          'react',
+          'react-dom',
+          'scheduler',
+          '@mlc-ai/web-llm',
+          '@mlc-ai/web-tokenizers',
+          'loglevel',
+        ].includes(entry.name)
         const productionAttribution = runtime || ['vite', 'rollup'].includes(entry.name)
         const purpose = direct
           ? {
               react: 'UI runtime',
               'react-dom': 'DOM rendering',
+              '@mlc-ai/web-llm': 'optional browser on-device inference',
               prettier: 'CI formatting',
               typescript: 'type checks',
               vite: 'build/dev server',
@@ -145,7 +153,9 @@ if (process.argv.includes('--check')) {
           installedOnAuditHost: !!local,
           purpose,
           releaseNecessity: runtime
-            ? 'required for Core'
+            ? entry.name.startsWith('@mlc-ai/') || entry.name === 'loglevel'
+              ? 'optional AI runtime; Core works without model loading'
+              : 'required for Core'
             : 'required by reproducible development graph; platform optional packages installed conditionally',
           includedInSource: false,
           includedInProductionBundle: runtime || entry.name === 'vite',
@@ -160,7 +170,7 @@ if (process.argv.includes('--check')) {
             : 'dependency package retains its own notices when installed',
           modificationNotice: 'not modified',
           vulnerabilityStatus:
-            'no known advisories in pnpm audit snapshot 2026-09-28; see docs/qualification/dependency-audit.json; not a proof of absence',
+            'see pinned pnpm audit snapshot in docs/qualification/dependency-audit.json; no known advisory in that snapshot is not a proof of absence',
           evidence: local
             ? 'installed package license metadata and copied notices'
             : 'npm registry pinned version; integrity matched to lockfile',
@@ -208,7 +218,7 @@ if (process.argv.includes('--check')) {
   sbom.metadata.properties = [{ name: 'today:lockSha256', value: lockSha256 }]
   await writeFile('SBOM.cdx.json', JSON.stringify(sbom, null, 2) + '\n')
   let notices =
-    '# Third-party notices\n\nソース配布は依存パッケージ本体を同梱しません。production buildにはReact、React DOM、SchedulerとViteのmodulepreload helperが含まれます。Rollupの生成helperについても帰属表示を保守的に保持します。以下はその原文の帰属・許諾です。その他の開発依存の原文は `third-party/licenses/`、全固定バージョンは `docs/qualification/dependencies.json` と `SBOM.cdx.json` にあります。\n\n'
+    '# Third-party notices\n\nソース配布は依存パッケージ本体を同梱しません。production buildにはReact、React DOM、Scheduler、任意AI用WebLLM / Web Tokenizers / loglevelとViteのmodulepreload helperが含まれます。Rollupの生成helperについても帰属表示を保守的に保持します。以下はその原文の帰属・許諾です。その他の開発依存の原文は `third-party/licenses/`、全固定バージョンは `docs/qualification/dependencies.json` と `SBOM.cdx.json` にあります。\n\n'
   for (const item of components.filter((item) => item.productionAttributionRequired)) {
     notices += `## ${item.key}\n\nLicense: ${item.license}. Unmodified upstream code.\n\n`
     for (const file of item.notices)

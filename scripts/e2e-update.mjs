@@ -10,6 +10,7 @@ const output = resolve(
 assert(relative(process.cwd(), output).startsWith(`..${sep}`), 'Evidence outside source')
 await mkdir(output, { recursive: true })
 // Byte-for-byte fixture from public commit 25edcf88f28e577919eeb4bdd505722a6d4afdd0.
+const candidateVersion = JSON.parse(await readFile('package.json', 'utf8')).version
 const oldWorker = await readFile('scripts/fixtures/sw-v2.0.1.js', 'utf8')
 const newWorker = await readFile('public/sw.js', 'utf8')
 let stage = 'old'
@@ -79,7 +80,7 @@ try {
     'fictional retained record',
   )
   const keys = await next.evaluate(() => caches.keys())
-  assert(keys.includes(prefix + '2.0.3-new'))
+  assert(keys.includes(prefix + candidateVersion + '-new'))
   assert(keys.includes(prefix + '2.0.1'))
   record.flows.push('activation-after-old-pages-close-retains-data-and-previous-assets')
   stage = 'broken'
@@ -99,7 +100,7 @@ try {
     'activated',
   )
   assert(
-    !(await next.evaluate(() => caches.keys())).includes(prefix + '2.0.3-broken'),
+    !(await next.evaluate(() => caches.keys())).includes(prefix + candidateVersion + '-broken'),
     'Failed new precache must not survive as a previous working generation',
   )
   record.flows.push('failed-precache-retains-working-active-worker')

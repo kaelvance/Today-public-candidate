@@ -16,7 +16,7 @@ assert(distance === '..' || distance.startsWith(`..${sep}`), 'Output must be out
 const git = (...args) => execFileSync('git', args, { cwd: root, encoding: 'utf8' }).trim()
 assert.equal(git('status', '--porcelain'), '', 'Commit the exact candidate before packaging')
 const manifest = JSON.parse(await readFile(join(root, 'package.json'), 'utf8'))
-assert.match(manifest.version, /^\d+\.\d+\.\d+(?:-rc\.\d+)?$/)
+assert.match(manifest.version, /^\d+\.\d+\.\d+(?:-(?:alpha|beta|rc)(?:\.\d+)?)?$/)
 const commit = git('rev-parse', 'HEAD'),
   tree = git('rev-parse', 'HEAD^{tree}')
 const entries = git('ls-tree', '-r', '-z', 'HEAD')
@@ -103,6 +103,7 @@ const record = {
 const cleanEnv = {
   PATH: process.env.PATH,
   HOME: process.env.HOME,
+  ...(process.env.CHROME_PATH ? { CHROME_PATH: process.env.CHROME_PATH } : {}),
   // pnpm/action-setup selects its store through this non-secret runtime path.
   ...(process.env.PNPM_HOME ? { PNPM_HOME: process.env.PNPM_HOME } : {}),
   CI: 'true',
@@ -144,8 +145,10 @@ try {
     ['remote', ['test:remote']],
     ['ollama', ['test:ollama']],
     ['security', ['test:security']],
+    ['chat-server', ['test:chat-server']],
     ['oss', ['test:oss']],
     ['e2e', ['test:e2e']],
+    ['chat-e2e', ['test:chat-e2e', '--', join(output, 'chat')]],
     ['v2-ui', ['test:v2', '--', output, 'archive']],
     ['stranger', ['test:stranger', '--', output]],
     ['cold', ['test:cold', '--', output]],

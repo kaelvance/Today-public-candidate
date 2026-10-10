@@ -8,6 +8,9 @@ import {
   type ChangeEvent,
   type FormEvent,
 } from 'react'
+import { version as appVersion } from '../package.json'
+import { ChatPanel } from './ChatPanel'
+import type { Dispatch, SetStateAction } from 'react'
 import { makeBackup, mergeBackup, previewBackup } from './backup'
 import { storageLoadStatus } from './storage'
 import { makeSafeDiagnostics } from './application/diagnostics'
@@ -42,11 +45,17 @@ import { Daylight, TodaySurface } from './TodaySurface'
 import { Icon, ModalFrame } from './ui'
 import type { Item, ItemAction, PersistedState } from './types'
 
-type Sheet = 'add' | 'settings' | null
+type Sheet = 'add' | 'settings' | 'chat' | null
 type Toast = { message: string; undo?: Item }
 
 function App() {
-  const [state, setState] = useState<PersistedState | null>(null)
+  const [state, rawSetState] = useState<PersistedState | null>(null)
+  const chatCommitGate = useRef(false)
+  const deferredState = useRef<SetStateAction<PersistedState | null>[]>([])
+  const setState: Dispatch<SetStateAction<PersistedState | null>> = useCallback((update) => {
+    if (chatCommitGate.current) deferredState.current.push(update)
+    else rawSetState(update)
+  }, [])
   const [sheet, setSheet] = useState<Sheet>(null)
   const [detailId, setDetailId] = useState<string | null>(null)
   const [confirm, setConfirm] = useState<{ item: Item; action: ItemAction } | null>(null)
@@ -103,6 +112,35 @@ function App() {
   const saveGeneration = useRef(0)
   stateRef.current = state
 
+  async function commitChat(next: PersistedState, expected: string) {
+    if (
+      chatCommitGate.current ||
+      !stateRef.current ||
+      JSON.stringify(stateRef.current) !== expected
+    )
+      throw new Error('stale_commit')
+    chatCommitGate.current = true
+    try {
+      const graph = activeApplication.reconcile(
+        next.items,
+        next.contextCorrections,
+        next.conflictResolutions,
+      )
+      const durable = { ...next, contexts: graph.contexts }
+      await saveApplicationState(durable)
+      stateRef.current = durable
+      rawSetState(durable)
+      setSaveError(false)
+    } catch (error) {
+      setSaveError(true)
+      throw error
+    } finally {
+      chatCommitGate.current = false
+      const waiting = deferredState.current.splice(0)
+      for (const update of waiting) rawSetState(update)
+    }
+  }
+
   useLayoutEffect(() => {
     if (navigationPendingRef.current) {
       navigationPendingRef.current = false
@@ -126,7 +164,7 @@ function App() {
     return () => {
       cancelled = true
     }
-  }, [loadAttempt])
+  }, [loadAttempt, setState])
   useEffect(() => {
     const result = new URLSearchParams(location.search).get('gmail')
     if (result === 'cancelled') setToast({ message: 'Gmail の接続はキャンセルされました。' })
@@ -245,7 +283,7 @@ function App() {
       .finally(() => {
         syncingRef.current = false
       })
-  }, [online, state])
+  }, [online, state, setState])
 
   const refreshCalendar = useCallback(async () => {
     if (calendarBusyRef.current) return
@@ -278,7 +316,7 @@ function App() {
     } finally {
       calendarBusyRef.current = false
     }
-  }, [])
+  }, [setState])
 
   const refreshMail = useCallback(async () => {
     if (mailBusyRef.current || !navigator.onLine) return
@@ -312,7 +350,7 @@ function App() {
     } finally {
       mailBusyRef.current = false
     }
-  }, [])
+  }, [setState])
 
   const ready = !!state
   useEffect(() => {
@@ -359,7 +397,7 @@ function App() {
     return () => {
       cancelled = true
     }
-  }, [ready, online, refreshMail])
+  }, [ready, online, refreshMail, setState])
   useEffect(() => {
     if (!online || mailUi.connection !== 'connected') return
     const check = () => {
@@ -426,7 +464,7 @@ function App() {
     return () => {
       cancelled = true
     }
-  }, [ready, online, refreshCalendar])
+  }, [ready, online, refreshCalendar, setState])
   useEffect(() => {
     if (!online || calendarUi.connection !== 'connected') return
     const check = () => {
@@ -504,7 +542,7 @@ function App() {
       )
     }, 0)
     return () => window.clearTimeout(timer)
-  }, [sourceItems, savedCorrections, savedResolutions])
+  }, [sourceItems, savedCorrections, savedResolutions, setState])
   const model = useMemo(
     () =>
       state
@@ -909,8 +947,12 @@ function App() {
         onNavigate={navigate}
         onAdd={() => openCapture()}
         onSettings={() => setSheet('settings')}
+        onChat={() => setSheet('chat')}
       />
       <main className="main" inert={modalOpen}>
+        <button className="chat-entry" onClick={() => setSheet('chat')}>
+          Today AI Chat
+        </button>
         <TodaySurface
           view={view}
           today={today}
@@ -996,6 +1038,24 @@ function App() {
         />
       </main>
 
+      {sheet === 'chat' && state && (
+        <ModalFrame
+          title="Today AI Chat"
+          wide
+          onClose={() => {
+            if (!chatCommitGate.current) setSheet(null)
+          }}
+        >
+          <ChatPanel
+            state={state}
+            read={() => {
+              if (!stateRef.current) throw new Error('state_unavailable')
+              return stateRef.current
+            }}
+            commit={commitChat}
+          />
+        </ModalFrame>
+      )}
       {sheet === 'add' && (
         <ModalFrame title="すばやく追加" onClose={() => setSheet(null)}>
           <form onSubmit={addItem} className="form">
@@ -1277,14 +1337,14 @@ function App() {
             </div>
             <div className="setting-group">
               <h3>このアプリ</h3>
-              <p>Today V2.0.3 · オフラインでも手動項目と取得済みの情報を利用できます。</p>
+              <p>Today V{appVersion} · オフラインでも手動項目と取得済みの情報を利用できます。</p>
               <button
                 className="reset-button"
                 onClick={async () => {
                   try {
                     await navigator.clipboard.writeText(
                       makeSafeDiagnostics({
-                        version: '2.0.3',
+                        version: appVersion,
                         storage: saveError ? 'FAILED' : saving ? 'SAVING' : 'AVAILABLE',
                         load: storageLoadStatus(),
                         online,

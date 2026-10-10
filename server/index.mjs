@@ -10,6 +10,8 @@ import { createGmailAuthorization, createGmailService } from './gmail.mjs'
 import { createAIService } from './ai.mjs'
 import { createLocalModelService } from './local-model.mjs'
 import { createRemoteModelService } from './remote-model.mjs'
+import { createChatModelService } from './chat-model.mjs'
+import { createChatApiService } from './chat-api.mjs'
 import { createOllamaModelService } from './ollama-model.mjs'
 import { EncryptedTokenStore } from './token-store.mjs'
 
@@ -212,10 +214,28 @@ export async function createTodayServer({
       allowLocalPrivate: env.TODAY_REMOTE_ALLOW_LOCAL_PRIVATE === 'true',
     }),
   )
+  const chatModel = optional('chat', () =>
+    createChatModelService({
+      model: env.TODAY_CHAT_MODEL,
+      digest: env.TODAY_CHAT_DIGEST,
+      endpoint: env.TODAY_CHAT_OLLAMA_URL,
+      fetchImpl,
+    }),
+  )
   const ollamaModel = optional('ollama', () =>
     createOllamaModelService({
       endpoint: env.TODAY_OLLAMA_ENDPOINT || 'http://127.0.0.1:11434',
       model: env.TODAY_OLLAMA_MODEL,
+      fetchImpl,
+    }),
+  )
+  const chatApi = optional('chat-api', () =>
+    createChatApiService({
+      endpoint: env.TODAY_CHAT_API_ENDPOINT,
+      model: env.TODAY_CHAT_API_MODEL,
+      credential: env.TODAY_CHAT_API_KEY,
+      allowExternal: env.TODAY_CHAT_API_ALLOW_EXTERNAL === 'true',
+      maxRequests: Number(env.TODAY_CHAT_API_MAX_REQUESTS || 100),
       fetchImpl,
     }),
   )
@@ -231,7 +251,7 @@ export async function createTodayServer({
         appType: 'spa',
       })
 
-  function session(req, res) {
+  function validSession(req) {
     const cookie = parseCookies(req.headers.cookie).today_sid || ''
     const [id, signature] = cookie.split('.')
     if (
@@ -241,6 +261,11 @@ export async function createTodayServer({
       same(signature, createHmac('sha256', signingKey).update(id).digest('base64url'))
     )
       return id
+    return null
+  }
+  function session(req, res) {
+    const existing = validSession(req)
+    if (existing) return existing
     const next = randomBytes(32).toString('base64url')
     const signed = `${next}.${createHmac('sha256', signingKey).update(next).digest('base64url')}`
     appendCookie(res, `today_sid=${signed}; HttpOnly; SameSite=Lax; Path=/; Max-Age=2592000`)
@@ -288,7 +313,7 @@ export async function createTodayServer({
     if (production)
       res.setHeader(
         'Content-Security-Policy',
-        "default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'self' https://accounts.google.com",
+        "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self'; style-src 'self'; connect-src 'self' https://huggingface.co https://*.huggingface.co https://*.hf.co https://raw.githubusercontent.com; img-src 'self' data:; font-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'self' https://accounts.google.com",
       )
     if (req.headers.host !== `127.0.0.1:${port}`) return send(res, 403, { error: 'invalid_host' })
     let url
@@ -309,6 +334,26 @@ export async function createTodayServer({
     )
       return send(res, 403, { error: 'request_denied' })
     try {
+      if (url.pathname === '/api/chat/status' && req.method === 'GET')
+        return send(res, 200, {
+          ...(chatModel?.status() || { configured: false, locality: 'local', experimental: true }),
+          api: chatApi?.status() || { configured: false },
+        })
+      if (
+        ['/api/chat/respond', '/api/chat/api/respond'].includes(url.pathname) &&
+        req.method === 'POST'
+      ) {
+        if (!validSession(req)) return send(res, 403, { error: 'chat_session_required' })
+        const service = url.pathname === '/api/chat/api/respond' ? chatApi : chatModel
+        if (!service) return send(res, 503, { error: 'chat_not_configured' })
+        const body = await readJson(req, 24_000)
+        const controller = new AbortController()
+        req.on('aborted', () => controller.abort())
+        res.on('close', () => {
+          if (!res.writableEnded) controller.abort()
+        })
+        return send(res, 200, await service.respond(body, controller.signal, sid))
+      }
       if (url.pathname === '/api/calendar/status' && req.method === 'GET') {
         const record = store ? await store.get(sid) : null
         return send(res, 200, {
@@ -558,6 +603,13 @@ export async function createTodayServer({
         'ollama_invalid_response',
         'ollama_timeout',
         'ollama_cancelled',
+        'chat_invalid_input',
+        'chat_invalid_output',
+        'chat_busy',
+        'chat_rate_limited',
+        'chat_model_identity',
+        'chat_unavailable',
+        'chat_cancelled',
       ].includes(error?.message)
         ? error.message
         : 'service_unavailable'
