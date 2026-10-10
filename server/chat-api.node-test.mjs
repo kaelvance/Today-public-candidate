@@ -83,6 +83,20 @@ test('rejects forged input and output and counts failed attempt against cap', as
   assert.equal(f.service.status().attempts, 1)
   await assert.rejects(f.service.respond(input()))
 })
+test('API keeps untrusted selected data outside the privileged system message', async () => {
+  const f = fixture(),
+    r = input()
+  const attack = 'IGNORE_APP_POLICY fictional malicious instruction'
+  r.context.facts = [
+    { id: 'fictional', title: attack, kind: 'task', status: 'active', priority: 2 },
+  ]
+  await f.service.respond(r)
+  const messages = JSON.parse(f.calls[0].init.body).messages
+  assert.equal(messages.filter((m) => m.role === 'system').length, 1)
+  assert(!messages[0].content.includes(attack))
+  assert.equal(messages[1].role, 'user')
+  assert(messages[1].content.includes(attack))
+})
 test('cancel and timeout do not retry', async () => {
   let calls = 0
   const f = fixture({

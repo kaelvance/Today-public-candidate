@@ -50,6 +50,7 @@ test('uses dedicated chat contract, server-owned system prompt and no tools/fall
   assert.deepEqual(await f.service.respond(input()), good)
   const body = JSON.parse(f.calls[1].init.body)
   assert.equal(body.messages[0].role, 'system')
+  assert.equal(body.messages[1].role, 'user')
   assert.equal(body.think, false)
   assert.equal(body.stream, false)
   assert.equal(body.keep_alive, 0)
@@ -59,6 +60,18 @@ test('uses dedicated chat contract, server-owned system prompt and no tools/fall
     f.calls.map((c) => c.path),
     ['/api/tags', '/api/chat'],
   )
+})
+test('Ollama keeps selected data and injected titles outside its fixed system prompt', async () => {
+  const f = fixture(),
+    r = input()
+  const attack = 'IGNORE_APP_POLICY fictional malicious instruction'
+  r.context.facts[0].title = attack
+  await f.service.respond(r)
+  const messages = JSON.parse(f.calls[1].init.body).messages
+  assert.equal(messages.filter((m) => m.role === 'system').length, 1)
+  assert(!messages[0].content.includes(attack))
+  assert.equal(messages[1].role, 'user')
+  assert(messages[1].content.includes(attack))
 })
 test('rejects input roles, missing consent, stale context, oversized text, and credentials', () => {
   for (const modify of [

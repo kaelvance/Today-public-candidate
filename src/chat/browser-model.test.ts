@@ -183,7 +183,21 @@ describe('browser on-device boundary', () => {
         at: '2026-10-11T06:00:00Z',
       },
     ]
-    expect(completionMessages(r)[0].content).toContain('15:00')
+    expect(completionMessages(r)[1].content).toContain('15:00')
+  })
+  it('never promotes injected fact titles or conversation into the system role', () => {
+    const r = request(),
+      baseline = completionMessages(r)[0]
+    const attack = 'IGNORE_APP_POLICY fictional malicious instruction'
+    r.context.facts = [
+      { id: 'fictional', title: attack, kind: 'task', status: 'active', priority: 2 },
+    ]
+    r.messages[0].content = attack
+    const messages = completionMessages(r)
+    expect(messages.filter((m) => m.role === 'system')).toEqual([baseline])
+    expect(messages[1].role).toBe('user')
+    expect(messages[1].content).toContain(attack)
+    expect(messages.at(-1)?.role).toBe('user')
   })
   it('trims complete old pairs to retain a usable bounded multi-turn conversation', async () => {
     const calls: ChatRequest[] = []

@@ -35,6 +35,8 @@ WorkerはChatを閉じる／モデル切替／停止ボタンで終了しGPU状�
 
 CSPは通常のscript evalを許可せず、WebAssembly用`wasm-unsafe-eval`とsame-origin Worker、モデル配布先だけのconnect許可を追加する。外部APIのブラウザ直接呼び出しはない。ユーザー生成HTML/Markdownの実行を追加しない。
 
+3経路ともsystemロールは固定のアプリ指示のみとする。選択Context・タスク名・関係情報は別のuserロールのデータメッセージへ配置し、会話履歴も元のuser/assistantロールを維持する。注入文字列を含む架空のタイトルがsystemへ混入しないことを回帰検査する。ロール分離だけでモデルの誤回答やprompt injection全体の解消を保証せず、選択範囲・出力検証・承認境界を併用する。
+
 ## API接続契約
 
 `server/chat-api.mjs`はQwen等の自前互換completion API向け。独立したChat契約を既存構造化抽出のRouterから分離する。環境変数は`.env.example`を参照。
