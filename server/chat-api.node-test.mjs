@@ -89,9 +89,19 @@ test('cancel and timeout do not retry', async () => {
     timeoutMs: 10,
     fetchImpl: async (_, init) => {
       calls++
-      return new Promise((_, reject) =>
-        init.signal.addEventListener('abort', () => reject(new Error('fixture timeout'))),
-      )
+      return new Promise((_, reject) => {
+        // A real network request owns a referenced socket. Keep the fixture alive
+        // until the production AbortSignal.timeout fires on Node 22 as well.
+        const watchdog = setTimeout(() => reject(new Error('abort did not fire')), 1000)
+        init.signal.addEventListener(
+          'abort',
+          () => {
+            clearTimeout(watchdog)
+            reject(new Error('fixture timeout'))
+          },
+          { once: true },
+        )
+      })
     },
   })
   await assert.rejects(f.service.respond(input()), /chat_cancelled/)
