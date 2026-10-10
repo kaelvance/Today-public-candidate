@@ -54,6 +54,8 @@
   margin-top: 0.8rem;
 }
 .chat-panel button {
+  color: var(--text);
+  background: var(--surface);
   min-height: 44px;
   padding: 0.6rem 0.8rem;
   border: 1px solid currentColor;
@@ -63,6 +65,13 @@
   padding: 1rem;
   border: 1px solid currentColor;
   border-radius: 0.5rem;
+}
+.chat-panel .primary-button {
+  color: var(--accent-text);
+  background: var(--accent);
+}
+.chat-panel .primary-button:hover:not(:disabled) {
+  background: var(--accent-hover);
 }
 .chat-panel button:disabled {
   opacity: 0.65;
