@@ -1,7 +1,7 @@
 {
   "name": "today-local",
   "private": true,
-  "version": "2.0.3",
+  "version": "2.1.0",
   "packageManager": "pnpm@11.19.0",
   "type": "module",
   "scripts": {
@@ -33,9 +33,14 @@
     "build:web": "tsc -b && vite build --mode web && node scripts/web-package.mjs",
     "test:web": "node scripts/e2e-web.mjs",
     "test:recovery": "node scripts/e2e-storage-recovery.mjs",
-    "test:update": "node scripts/e2e-update.mjs"
+    "test:update": "node scripts/e2e-update.mjs",
+    "test:chat": "vitest run src/chat",
+    "test:chat-server": "node --test server/chat-model.node-test.mjs server/chat-api.node-test.mjs server/telegram-preview.node-test.mjs",
+    "test:chat-e2e": "node scripts/e2e-chat.mjs",
+    "test:browser-model": "node scripts/e2e-browser-model.mjs"
   },
   "dependencies": {
+    "@mlc-ai/web-llm": "0.2.85",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },

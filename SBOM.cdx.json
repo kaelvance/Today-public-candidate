@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.5.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:590498eb-ecdc-4ebd-aef8-c2500f54f83c",
+  "serialNumber": "urn:uuid:d2217009-47de-41d0-9c40-754a6fbf7559",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-08T14:38:44.067Z",
+    "timestamp": "2026-10-10T01:35:52.913Z",
     "lifecycles": [
       {
         "phase": "pre-build"
@@ -23,9 +23,9 @@
     "component": {
       "type": "application",
       "name": "today-local",
-      "version": "2.0.3",
-      "purl": "pkg:npm/today-local@2.0.3",
-      "bom-ref": "pkg:npm/today-local@2.0.3",
+      "version": "2.1.0",
+      "purl": "pkg:npm/today-local@2.1.0",
+      "bom-ref": "pkg:npm/today-local@2.1.0",
       "licenses": [
         {
           "license": {
@@ -37,7 +37,7 @@
     "properties": [
       {
         "name": "today:lockSha256",
-        "value": "b92458cd73f1585248e3a8de9d0a1830a02201eaecfeb0b2ea82f94672582453"
+        "value": "2cb29a9fe9b20f93129b1ddf13c076141829de94a4b41385c1652a5f155d4b59"
       }
     ]
   },
@@ -9942,6 +9942,59 @@
     },
     {
       "type": "library",
+      "name": "web-llm",
+      "version": "0.2.85",
+      "purl": "pkg:npm/%40mlc-ai/web-llm@0.2.85",
+      "bom-ref": "pkg:npm/%40mlc-ai/web-llm@0.2.85",
+      "group": "@mlc-ai",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/@mlc-ai/web-llm/-/web-llm-0.2.85.tgz",
+          "hashes": [
+            {
+              "alg": "SHA-512",
+              "content": "0b0522480bc30989e60199693cc92eacf1c37c12eae9fbdd441def460a00f3de21446fd5fc149e63d6e6326ea22085395698c9c5f6ff74b3e9257d9ab742fdaf"
+            }
+          ]
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "loglevel",
+      "version": "1.9.2",
+      "purl": "pkg:npm/loglevel@1.9.2",
+      "bom-ref": "pkg:npm/loglevel@1.9.2",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://registry.npmjs.org/loglevel/-/loglevel-1.9.2.tgz",
+          "hashes": [
+            {
+              "alg": "SHA-512",
+              "content": "1e03260aa2094802aaa3af25d2b4b601a9c459f931699e703621056f98209b4f250ecf579762b10655f73d371a0f672104cd605c061fe3dd7f33646ff09c1aca"
+            }
+          ]
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "react",
       "version": "19.3.0",
       "purl": "pkg:npm/react@19.3.0",
@@ -10021,7 +10074,7 @@
   ],
   "dependencies": [
     {
-      "ref": "pkg:npm/today-local@2.0.3",
+      "ref": "pkg:npm/today-local@2.1.0",
       "dependsOn": [
         "pkg:npm/%40testing-library/react@16.3.3",
         "pkg:npm/%40types/react@19.3.0",
@@ -10038,6 +10091,7 @@
         "pkg:npm/typescript-eslint@8.70.1",
         "pkg:npm/vite@6.4.3",
         "pkg:npm/vitest@4.1.11",
+        "pkg:npm/%40mlc-ai/web-llm@0.2.85",
         "pkg:npm/react@19.3.0",
         "pkg:npm/react-dom@19.3.0"
       ]
@@ -11588,6 +11642,16 @@
     },
     {
       "ref": "pkg:npm/stackback@0.0.2",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/%40mlc-ai/web-llm@0.2.85",
+      "dependsOn": [
+        "pkg:npm/loglevel@1.9.2"
+      ]
+    },
+    {
+      "ref": "pkg:npm/loglevel@1.9.2",
       "dependsOn": []
     },
     {

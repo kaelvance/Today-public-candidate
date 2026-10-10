@@ -25,7 +25,10 @@ const compiled = ts.transpileModule(
   },
 ).outputText
 const deployment = JSON.parse(await fs.readFile(resolve(dist, 'deployment.json'), 'utf8'))
-assert.equal(deployment.version, '2.0.3')
+assert.equal(
+  deployment.version,
+  JSON.parse(await fs.readFile(resolve(root, 'package.json'), 'utf8')).version,
+)
 
 const server = http.createServer(async (request, response) => {
   try {

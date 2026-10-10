@@ -1,0 +1,96 @@
+.chat-panel {
+  display: grid;
+  gap: 1rem;
+}
+.chat-panel label:not(.chat-check) {
+  display: grid;
+  gap: 0.4rem;
+}
+.chat-panel select,
+.chat-panel textarea {
+  width: 100%;
+  max-width: 100%;
+  font: inherit;
+  color: inherit;
+  background: var(--paper, transparent);
+  border: 1px solid currentColor;
+  border-radius: 0.5rem;
+  padding: 0.7rem;
+}
+.chat-panel textarea {
+  min-height: 6rem;
+}
+.chat-panel fieldset {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid currentColor;
+  border-radius: 0.5rem;
+}
+.chat-check {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  padding: 0.35rem 0;
+  overflow-wrap: anywhere;
+}
+.chat-check input {
+  flex-shrink: 0;
+  min-width: 20px;
+  min-height: 20px;
+}
+.chat-history p,
+.chat-proposal p {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.chat-history {
+  max-height: 24rem;
+  overflow: auto;
+}
+.chat-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+.chat-panel button {
+  color: var(--text);
+  background: var(--surface);
+  min-height: 44px;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid currentColor;
+  border-radius: 0.5rem;
+}
+.chat-proposal {
+  padding: 1rem;
+  border: 1px solid currentColor;
+  border-radius: 0.5rem;
+}
+.chat-panel .primary-button {
+  color: var(--accent-text);
+  background: var(--accent);
+}
+.chat-panel .primary-button:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+.chat-panel button:disabled {
+  opacity: 0.65;
+}
+.chat-panel :focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+.chat-entry {
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 0.6rem 1rem;
+  min-height: 44px;
+  font: inherit;
+}
+@media (min-width: 1100px) {
+  .chat-entry {
+    display: none;
+  }
+}

@@ -13,12 +13,14 @@ export function Navigation({
   onNavigate,
   onAdd,
   onSettings,
+  onChat,
   inert,
 }: {
   view: TodayView
   onNavigate: (view: TodayView) => void
   onAdd: () => void
   onSettings: () => void
+  onChat?: () => void
   inert: boolean
 }) {
   const links = destinations.map(({ id, label, icon }) => (
@@ -47,6 +49,11 @@ export function Navigation({
           <Icon name="plus" />
           追加する
         </button>
+        {onChat && (
+          <button className="rail-link" onClick={onChat}>
+            Today AI Chat
+          </button>
+        )}
         <div className="rail-bottom">
           <p>あなたの今日を、ここに。</p>
           <button className="rail-link" onClick={onSettings}>

@@ -1,5 +1,23 @@
 # Changelog
 
+## 2.1.0 — Release notes
+
+- ブラウザ内WebGPU / Dedicated WorkerでQwen3-1.7B MLC 4bitを推論。明示取得同意、固定revision、進捗・取消、モデル停止。
+- サーバー経由の任意互換APIを追加。初期無効、別途共有同意、server-only key、固定モデル、呼び出し試行上限、取消、自動再送なし。
+- 会話の完了ペア整理とContext容量、端末内KV stateの再構築。
+- 明示されたタスク・完了・予定入力を決定的に解析。タイムゾーン、日付の境界、夏時間の曖昧さを検証して承認案へ変換。
+- AlphaのChat / 承認付き操作 / Mock MessagingとV2.0.3 Coreを継承。実iMessage・外部チャネル・常駐返信は未対応。
+- モデルを新たに学習・蒸留せず、重みをGitHub / source ZIPへ同梱しない。
+- 現source identityのqualificationと公開CIを通過してから正式Releaseを作成する。
+
+## 2.1.0-alpha.1 — 未公開の開発候補
+
+- ChatModelPort、会話UI、memory-only履歴、選択Context、Ollama固定digest境界。
+- manual task/eventの構造化提案、明示承認、stale/重複/未知field防止、保存成功確認。
+- Mock受信/推論/承認返信、auth/dedup/echo/outbox、inert Telegram契約。
+- V3資料の対象移行。公開V2.0.3・公式サイトは維持。Qwen未採用、実iMessage未対応。
+- 詳細と未検証は docs/V2_1_QUALIFICATION.md。旧Releaseのqualificationを流用しない。
+
 ## 2.0.3 — 2026-10-08
 
 - dependency gateで発見したHigh advisoryを修正するため、間接依存source-map-jsを1.2.1→1.2.2へ更新。SBOM/NOTICEを再生成して全qualificationを再実行。

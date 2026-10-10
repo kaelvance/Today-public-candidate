@@ -9,7 +9,7 @@ await writeFile(
   new URL('index.html', dist),
   index.replace(
     '<head>',
-    `<head>\n    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">`,
+    `<head>\n    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self'; style-src 'self'; connect-src 'self' https://huggingface.co https://*.huggingface.co https://*.hf.co https://raw.githubusercontent.com; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">`,
   ),
 )
 const files = (await readdir(new URL('assets/', dist))).filter((name) => /\.(js|css)$/.test(name))

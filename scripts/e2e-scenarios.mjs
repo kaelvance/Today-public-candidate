@@ -25,6 +25,10 @@ try {
     reducedMotion: 'reduce',
   })
   const page = await context.newPage()
+  const navigations = []
+  page.on('framenavigated', (frame) => {
+    if (frame === page.mainFrame()) navigations.push(frame.url())
+  })
   // Fixed 9/25 past and 9/30 future fixtures need a stable 9/28 UI clock; timers run normally.
   await page.clock.setFixedTime(new Date('2026-09-28T07:00:00+09:00'))
   const errors = []
@@ -77,6 +81,16 @@ try {
     .click()
   await utcPage.getByText('9/30 9:30から').waitFor()
   await utc.close()
+  assert.deepEqual(
+    navigations,
+    [
+      `${base}?scenario=NORMAL_DAY`,
+      `${base}?scenario=CONFLICT_DAY`,
+      `${base}?scenario=AMBIGUOUS_CONTEXT`,
+      `${base}?scenario=GMAIL_FAILURE`,
+    ],
+    'Development dependency optimization must not reload an active scenario',
+  )
   assert.deepEqual(errors, [])
   console.log(
     JSON.stringify({

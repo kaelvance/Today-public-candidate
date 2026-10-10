@@ -37,6 +37,7 @@ const record = {
 const cleanEnv = {
   PATH: process.env.PATH,
   HOME: process.env.HOME,
+  ...(process.env.CHROME_PATH ? { CHROME_PATH: process.env.CHROME_PATH } : {}),
   // pnpm/action-setup selects its store through this non-secret runtime path.
   ...(process.env.PNPM_HOME ? { PNPM_HOME: process.env.PNPM_HOME } : {}),
   CI: 'true',
@@ -54,12 +55,14 @@ try {
     ['remote', ['test:remote']],
     ['ollama', ['test:ollama']],
     ['security', ['test:security']],
+    ['chat-server', ['test:chat-server']],
     ['oss', ['test:oss']],
     ['code-audit', ['release:audit', '--', '--output', join(output, 'code-audit-inventory.json')]],
     ['license', ['licenses:check']],
     ['dependency', ['audit', '--audit-level', 'high', '--json']],
     ['build', ['build']],
     ['e2e', ['test:e2e']],
+    ['chat-e2e', ['test:chat-e2e', '--', join(output, 'chat')]],
     ['v2-ui', ['test:v2', '--', output]],
     ['build-web', ['build:web']],
     ['web', ['test:web', '--', join(output, 'web')]],

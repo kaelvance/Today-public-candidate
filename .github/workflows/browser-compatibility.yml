@@ -32,6 +32,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec playwright-core install --with-deps ${{ matrix.browser }}
       - run: pnpm build
+      - run: pnpm test:chat-e2e -- "${RUNNER_TEMP}/today-browser-compatibility/chat"
       - run: pnpm test:v2 -- "${RUNNER_TEMP}/today-browser-compatibility"
       - run: pnpm build:web
       - run: pnpm test:recovery -- "${RUNNER_TEMP}/today-browser-compatibility/storage"

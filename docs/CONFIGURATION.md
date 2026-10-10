@@ -22,4 +22,10 @@
 
 ポートは`pnpm start -- --port 4273`（devの場合は`pnpm dev -- --port 5273`）。Google callbackも同じportへ合わせます。モデルのportはCoreと別です。HTTP origin/Hostは厳密に`127.0.0.1:port`で、LAN公開や任意Host名をサポートしません。
 
-全AI停止は**AIアシスト＝オフ＋処理方法＝AIを使用しない**。provider statusの取得は同一originで続きますが、推論やモデル取得は実行しません。
+既存入力補助／Router停止は**AIアシスト＝オフ＋処理方法＝AIを使用しない**。provider statusの取得は同一originで続きます。独立したV2.1 Chatも停止する場合はChat画面を閉じ、取得・会話を許可しないでください。
+
+## V2.1 Chatの任意接続
+
+公開PagesのブラウザQwenにはAPIキー・環境変数は不要です。モデル取得と会話共有をそれぞれ明示許可して利用します。
+
+ローカル版では `TODAY_CHAT_API_ENDPOINT` / `TODAY_CHAT_API_MODEL`、任意のserver-only `TODAY_CHAT_API_KEY` で互換completion APIを設定します。numeric loopbackの自前APIを無料の基準とし、外部HTTPSには `TODAY_CHAT_API_ALLOW_EXTERNAL=true` と利用者の送信同意が必要です。`TODAY_CHAT_API_MAX_REQUESTS` は既定100試行/processで、料金上限ではありません。`.env.example` と [Chat仕様](V2_1_BROWSER_CHAT.md) を確認してください。全provider互換・有料APIのライブ検証は主張しません。
