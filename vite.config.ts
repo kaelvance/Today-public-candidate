@@ -8,6 +8,9 @@ export default defineConfig(({ mode }) => ({
   resolve: { dedupe: ['react', 'react-dom'] },
   optimizeDeps: {
     include: [
+      // The lazy Worker SDK must be discovered before the first dev response;
+      // late optimization otherwise reloads the page and resets open fixture dialogs.
+      '@mlc-ai/web-llm',
       'react',
       'react-dom',
       'react-dom/client',
