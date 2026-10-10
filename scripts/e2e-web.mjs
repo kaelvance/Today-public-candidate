@@ -121,6 +121,12 @@ try {
   await page.getByRole('textbox', { name: 'Todayに追加すること' }).press('Enter')
   await page.getByRole('button', { name: 'Todayに追加', exact: true }).click()
   await page.getByRole('heading', { name: title, exact: true }).waitFor()
+  // Finish first activation before navigating: a fast reload can race clients.claim().
+  await page.evaluate(async () => {
+    await navigator.serviceWorker.ready
+  })
+  await page.waitForFunction(() => !!navigator.serviceWorker.controller)
+  record.flows.push('first-activation-controls-page-before-reload')
   await page.reload()
   await page.getByRole('heading', { name: title, exact: true }).waitFor()
   record.flows.push('capture-confirm-persist-reload')

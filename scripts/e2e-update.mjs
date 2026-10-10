@@ -83,18 +83,38 @@ try {
   assert(keys.includes(prefix + candidateVersion + '-new'))
   assert(keys.includes(prefix + '2.0.1'))
   record.flows.push('activation-after-old-pages-close-retains-data-and-previous-assets')
-  stage = 'broken'
-  await next.evaluate(async () => {
-    try {
-      await (await navigator.serviceWorker.getRegistration()).update()
-    } catch {
-      /* Failed install must preserve active worker. */
-    }
+  // update() resolves before install finishes; the installing slot can still be null.
+  // Observe this specific update's worker and wait for its terminal state.
+  await next.waitForFunction(async () => {
+    const registration = await navigator.serviceWorker.getRegistration()
+    return registration.active?.state === 'activated' && !registration.installing
   })
-  // Wait for the worker's terminal install result, not a fixed sleep.
-  await next.waitForFunction(
-    async () => !(await navigator.serviceWorker.getRegistration()).installing,
-  )
+  stage = 'broken'
+  const failedState = await next.evaluate(async () => {
+    const registration = await navigator.serviceWorker.getRegistration()
+    return new Promise((resolve, reject) => {
+      const timer = setTimeout(() => reject(new Error('Broken update did not terminate')), 15000)
+      const found = () => {
+        const worker = registration.installing
+        if (!worker) return
+        const changed = () => {
+          if (worker.state === 'redundant' || worker.state === 'installed') {
+            clearTimeout(timer)
+            worker.removeEventListener('statechange', changed)
+            resolve(worker.state)
+          }
+        }
+        worker.addEventListener('statechange', changed)
+        changed()
+      }
+      registration.addEventListener('updatefound', found, { once: true })
+      registration.update().catch((error) => {
+        clearTimeout(timer)
+        reject(error)
+      })
+    })
+  })
+  assert.equal(failedState, 'redundant', 'The specific broken worker must fail installation')
   assert.equal(
     await next.evaluate(async () => (await navigator.serviceWorker.getRegistration()).active.state),
     'activated',
