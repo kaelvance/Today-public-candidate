@@ -1,6 +1,6 @@
 const ROOT = new URL(self.registration.scope)
 const CACHE_PREFIX = `today-v2-static-${ROOT.pathname}-`
-const CACHE = `${CACHE_PREFIX}2.1.0-${self.TODAY_BUILD_ID || 'local'}`
+const CACHE = `${CACHE_PREFIX}3.0.0-rc.1-${self.TODAY_BUILD_ID || 'local'}`
 const atRoot = (path) => new URL(path, ROOT).href
 const SHELL = ['./', 'index.html', 'manifest.webmanifest', 'icon.svg'].map(atRoot)
 // The web build adds all hashed JS/CSS assets for the first offline reload.
@@ -66,7 +66,8 @@ self.addEventListener('fetch', (event) => {
     request.method !== 'GET' ||
     url.origin !== self.location.origin ||
     !url.pathname.startsWith(ROOT.pathname) ||
-    url.pathname.startsWith('/api/')
+    url.pathname.startsWith('/api/') ||
+    url.pathname.startsWith('/v3/')
   )
     return
   if (request.mode === 'navigate') {

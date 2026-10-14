@@ -4,6 +4,7 @@ pnpm-lock.yaml
 *.tsbuildinfo
 SBOM.cdx.json
 third-party/
+docs/v3/OWNER_ARCHITECTURE_SPEC.md
 THIRD_PARTY_NOTICES.md
 evals/*.json
 models/today-model/manifests/*.json

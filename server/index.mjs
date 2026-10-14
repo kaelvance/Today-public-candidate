@@ -14,6 +14,9 @@ import { createChatModelService } from './chat-model.mjs'
 import { createChatApiService } from './chat-api.mjs'
 import { createOllamaModelService } from './ollama-model.mjs'
 import { EncryptedTokenStore } from './token-store.mjs'
+import { createOverviewGateway, handleOverviewRequest } from './v3/overview.mjs'
+import { createLocalVault } from './v3/local-vault.mjs'
+import { handleVaultRequest } from './v3/vault-http.mjs'
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)))
 const mime = {
@@ -109,6 +112,11 @@ export async function createTodayServer({
   allowLoopbackRemoteForTest = false,
 } = {}) {
   const baseUrl = `http://127.0.0.1:${port}`
+  const overviewGateway = createOverviewGateway({ now })
+  const overviewEnabled = env.TODAY_V3_OVERVIEW === '1'
+  const localVault = env.TODAY_V3_VAULT_DIR
+    ? createLocalVault({ directory: env.TODAY_V3_VAULT_DIR, now: () => now().getTime() })
+    : null
   const config = calendarConfig(env, baseUrl)
   const mailConfig = gmailConfig(env, baseUrl)
   const signingKey =
@@ -334,6 +342,33 @@ export async function createTodayServer({
     )
       return send(res, 403, { error: 'request_denied' })
     try {
+      if (
+        await handleVaultRequest({
+          req,
+          res,
+          url,
+          baseUrl,
+          vault: localVault,
+          validSession,
+          readJson,
+          send,
+        })
+      )
+        return
+      if (
+        await handleOverviewRequest({
+          req,
+          res,
+          url,
+          baseUrl,
+          enabled: overviewEnabled,
+          gateway: overviewGateway,
+          validSession,
+          readJson,
+          send,
+        })
+      )
+        return
       if (url.pathname === '/api/chat/status' && req.method === 'GET')
         return send(res, 200, {
           ...(chatModel?.status() || { configured: false, locality: 'local', experimental: true }),
@@ -620,6 +655,8 @@ export async function createTodayServer({
   return {
     server,
     close: async () => {
+      overviewGateway.clear()
+      await localVault?.close()
       await localModel.unload()
       await vite?.close()
       await new Promise((resolve) => server.close(resolve))

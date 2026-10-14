@@ -9,6 +9,7 @@ import { BrowserChatModel } from './chat/browser-model'
 import { MessagingGateway, MockMessagingAdapter, type OutboxEntry } from './chat/messaging'
 import type { ChatReply, ChatTurn } from './chat/contracts'
 import './chat.css'
+import { version } from '../package.json'
 
 export function ChatPanel({
   state,
@@ -222,7 +223,8 @@ export function ChatPanel({
   return (
     <section className="chat-panel" aria-label="AI Chat">
       <p>
-        V2.1.0。AIは任意です。履歴はこの画面を閉じると消去され、バックアップには含まれません。AIの回答には誤りがあり得ます。
+        V{version}
+        。AIは任意です。履歴はこの画面を閉じると消去され、バックアップには含まれません。AIの回答には誤りがあり得ます。
       </p>
       <label>
         会話モデル

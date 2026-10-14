@@ -1,0 +1,14 @@
+{
+  "fixtureOnly": true,
+  "message": "eyJpc3N1ZXIiOiJmaXh0dXJlLWNyeXB0by1vbmx5Iiwibm9uY2UiOiJmaXh0dXJlLW9ubHkiLCJvcGVyYXRpb24iOiJvdmVydmlldyIsInB1cnBvc2UiOiJ0b2RheS5tb2NrLnJlYWQtaW5pdC52MSJ9",
+  "publicKey": "SLLDmIp4kEY73fWkp5Lrmh5mz0j0HPfPg3IxzqYVTRU=",
+  "signature": "dinCjaIicESszeXkCfXLtGCRG2MIY33r6FOt7n+2Dknn29IzK+pHROeEQXHVbQy/oheGGOoTcJsAsGx9179sBQ==",
+  "aes": {
+    "key": "BwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwc=",
+    "binding": "eyJlcG9jaCI6ImZpeHR1cmUtb25lIiwicmV2aXNpb24iOjEsInZhdWx0SWQiOiJmaXh0dXJlLWNyeXB0by1vbmx5In0=",
+    "plaintext": "eyJmaXh0dXJlT25seSI6dHJ1ZSwidGV4dCI6IuaetuepuuOBruaal+WPt+S6kuaPm+aApyJ9",
+    "nonce": "p7XEdOO5qD4V4nYY",
+    "ciphertext": "N57aZOiJukpqbRjkiajg1YTS1hBQc7SJA_abD11vN8bvJN4q5wIZJbTgeshcmYZNGdMHBHmb",
+    "tag": "4LTwqspQLs39QfMJr0d5yw"
+  }
+}
