@@ -1,7 +1,7 @@
 {
   "name": "today-local",
   "private": true,
-  "version": "2.1.0",
+  "version": "3.0.0-rc.1",
   "packageManager": "pnpm@11.19.0",
   "type": "module",
   "scripts": {
@@ -12,12 +12,20 @@
     "test:local": "node --test server/local-model.node-test.mjs",
     "test:remote": "node --test server/remote-model.node-test.mjs server/remote-provider.integration-test.mjs",
     "test:ollama": "node --test server/ollama-model.node-test.mjs",
-    "test:oss": "node --test scripts/oss-audit.node-test.mjs scripts/release-scan.node-test.mjs && node scripts/release-scan.mjs",
+    "test:oss": "node --test scripts/oss-audit.node-test.mjs scripts/release-scan.node-test.mjs scripts/code-audit-policy.node-test.mjs && node scripts/release-scan.mjs",
     "test:e2e": "node scripts/e2e.mjs && node scripts/e2e-integration.mjs && node scripts/e2e-scenarios.mjs && node scripts/e2e-gmail.mjs && node scripts/e2e-intelligence.mjs && node scripts/e2e-release.mjs",
     "test:e2e:model": "node scripts/e2e-real-model.mjs",
     "build": "tsc -b && vite build && node scripts/precompress.mjs",
     "preview": "node server/index.mjs --production",
     "test:security": "node --test server/security.node-test.mjs",
+    "test:v3-server": "node --test server/v3/overview.node-test.mjs",
+    "test:v3-e2e": "node scripts/e2e-v3-overview.mjs",
+    "test:v3-gateway": "node --test server/v3/mock-gateway.node-test.mjs",
+    "test:v3-gateway-mock": "node scripts/v3-gateway-mock.mjs",
+    "test:v3-persistence": "node --test server/v3/sqlite-workspace-store.node-test.mjs",
+    "test:v3-migration": "vitest run src/v3/fixture-migration.test.ts src/v3/fixture-migration.integration.test.ts",
+    "test:v3-vault": "node --test server/v3/local-vault.node-test.mjs server/v3/vault-http.node-test.mjs",
+    "test:v3-vault-e2e": "node scripts/e2e-v3-vault.mjs",
     "start": "node server/index.mjs --production",
     "release:scan": "node scripts/release-scan.mjs",
     "release:audit": "node scripts/code-audit.mjs",
@@ -62,7 +70,7 @@
     "vitest": "^4.1.11"
   },
   "engines": {
-    "node": ">=22.13.0 <25"
+    "node": "^22.23.3 || ^24.19.0"
   },
   "license": "MIT"
 }

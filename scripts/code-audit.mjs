@@ -1,5 +1,7 @@
 import { readFile, readdir, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
+import { createHash } from 'node:crypto'
+import { reviewedDocumentationFinding } from './code-audit-policy.mjs'
 
 const categories = {
   unfinished: /\b(?:TODO|FIXME|HACK|XXX|temporary)\b/i,
@@ -34,35 +36,47 @@ async function walk(dir) {
 }
 const findings = []
 const files = await walk('.')
-for (const file of files)
-  (await readFile(file, 'utf8')).split('\n').forEach((line, index) => {
+for (const file of files) {
+  const content = await readFile(file, 'utf8')
+  const sha256 = createHash('sha256').update(content).digest('hex')
+  content.split('\n').forEach((line, index) => {
     for (const [category, pattern] of Object.entries(categories))
       if (pattern.test(line)) {
         const test = /test|e2e|fixture|evals\//.test(file)
-        const status =
-          test && category === 'absolutePath' && file === 'scripts/oss-audit.node-test.mjs'
+        const adjudication = reviewedDocumentationFinding({
+          file,
+          sha256,
+          line: index + 1,
+          category,
+        })
+        const status = adjudication
+          ? 'DOCUMENTED'
+          : test && category === 'absolutePath' && file === 'scripts/oss-audit.node-test.mjs'
             ? 'SAFE'
             : category === 'unsafeAny' || category === 'absolutePath'
               ? 'RELEASE_BLOCKER'
               : test || category === 'placeholder'
                 ? 'SAFE'
                 : 'DOCUMENTED'
-        const reason = test
-          ? 'fictional test or test harness; not real-provider evidence'
-          : category === 'broadCatch'
-            ? 'reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL'
-            : category === 'loopback'
-              ? 'intentional local-only server trust boundary; exact Host/Origin checks'
-              : category === 'assertion'
-                ? 'reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests'
-                : category === 'experimental'
-                  ? 'explicit experimental label; never default'
-                  : category === 'resourceBudget'
-                    ? 'explicit bounded resource policy; reviewed with timeout/input-limit tests'
-                    : 'reviewed release/development code; see qualification report'
+        const reason =
+          adjudication ||
+          (test
+            ? 'fictional test or test harness; not real-provider evidence'
+            : category === 'broadCatch'
+              ? 'reviewed fallback/error boundary; optional provider and storage degradation documented in SECURITY_MODEL'
+              : category === 'loopback'
+                ? 'intentional local-only server trust boundary; exact Host/Origin checks'
+                : category === 'assertion'
+                  ? 'reviewed narrowing of validated domain/schema data; typecheck and malformed-input tests'
+                  : category === 'experimental'
+                    ? 'explicit experimental label; never default'
+                    : category === 'resourceBudget'
+                      ? 'explicit bounded resource policy; reviewed with timeout/input-limit tests'
+                      : 'reviewed release/development code; see qualification report')
         findings.push({ file, line: index + 1, category, status, reason })
       }
   })
+}
 const result = {
   files: files.length,
   findings,

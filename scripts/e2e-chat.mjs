@@ -51,7 +51,8 @@ try {
   await page.goto(base)
   await page.getByRole('button', { name: 'Today AI Chat', exact: true }).first().click()
   const dialog = page.getByRole('dialog', { name: 'Today AI Chat' })
-  await dialog.getByText('V2.1.0。', { exact: false }).waitFor()
+  const version = JSON.parse(await readFile(root + '/package.json', 'utf8')).version
+  await dialog.getByText(`V${version}。`, { exact: false }).waitFor()
   await dialog.getByRole('combobox', { name: '会話モデル' }).selectOption('mock')
   assert.equal(
     await dialog.getByRole('button', { name: '会話する', exact: true }).isEnabled(),
