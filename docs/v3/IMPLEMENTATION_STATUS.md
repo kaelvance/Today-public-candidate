@@ -1,6 +1,6 @@
 # Today V3 / 3.0.0-rc.1 実装・検証状況
 
-2026-10-14。Owner選択: **Web＋Mac Gateway中心、iOSは検証済み機能から含める**。未公開のlocal RC、新しい課金¥0。[範囲](RC_SCOPE.md)、[保存庫](LOCAL_VAULT.md)、[公開gate](RC_RELEASE_CHECKLIST.md)を参照。
+2026-10-14。Owner選択: **Web＋Mac Gateway中心、iOSは検証済み機能から含める**。公開RCブランチの試験候補、新しい課金¥0。正式Releaseは未完了。[範囲](RC_SCOPE.md)、[保存庫](LOCAL_VAULT.md)、[公開gate](RC_RELEASE_CHECKLIST.md)を参照。
 
 ## Sourceと証跡
 
@@ -62,7 +62,11 @@ Owner原設計書SHA-256: `65fdc0805ac1557f5c7b81eb507b7ff2a9c776fcd7fee298dc456
 - 実iMessage、MCP client、外部OAuth/メッセージ/有料API、Mac常駐AI、cloud/sync。
 - GitHub現保護/required checks/PVR照合、公開tag/Release照合。
 
-`TODAY_V3_RELEASE_READY = NO`。local RCと正式Public Releaseの資格を分ける。
+`TODAY_V3_RELEASE_READY = NO`。RCブランチの公開と正式Releaseの資格を分ける。
+
+## 公開後の追加検証
+
+[Draft PR #9](https://github.com/kaelvance/Today-public-candidate/pull/9) が最新公開identity/CI状況の参照先。freeze時点の上記local qualificationは履歴。初回Ubuntu CIで、fixture directory検証がMac固有pathの解決エラーを返し期待した拒否codeと不一致になった。basenameをfilesystem参照より先に拒否し、missing directoryも安全なcodeへ変換。fixture scope/permissions/symlink gateは維持し、portable/missing negative regressionを追加。元failure artifactを保存し、修正後identityでMac22/24とUbuntu CIを再qualificationする。実際に完了したreceiptだけをPASSにする。
 
 ## 再現
 

@@ -67,11 +67,17 @@ function checkSidecars(path) {
 function checkedDirectory(directory) {
   if (
     typeof directory !== 'string' ||
-    realpathSync(directory) !== resolve(directory) ||
     !/^today-v3-fixture-[A-Za-z0-9_-]+$/.test(basename(directory))
   )
     reject('fixture_directory_required', 403)
-  const stat = lstatSync(directory)
+  let stat, actual
+  try {
+    actual = realpathSync(directory)
+    stat = lstatSync(directory)
+  } catch {
+    reject('fixture_directory_required', 403)
+  }
+  if (actual !== resolve(directory)) reject('fixture_directory_required', 403)
   if (!stat.isDirectory() || stat.uid !== process.getuid() || (stat.mode & 0o777) !== 0o700)
     reject('private_fixture_directory_required', 403)
   const marker = join(directory, 'fixture.json')

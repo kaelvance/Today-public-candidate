@@ -92,9 +92,19 @@ test('fixture opt-in, private scope and initialized format are required', async 
   assert.throws(() => openFixtureSQLiteStore({ directory: dir }), {
     code: 'fixture_opt_in_required',
   })
-  assert.throws(() => openFixtureSQLiteStore({ fixtureOnly: true, directory: '/private/tmp' }), {
+  assert.throws(() => openFixtureSQLiteStore({ fixtureOnly: true, directory: tmpdir() }), {
     code: 'fixture_directory_required',
   })
+  assert.throws(
+    () =>
+      openFixtureSQLiteStore({
+        fixtureOnly: true,
+        directory: join(dir, 'today-v3-fixture-missing'),
+      }),
+    {
+      code: 'fixture_directory_required',
+    },
+  )
   assert.equal(lstatSync(dir).mode & 0o777, 0o700)
   for (const name of ['fixture.json', 'workspaces.sqlite', 'writer-lock.sqlite'])
     assert.equal(lstatSync(join(dir, name)).mode & 0o777, 0o600)

@@ -1,6 +1,6 @@
 # Today V3 RC — ローカル開発候補
 
-> この独立コピーは **3.0.0-rc.1** です。対象はWeb＋同じMacのloopback Gateway、iOSは検証済みreadonly preview。公開サイトは引き続きV2.1.0で、このRCは未公開です。[RCの範囲](docs/v3/RC_SCOPE.md)、[現在の実装・検証](docs/v3/IMPLEMENTATION_STATUS.md)、[暗号化保存庫](docs/v3/LOCAL_VAULT.md)、[残る公開条件](docs/v3/RC_RELEASE_CHECKLIST.md) を先に確認してください。以下の公開版に関する説明・URL・過去の試験結果はV2の基準説明です。
+> この独立コピーは **3.0.0-rc.1** です。対象はWeb＋同じMacのloopback Gateway、iOSは検証済みreadonly preview。公開サイトは引き続きV2.1.0で、このRCは `Today-V3-RC` ブランチで公開しています（正式V3 Releaseではありません）。[公開状況・CI・未対応機能](https://github.com/kaelvance/Today-public-candidate/pull/9) を参照してください。[RCの範囲](docs/v3/RC_SCOPE.md)、[現在の実装・検証](docs/v3/IMPLEMENTATION_STATUS.md)、[暗号化保存庫](docs/v3/LOCAL_VAULT.md)、[残る公開条件](docs/v3/RC_RELEASE_CHECKLIST.md) を先に確認してください。以下の公開版に関する説明・URL・過去の試験結果はV2の基準説明です。
 
 ## V3 RCを同じMacで試す
 
@@ -60,8 +60,8 @@ TODAY_V3_VAULT_DIR="$HOME/.today-v3-rc-vault" pnpm start
 [kaelvance/Today-public-candidate](https://github.com/kaelvance/Today-public-candidate) のdefault branchは `public-candidate` です。元のTodayのprivate evidence historyは公開していません。ソースは次の手順で取得します。正式版の固定ソースはGitHub Releasesの配布物とreceiptを照合してください。現在の版はpackage.jsonで確認します。
 
 ```sh
-git clone https://github.com/kaelvance/Today-public-candidate.git Today
-cd Today
+git clone --branch Today-V3-RC --single-branch https://github.com/kaelvance/Today-public-candidate.git Today-V3-RC
+cd Today-V3-RC
 ```
 
 認証なしのpublic cloneからinstall・build・通常起動・初回利用を検証しています。ソースアーカイブを使う場合も展開先のルートで以下を実行します。Coreの実行にAPIキーは不要です。最終commitごとのqualification結果はrelease receiptを参照してください。

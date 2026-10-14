@@ -1,6 +1,6 @@
 # V3 RC1 — レビューと正式公開のgate
 
-これは未公開のlocal RC。candidateを確認するowner reviewと正式Public Releaseを分ける。[実装記録](IMPLEMENTATION_STATUS.md)、[保存庫の境界](LOCAL_VAULT.md)を参照。
+これは公開RCブランチの正式Release gate。candidateを確認するowner reviewと正式Public Releaseを分ける。[実装記録](IMPLEMENTATION_STATUS.md)、[保存庫の境界](LOCAL_VAULT.md)を参照。
 
 ## local candidateの固定手順
 
