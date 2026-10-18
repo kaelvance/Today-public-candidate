@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { mkdir, mkdtemp, readFile, writeFile, rm } from 'node:fs/promises'
+import { mkdir, mkdtemp, readFile, writeFile, rm, realpath } from 'node:fs/promises'
 import { createRequire } from 'node:module'
 import { resolve, join } from 'node:path'
 import { tmpdir } from 'node:os'
@@ -10,7 +10,7 @@ const output = resolve(
 )
 assert(!output.startsWith(process.cwd() + '/'))
 await mkdir(output, { recursive: true })
-const parent = await mkdtemp(join(tmpdir(), 'today-vault-browser-')),
+const parent = await realpath(await mkdtemp(join(tmpdir(), 'today-vault-browser-'))),
   directory = join(parent, 'private'),
   phrase = 'fixture-only-browser-long-passphrase'
 const require = createRequire(import.meta.url),

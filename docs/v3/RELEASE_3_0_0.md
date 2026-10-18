@@ -10,6 +10,8 @@ Mac保存庫はCoreの正本ではなく、本人が明示的に共有したコ�
 
 GPU Workerが停止要求へ応答しないとChatが取消・30秒timeout後も処理中になる問題を再現した。停止時にWorkerを終了し、待機promiseも明示的に拒否する。モデルの準備状態を再同期して再ロードを可能にする。遅延した推論結果を採用しない。通常のCore操作・保存schema・依存lockfileは変更しない。
 
+Macの一時領域がsymlink表記の場合、保存庫E2Eのfixtureが正しく拒否されて試験を実行できなかった。テストの一時directoryを実pathへ正規化し、製品側のsymlink拒否は維持した。
+
 ## リリース判定
 
 既存のMac Node22/24、Ubuntu22/24、format/lint/typecheck/unit/server/security/privacy/source/license/SBOM/dependency/build、全Core/Chat/Vault E2E、保存復旧・更新・offline・fresh source archiveを必須とする。Firefox/WebKitの既存互換suiteを維持する。
