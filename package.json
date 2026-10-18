@@ -12,7 +12,7 @@
     "test:local": "node --test server/local-model.node-test.mjs",
     "test:remote": "node --test server/remote-model.node-test.mjs server/remote-provider.integration-test.mjs",
     "test:ollama": "node --test server/ollama-model.node-test.mjs",
-    "test:oss": "node --test scripts/oss-audit.node-test.mjs scripts/release-scan.node-test.mjs scripts/code-audit-policy.node-test.mjs && node scripts/release-scan.mjs",
+    "test:oss": "node --test scripts/oss-audit.node-test.mjs scripts/release-scan.node-test.mjs scripts/code-audit-policy.node-test.mjs scripts/qualification-identity.node-test.mjs && node scripts/release-scan.mjs",
     "test:e2e": "node scripts/e2e.mjs && node scripts/e2e-integration.mjs && node scripts/e2e-scenarios.mjs && node scripts/e2e-gmail.mjs && node scripts/e2e-intelligence.mjs && node scripts/e2e-release.mjs",
     "test:e2e:model": "node scripts/e2e-real-model.mjs",
     "build": "tsc -b && vite build && node scripts/precompress.mjs",

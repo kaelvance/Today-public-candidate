@@ -16,6 +16,8 @@ Macの一時領域がsymlink表記の場合、保存庫E2Eのfixtureが正しく
 
 「Todayで何ができるか」への未実装機能の案内も実測したため、認識できる機能照会にはTodayの実装に沿った固定の説明を返す。モデル出力を製品仕様や実行成功の証拠として扱わない。
 
+qualification開始時とZIP生成時のidentityが異なる試行を検出し、採用しなかった。検証スクリプトにも開始時・各gate後のcommit/作業ツリー検査とtree記録を追加した。独立したfixture内でcommit変更・未commit変更の両方を拒否する回帰を必須OSS試験へ含める。
+
 ## リリース判定
 
 既存のMac Node22/24、Ubuntu22/24、format/lint/typecheck/unit/server/security/privacy/source/license/SBOM/dependency/build、全Core/Chat/Vault E2E、保存復旧・更新・offline・fresh source archiveを必須とする。Firefox/WebKitの既存互換suiteを維持する。

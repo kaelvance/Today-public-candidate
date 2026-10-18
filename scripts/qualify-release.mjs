@@ -23,6 +23,7 @@ const hash = async (path) =>
 const record = {
   version: JSON.parse(await readFile(join(root, 'package.json'), 'utf8')).version,
   commit: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(),
+  tree: execFileSync('git', ['rev-parse', 'HEAD^{tree}'], { cwd: root, encoding: 'utf8' }).trim(),
   lockSha256: await hash('pnpm-lock.yaml'),
   sbomSha256: await hash('SBOM.cdx.json'),
   workflowSha256: await hash('.github/workflows/release-qualification.yml'),
@@ -33,6 +34,21 @@ const record = {
   startedAt: new Date().toISOString(),
   steps: [],
   testTimeZone: 'UTC',
+}
+function assertSourceIdentity() {
+  assert.equal(
+    execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(),
+    record.commit,
+    'source commit changed during qualification',
+  )
+  assert.equal(
+    execFileSync('git', ['status', '--porcelain', '--untracked-files=normal'], {
+      cwd: root,
+      encoding: 'utf8',
+    }).trim(),
+    '',
+    'working tree changed during qualification; commit the candidate first',
+  )
 }
 const cleanEnv = {
   PATH: process.env.PATH,
@@ -45,6 +61,7 @@ const cleanEnv = {
   TZ: 'UTC',
 }
 try {
+  assertSourceIdentity()
   for (const [label, args] of [
     ['install', ['install', '--frozen-lockfile']],
     ['format', ['format:check']],
@@ -99,6 +116,7 @@ try {
     })
     console.log(JSON.stringify(record.steps.at(-1)))
     assert.equal(code, 0, `${label} failed; original log preserved`)
+    assertSourceIdentity()
   }
   record.passed = true
 } catch (error) {
