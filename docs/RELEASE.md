@@ -1,5 +1,9 @@
 # Release process
 
+## V3.0.0
+
+OwnerはV3の完成調整、正常動作検証、基準成立後の正式Releaseを委任しました。Web＋同じMacの保存庫を対象とし、[V3公開条件](v3/RELEASE_3_0_0.md)と既存全qualification/archive gatesを維持します。PR→required CI→保護branch統合→公開Pagesと匿名smoke→固定identityのsource/artifact/tag/Release照合の順で進めます。権限・機能を拡張するためにgateを弱めません。Cloud設定だけの成功は正式Releaseの証拠ではありません。
+
 ## V2.0.3
 
 Ownerが構築・調査完了後のGitHub正式公開を承認しています。AI Chatは調査のみです。[V2.0.3](V2_0_3_RELEASE.md)を参照し、新しいcommit/tree/ZIPを固定してMac22/24とUbuntu22/24のqualification、source/archive、web・保存復旧・更新gateを通します。全ての既存gateを維持し、失敗は保存して原因を修正します。

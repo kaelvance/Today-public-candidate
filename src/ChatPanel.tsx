@@ -182,7 +182,10 @@ export function ChatPanel({
           '処理できませんでした。取消・情報の変更・期限切れ・モデル停止の場合は、情報を選び直して再試行してください。履歴を消去するか共有情報を減らすと、会話容量を確保できます。変更の完了とは扱いません。',
         )
     } finally {
-      if (alive.current) setWorking(false)
+      if (alive.current) {
+        setWorking(false)
+        setModelReady(deviceModel.current.ready())
+      }
     }
   }
   async function approve() {

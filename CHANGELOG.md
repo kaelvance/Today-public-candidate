@@ -1,5 +1,13 @@
 # Changelog
 
+## 3.0.0
+
+- Web＋同じMacの暗号化保存庫。選択共有、期限付き照会、manual archive、暗号化backupと承認付き復元/消去、CAS/receipt/epochと単一writer。Core正本はブラウザ内のまま。
+- オンデバイス推論でWorkerが停止応答を返さない場合も、取消・timeout・画面終了を完了させ、モデルを再準備できるよう修正。古い結果は採用しない。
+- V2.1.0のCore保存互換、AI optional、承認付き操作、Mock Messagingを維持。モデル重み・個人データは非同梱。
+- iOS previewとremote device protocolはexperimental。実iPhone、iMessage、同期、常駐AI、MCP clientは未対応。
+- 新identityに対する実行済み試験だけをReleaseのreceiptへ記載する。
+
 ## 2.1.0 — Release notes
 
 - ブラウザ内WebGPU / Dedicated WorkerでQwen3-1.7B MLC 4bitを推論。明示取得同意、固定revision、進捗・取消、モデル停止。
