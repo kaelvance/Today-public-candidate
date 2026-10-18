@@ -57,6 +57,21 @@ afterEach(() => {
   vi.unstubAllGlobals()
 })
 describe('browser on-device boundary', () => {
+  it('does not let a model claim knowledge of unshared personal schedules', async () => {
+    const respond = vi.fn().mockResolvedValue({
+      text: '確認できない予定はありません。',
+      citations: [],
+      proposal: null,
+    })
+    const o = new ConversationOrchestrator({ id: 'fictional', respond })
+    const reply = await o.ask(
+      '確認できない予定は、確認できないと答えてください。私の来月の予定は？',
+      request().context,
+    )
+    expect(reply.text).toContain('確認できません')
+    expect(reply.proposal).toBeNull()
+    expect(respond).not.toHaveBeenCalled()
+  })
   it('settles cancellation even when the GPU worker never acknowledges interruption', async () => {
     const m = new BrowserChatModel()
     await m.load(true, () => {})

@@ -12,6 +12,8 @@ GPU Workerが停止要求へ応答しないとChatが取消・30秒timeout後も
 
 Macの一時領域がsymlink表記の場合、保存庫E2Eのfixtureが正しく拒否されて試験を実行できなかった。テストの一時directoryを実pathへ正規化し、製品側のsymlink拒否は維持した。
 
+実モデルで、共有情報が空でも来月の予定を確認したように答える問題を確認した。認識できる個人の予定・タスク照会は、共有が空ならモデルを呼ばず「確認できない」と返す。これは空予定の証明ではなく、自由文全般の幻覚防止保証でもない。モデルの回答は引き続き実験扱いとする。Service Workerのcache版も正式versionへ揃え、旧workerからの更新・下書き維持・offlineの既存gateを実行する。
+
 ## リリース判定
 
 既存のMac Node22/24、Ubuntu22/24、format/lint/typecheck/unit/server/security/privacy/source/license/SBOM/dependency/build、全Core/Chat/Vault E2E、保存復旧・更新・offline・fresh source archiveを必須とする。Firefox/WebKitの既存互換suiteを維持する。

@@ -1,6 +1,6 @@
 const ROOT = new URL(self.registration.scope)
 const CACHE_PREFIX = `today-v2-static-${ROOT.pathname}-`
-const CACHE = `${CACHE_PREFIX}3.0.0-rc.1-${self.TODAY_BUILD_ID || 'local'}`
+const CACHE = `${CACHE_PREFIX}3.0.0-${self.TODAY_BUILD_ID || 'local'}`
 const atRoot = (path) => new URL(path, ROOT).href
 const SHELL = ['./', 'index.html', 'manifest.webmanifest', 'icon.svg'].map(atRoot)
 // The web build adds all hashed JS/CSS assets for the first offline reload.
