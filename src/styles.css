@@ -121,6 +121,27 @@ button:disabled {
   cursor: not-allowed;
   opacity: 0.5;
 }
+.overview-choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-block: 0.8rem;
+  overflow-wrap: anywhere;
+}
+.overview-entry {
+  margin-block: 0.5rem 1rem;
+}
+.overview-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-block: 1rem;
+}
+.daily-hub fieldset {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+}
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,

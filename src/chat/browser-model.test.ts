@@ -52,8 +52,87 @@ beforeEach(() => {
   fixture.interrupt.mockClear()
   fixture.terminate.mockClear()
 })
-afterEach(() => vi.unstubAllGlobals())
+afterEach(() => {
+  vi.useRealTimers()
+  vi.unstubAllGlobals()
+})
 describe('browser on-device boundary', () => {
+  it('describes actual Today capabilities without model-invented features', async () => {
+    const respond = vi
+      .fn()
+      .mockResolvedValue({ text: '日記を登録できます。', citations: [], proposal: null })
+    const o = new ConversationOrchestrator({ id: 'fictional', respond })
+    const reply = await o.ask('Todayで何ができますか？短く教えてください。', request().context)
+    expect(reply.text).toContain('タスク・予定')
+    expect(reply.text).toContain('承認')
+    expect(reply.text).not.toContain('日記')
+    expect(respond).not.toHaveBeenCalled()
+  })
+  it('does not let a model claim knowledge of unshared personal schedules', async () => {
+    const respond = vi.fn().mockResolvedValue({
+      text: '確認できない予定はありません。',
+      citations: [],
+      proposal: null,
+    })
+    const o = new ConversationOrchestrator({ id: 'fictional', respond })
+    const reply = await o.ask(
+      '確認できない予定は、確認できないと答えてください。私の来月の予定は？',
+      request().context,
+    )
+    expect(reply.text).toContain('確認できません')
+    expect(reply.proposal).toBeNull()
+    expect(respond).not.toHaveBeenCalled()
+  })
+  it('settles cancellation even when the GPU worker never acknowledges interruption', async () => {
+    const m = new BrowserChatModel()
+    await m.load(true, () => {})
+    fixture.complete.mockImplementation(() => new Promise(() => {}))
+    const abort = new AbortController()
+    const result = m.respond(request(), abort.signal).catch((e: Error) => e.message)
+    await vi.waitFor(() => expect(fixture.complete).toHaveBeenCalled())
+    abort.abort()
+    try {
+      expect(
+        await Promise.race([
+          result,
+          new Promise((resolve) => setTimeout(() => resolve('hung'), 25)),
+        ]),
+      ).toBe('chat_cancelled')
+      expect(m.ready()).toBe(false)
+      expect(fixture.terminate).toHaveBeenCalled()
+      fixture.complete.mockResolvedValue(output('再開'))
+      await m.load(true, () => {})
+      await expect(m.respond(request(), new AbortController().signal)).resolves.toMatchObject({
+        text: '再開',
+      })
+    } finally {
+      m.dispose()
+    }
+  })
+  it('bounds the conversation timeout even when the GPU completion never settles', async () => {
+    const m = new BrowserChatModel()
+    await m.load(true, () => {})
+    fixture.complete.mockImplementation(() => new Promise(() => {}))
+    vi.useFakeTimers()
+    const o = new ConversationOrchestrator(m)
+    let outcome = 'pending'
+    const pending = o.ask('架空の質問', request().context).then(
+      () => {
+        outcome = 'unexpected_success'
+      },
+      () => {
+        outcome = 'cancelled'
+      },
+    )
+    try {
+      await vi.advanceTimersByTimeAsync(30_001)
+      expect(outcome).toBe('cancelled')
+      expect(o.turns()).toEqual([])
+      await pending
+    } finally {
+      m.dispose()
+    }
+  })
   it('does not download without separate consent or automatically from respond', async () => {
     const m = new BrowserChatModel()
     await expect(m.load(false, () => {})).rejects.toThrow('consent')

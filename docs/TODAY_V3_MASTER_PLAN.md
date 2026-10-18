@@ -1,5 +1,23 @@
 # Today V3 総合開発計画
 
+3.0.0の提供範囲・公開判定は[正式版の説明](v3/RELEASE_3_0_0.md)とGitHub Releaseの新identityのreceiptを参照する。以下のRC/Alpha記録は履歴として保持し、V4のマルチエージェント構想は今回実装しない。
+
+## 2026-10-14: Web＋Macを中心とするRC1
+
+Ownerが選択したWeb＋Mac Gatewayを優先し、独立コピー `3.0.0-rc.1` に同一origin/loopbackの暗号化保存庫、手動readonly portable archive、承認付き保存庫復元・消去を追加した。Core、V2公開環境、公式サイトは維持する。iOSはreadonly previewとfixtureによる契約/暗号byte互換の検証範囲に限定する。[実装記録](v3/IMPLEMENTATION_STATUS.md)、[RCの範囲](v3/RC_SCOPE.md)、[保存庫の設計](v3/LOCAL_VAULT.md)、[公開条件](v3/RC_RELEASE_CHECKLIST.md) が現時点の資料で、以下のalpha記録は履歴。正式Release、live iPhone認証、iMessage、完全なDomain移行、常駐AIは未成立。
+
+## 2026-10-11: 架空SQLite永続化・V2移行dry-run
+
+独立コピー `3.0.0-alpha.3` で、既存Mock GatewayのStorePortにSQLite transactionを注入し、process crash・複数writer・receipt復旧を試験する。実V2 exporterから作った架空backupをread-only checkerで監査し、選択projectionの保存→reopen→署名付きreadを検証する。[現在の結果](v3/IMPLEMENTATION_STATUS.md)、[永続化](v3/PERSISTENCE_QUALIFICATION.md)、[移行](v3/V2_MIGRATION_REPORT.md)、[ADR 004](adr/004-fixture-sqlite-and-readonly-migration.md) を優先する。以下のalpha.2の「disk未実装」は当時の履歴である。実ユーザーの正本移行、停電保証、Native AI・iMessage・正式Releaseは未完了。
+
+## 2026-10-11: 端末認証・GatewayWorkspaceのMock
+
+独立コピー `3.0.0-alpha.2` で、Owner承認と鍵所持証明を分けた端末登録、署名付きread、scope/取消、単一writer、revision/receipt、backup/restoreのoffline Mockを実装する。[現在の実装状況](v3/IMPLEMENTATION_STATUS.md)、[認証契約](v3/GATEWAY_PROTOCOL.md)、[保存契約](v3/GATEWAY_WORKSPACE_SPEC.md)、[ADR 003](adr/003-gateway-mock-before-live-identity.md) を優先する。選択projectionの試験であり、V2正本の移行、実iPhone認証、disk永続化、Native AI、実iMessage接続の完了を意味しない。
+
+## 2026-10-10: Xcode設計書に基づく新V3の着手
+
+V2.1.0正式版を基準に、独立コピーで `3.0.0-alpha.1` の読み取り専用DailyOverview・ローカルAPI・SwiftUIプレビューを実装した。現在のscope/試験/未実装は [V3実装状況](v3/IMPLEMENTATION_STATUS.md)、[監査と順序](v3/INITIAL_AUDIT_AND_PR_PLAN.md)、[Owner設計書](v3/OWNER_ARCHITECTURE_SPEC.md) を優先する。以下の「Qwen未採用」「V3製品コード未実装」等は当時の履歴であり、現在の公開V2.1.0やこのalphaの状態を示さない。V3正式公開・Native AI・実iMessage・MCP・同期は未完了。
+
 ## 2026-10-10: V2.1.0への移行
 
 AI Chat・承認付きAI操作・Messaging共通基盤の正式開発対象を **Today V2.1.0** へ変更した。独立コピーで `2.1.0-alpha.1` の製品コードとMock/ローカル評価を実装した。具体的な実装状態は [V2.1実装記録](V2_1_IMPLEMENTATION.md)、[品質・残課題](V2_1_QUALIFICATION.md)を優先する。以下の元資料は2026-10-09時点の設計履歴として残す。「未実装/未承認/未実行」は元資料時点の記述であり、今回の結果を表す時はV2.1記録を参照する。

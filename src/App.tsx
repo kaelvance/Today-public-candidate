@@ -10,6 +10,7 @@ import {
 } from 'react'
 import { version as appVersion } from '../package.json'
 import { ChatPanel } from './ChatPanel'
+import { DailyHubPanel } from './v3/DailyHubPanel'
 import type { Dispatch, SetStateAction } from 'react'
 import { makeBackup, mergeBackup, previewBackup } from './backup'
 import { storageLoadStatus } from './storage'
@@ -45,7 +46,7 @@ import { Daylight, TodaySurface } from './TodaySurface'
 import { Icon, ModalFrame } from './ui'
 import type { Item, ItemAction, PersistedState } from './types'
 
-type Sheet = 'add' | 'settings' | 'chat' | null
+type Sheet = 'add' | 'settings' | 'chat' | 'overview' | null
 type Toast = { message: string; undo?: Item }
 
 function App() {
@@ -953,6 +954,14 @@ function App() {
         <button className="chat-entry" onClick={() => setSheet('chat')}>
           Today AI Chat
         </button>
+        {!browserOnly && (
+          <button
+            className="button button-secondary overview-entry"
+            onClick={() => setSheet('overview')}
+          >
+            V3 日次サマリー実験
+          </button>
+        )}
         <TodaySurface
           view={view}
           today={today}
@@ -1053,6 +1062,17 @@ function App() {
               return stateRef.current
             }}
             commit={commitChat}
+          />
+        </ModalFrame>
+      )}
+      {sheet === 'overview' && (
+        <ModalFrame title="V3 日次サマリー実験" onClose={() => setSheet(null)} wide>
+          <DailyHubPanel
+            getState={() => {
+              if (!stateRef.current) throw new Error('state_unavailable')
+              return stateRef.current
+            }}
+            calendar={calendarUi}
           />
         </ModalFrame>
       )}

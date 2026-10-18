@@ -14,6 +14,7 @@ export class BrowserChatModel implements ChatModelPort {
   private generation = 0
   private busy = false
   private cancelLoad: (() => void) | null = null
+  private cancelInference: (() => void) | null = null
   ready() {
     return this.engine !== null
   }
@@ -77,6 +78,8 @@ export class BrowserChatModel implements ChatModelPort {
     this.generation++
     this.cancelLoad?.()
     this.cancelLoad = null
+    this.cancelInference?.()
+    this.cancelInference = null
     this.engine = null
     this.worker?.terminate()
     this.worker = null
@@ -87,25 +90,41 @@ export class BrowserChatModel implements ChatModelPort {
     if (!engine || this.busy || signal.aborted) throw new Error('browser_model_unavailable')
     this.busy = true
     const generation = this.generation
-    const cancel = () => engine.interruptGenerate()
+    const cancelled = new Promise<never>((_, reject) => {
+      this.cancelInference = () => reject(new Error('chat_cancelled'))
+    })
+    const cancel = () => {
+      try {
+        engine.interruptGenerate()
+      } catch {
+        // A failed interruption still requires terminating the worker.
+      } finally {
+        // A stalled GPU worker may never acknowledge interruption. Terminate it
+        // before permitting a reload, and settle the caller independently.
+        this.dispose()
+      }
+    }
     signal.addEventListener('abort', cancel, { once: true })
     try {
       // Rebuild KV state from the allowed request; revoked/scope-changed history is not reused.
-      await engine.resetChat()
+      await Promise.race([engine.resetChat(), cancelled])
       if (signal.aborted || generation !== this.generation) throw new Error('chat_cancelled')
-      const reply = await engine.chat.completions.create({
-        messages: completionMessages(request),
-        stream: false,
-        temperature: 0.7,
-        top_p: 0.8,
-        seed: 42,
-        max_tokens: 512,
-        response_format: {
-          type: 'json_object',
-          schema: JSON.stringify(browserReplySchema(request)),
-        },
-        extra_body: { enable_thinking: false },
-      })
+      const reply = await Promise.race([
+        engine.chat.completions.create({
+          messages: completionMessages(request),
+          stream: false,
+          temperature: 0.7,
+          top_p: 0.8,
+          seed: 42,
+          max_tokens: 512,
+          response_format: {
+            type: 'json_object',
+            schema: JSON.stringify(browserReplySchema(request)),
+          },
+          extra_body: { enable_thinking: false },
+        }),
+        cancelled,
+      ])
       if (signal.aborted || generation !== this.generation) throw new Error('chat_cancelled')
       const choice = reply.choices[0]
       if (
@@ -129,7 +148,10 @@ export class BrowserChatModel implements ChatModelPort {
       return result
     } finally {
       signal.removeEventListener('abort', cancel)
-      if (generation === this.generation) this.busy = false
+      if (generation === this.generation) {
+        this.busy = false
+        this.cancelInference = null
+      }
     }
   }
 }

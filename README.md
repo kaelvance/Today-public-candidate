@@ -1,4 +1,20 @@
-# Today V2.1.0
+# Today V3.0.0
+
+WebのCoreと任意のAI Chat、同じMacの暗号化保存庫を備えたローカルファーストOSSです。正式リリースのcommit・配布物・合否は[GitHub Releases](https://github.com/kaelvance/Today-public-candidate/releases)で確認してください。
+
+[今回の範囲・修正・検証条件](docs/v3/RELEASE_3_0_0.md)と[保存庫の境界](docs/v3/LOCAL_VAULT.md)を参照してください。iOSソースはreadonly previewの実験資料で、App Store配布・実iPhone接続・同期・iMessage・常駐AIは提供しません。
+
+## V3を同じMacで使う
+
+既存CoreはAI・保存庫なしでも動きます。任意のMac保存庫は、ソース・クラウド同期・バックアップ先の外に新しい専用ディレクトリを指定して有効にします。ディレクトリは初回作成まで存在しない必要があります。
+
+```sh
+pnpm install --frozen-lockfile
+pnpm build
+TODAY_V3_VAULT_DIR="$HOME/.today-v3-vault" pnpm start
+```
+
+`http://127.0.0.1:4173/` → **V3 日次サマリー実験** → **Mac保存庫**で、本人がパスフレーズと同意を入力します。秘密を環境変数・ソース・チャットに保存しません。選択共有、暗号化バックアップ、内容確認後の保存庫復元、保存庫コピーの消去が利用できます。**ブラウザCoreの保存領域は従来のまま平文です。保存庫への復元はCoreへの移行ではありません。**公開Pagesや別端末からこのMacへ自動接続しません。
 
 端末にタスク・予定を保存する日本語のローカルファーストOSSです。AIなしで4画面・保存・バックアップを使えます。
 
@@ -36,7 +52,7 @@
 
 ## 必要環境
 
-- Node.js **22.13以上の22系LTS**を推奨。24系も検証対象。Macと実Ubuntu CIの22/24系の結果はV2のqualification receiptへ記録します。`node --version` で確認します。
+- このV3 RCはNode.js **22.23.3以上の22系、または24.19.0以上の24系**。Node 22のSQLiteはExperimentalです。MacのRC結果とUbuntu CI未実行を区別し、V2のCI結果を新RCへ流用しません。`node --version` で確認します。
 - pnpm **11.19.0**。通常は `npm install --global pnpm@11.19.0` で導入します。管理端末では管理者の手順を優先してください。
 - Git、現行のChrome/Edge/Firefox/Safari等。最初の依存取得にはインターネットが必要です。
 - Apple Silicon、Python、モデルは通常起動には不要です。Nodeサーバーは同じ端末の `127.0.0.1` で使います。
@@ -46,8 +62,8 @@
 [kaelvance/Today-public-candidate](https://github.com/kaelvance/Today-public-candidate) のdefault branchは `public-candidate` です。元のTodayのprivate evidence historyは公開していません。ソースは次の手順で取得します。正式版の固定ソースはGitHub Releasesの配布物とreceiptを照合してください。現在の版はpackage.jsonで確認します。
 
 ```sh
-git clone https://github.com/kaelvance/Today-public-candidate.git Today
-cd Today
+git clone --branch Today-V3-RC --single-branch https://github.com/kaelvance/Today-public-candidate.git Today-V3-RC
+cd Today-V3-RC
 ```
 
 認証なしのpublic cloneからinstall・build・通常起動・初回利用を検証しています。ソースアーカイブを使う場合も展開先のルートで以下を実行します。Coreの実行にAPIキーは不要です。最終commitごとのqualification結果はrelease receiptを参照してください。

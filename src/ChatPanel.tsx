@@ -9,6 +9,7 @@ import { BrowserChatModel } from './chat/browser-model'
 import { MessagingGateway, MockMessagingAdapter, type OutboxEntry } from './chat/messaging'
 import type { ChatReply, ChatTurn } from './chat/contracts'
 import './chat.css'
+import { version } from '../package.json'
 
 export function ChatPanel({
   state,
@@ -181,7 +182,10 @@ export function ChatPanel({
           '処理できませんでした。取消・情報の変更・期限切れ・モデル停止の場合は、情報を選び直して再試行してください。履歴を消去するか共有情報を減らすと、会話容量を確保できます。変更の完了とは扱いません。',
         )
     } finally {
-      if (alive.current) setWorking(false)
+      if (alive.current) {
+        setWorking(false)
+        setModelReady(deviceModel.current.ready())
+      }
     }
   }
   async function approve() {
@@ -222,7 +226,8 @@ export function ChatPanel({
   return (
     <section className="chat-panel" aria-label="AI Chat">
       <p>
-        V2.1.0。AIは任意です。履歴はこの画面を閉じると消去され、バックアップには含まれません。AIの回答には誤りがあり得ます。
+        V{version}
+        。AIは任意です。履歴はこの画面を閉じると消去され、バックアップには含まれません。AIの回答には誤りがあり得ます。
       </p>
       <label>
         会話モデル

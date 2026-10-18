@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "contractVersion": "today.overview.v1",
+  "coverage": "selected_only",
+  "date": "2026-10-10",
+  "timeZone": "Asia/Tokyo",
+  "generatedAt": "2026-10-10T00:00:00.000Z",
+  "capturedAt": "2026-10-10T00:00:00.000Z",
+  "expiresAt": "2026-10-10T00:05:00.000Z",
+  "snapshotHash": "ec32939fa18857e5853c13119b669373ab913e50e7e1cb29a72ec0719e6776ce",
+  "sources": {
+    "local": {
+      "state": "ready",
+      "retrievedAt": "2026-10-10T00:00:00.000Z"
+    },
+    "calendar": {
+      "state": "unconfigured",
+      "retrievedAt": null
+    },
+    "mail": {
+      "state": "unavailable",
+      "retrievedAt": null
+    },
+    "weather": {
+      "state": "unavailable",
+      "retrievedAt": null
+    }
+  },
+  "counts": {
+    "overdue": 0,
+    "dueToday": 1,
+    "tasksSelected": 2,
+    "manualEvents": 1,
+    "calendarEvents": null,
+    "mail": null,
+    "weather": null
+  },
+  "summary": "選択したタスク: 2件。今日の期限: 1件、期限超過: 0件。選択した予定: 1件。",
+  "warnings": [
+    "選択したデータだけのサマリーです。Today全体・Google Calendar全体の件数ではありません。",
+    "Google Calendarは未確認または不完全です。未取得分を0件とは扱いません。"
+  ],
+  "tasks": [
+    {
+      "id": "fictional-task",
+      "title": "架空の資料を確認する",
+      "sourceTime": "2026-10-09T08:00:00.000Z",
+      "dueAt": "2026-10-10T02:00:00.000Z",
+      "importance": 3,
+      "group": "due_today",
+      "reason": "今日が期限です"
+    },
+    {
+      "id": "fictional-unscheduled",
+      "title": "架空の買い物メモ",
+      "sourceTime": "2026-10-09T08:00:00.000Z",
+      "dueAt": null,
+      "importance": 1,
+      "group": "unscheduled",
+      "reason": "期限は未設定です"
+    }
+  ],
+  "events": [
+    {
+      "id": "fictional-event",
+      "title": "架空の打ち合わせ",
+      "sourceTime": "2026-10-09T08:00:00.000Z",
+      "source": "manual",
+      "allDay": false,
+      "startAt": "2026-10-10T03:00:00.000Z",
+      "endAt": "2026-10-10T04:00:00.000Z",
+      "startDate": null,
+      "endDate": null
+    }
+  ]
+}

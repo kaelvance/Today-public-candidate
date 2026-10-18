@@ -51,11 +51,27 @@ export class ConversationOrchestrator {
     try {
       const request = { messages, context, consent: true as const }
       const planned = this.model.id === 'mock-not-ai' ? null : explicitCommand(request)
+      const unsharedPersonalFacts =
+        context.facts.length === 0 &&
+        /予定|タスク|やること/.test(content) &&
+        /私|自分|僕|俺|今日|明日|今週|来週|今月|来月|選択|共有/.test(content)
       const raw =
         planned ??
         (unsupportedChatRequest(content)
           ? structuredClone(chatDeniedReply)
-          : await this.model.respond(request, controller.signal))
+          : /^(?:Today(?: AI)?|このアプリ)(?:で|は).*(?:何ができ|できること|機能)/i.test(content)
+            ? {
+                text: 'Todayはタスク・予定の管理、カレンダー、ふりかえり、検索、バックアップに対応します。AI Chatは選択して共有した情報を参照し、対応するタスク・予定の変更案を作ります。変更は内容を確認して承認した後に保存します。実iMessage・端末間同期・外部メール送信は未対応です。',
+                citations: [],
+                proposal: null,
+              }
+            : unsharedPersonalFacts
+              ? {
+                  text: 'この会話に共有されたタスク・予定がないため、確認できません。予定がないという意味ではありません。対象を選択して共有するか、Todayの一覧・カレンダーで確認してください。',
+                  citations: [],
+                  proposal: null,
+                }
+              : await this.model.respond(request, controller.signal))
       if (controller.signal.aborted || generation !== this.generation)
         throw new Error('chat_cancelled')
       const validated = validateReply(raw, context)
