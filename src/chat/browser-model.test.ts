@@ -57,6 +57,17 @@ afterEach(() => {
   vi.unstubAllGlobals()
 })
 describe('browser on-device boundary', () => {
+  it('describes actual Today capabilities without model-invented features', async () => {
+    const respond = vi
+      .fn()
+      .mockResolvedValue({ text: '日記を登録できます。', citations: [], proposal: null })
+    const o = new ConversationOrchestrator({ id: 'fictional', respond })
+    const reply = await o.ask('Todayで何ができますか？短く教えてください。', request().context)
+    expect(reply.text).toContain('タスク・予定')
+    expect(reply.text).toContain('承認')
+    expect(reply.text).not.toContain('日記')
+    expect(respond).not.toHaveBeenCalled()
+  })
   it('does not let a model claim knowledge of unshared personal schedules', async () => {
     const respond = vi.fn().mockResolvedValue({
       text: '確認できない予定はありません。',
