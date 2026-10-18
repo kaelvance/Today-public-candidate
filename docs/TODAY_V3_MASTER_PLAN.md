@@ -1,5 +1,7 @@
 # Today V3 総合開発計画
 
+3.0.0の提供範囲・公開判定は[正式版の説明](v3/RELEASE_3_0_0.md)とGitHub Releaseの新identityのreceiptを参照する。以下のRC/Alpha記録は履歴として保持し、V4のマルチエージェント構想は今回実装しない。
+
 ## 2026-10-14: Web＋Macを中心とするRC1
 
 Ownerが選択したWeb＋Mac Gatewayを優先し、独立コピー `3.0.0-rc.1` に同一origin/loopbackの暗号化保存庫、手動readonly portable archive、承認付き保存庫復元・消去を追加した。Core、V2公開環境、公式サイトは維持する。iOSはreadonly previewとfixtureによる契約/暗号byte互換の検証範囲に限定する。[実装記録](v3/IMPLEMENTATION_STATUS.md)、[RCの範囲](v3/RC_SCOPE.md)、[保存庫の設計](v3/LOCAL_VAULT.md)、[公開条件](v3/RC_RELEASE_CHECKLIST.md) が現時点の資料で、以下のalpha記録は履歴。正式Release、live iPhone認証、iMessage、完全なDomain移行、常駐AIは未成立。
